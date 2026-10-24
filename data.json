@@ -5,11 +5,11 @@
   "categories": [
     {
       "id": "story",
-      "name": "Story missions",
+      "name": "Story Missions",
       "items": [
         {
           "id": "story-001",
-          "name": "Placeholder story mission 1",
+          "name": "Story mission 1",
           "description": "One-line description goes here.",
           "spoiler": true
         },
@@ -29,7 +29,7 @@
     },
     {
       "id": "side",
-      "name": "Side quests",
+      "name": "Side Quests",
       "items": [
         {
           "id": "side-001",
