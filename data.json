@@ -5,41 +5,1035 @@
   "categories": [
     {
       "id": "story",
-      "name": "Story Missions",
+      "name": "Story missions",
       "items": [
         {
           "id": "story-001",
-          "name": "Story mission 1",
-          "description": "One-line description goes here.",
+          "name": "Prologue",
+          "description": "A 2004 bank robbery in Ludendorff, North Yankton, goes badly wrong.",
+          "character": "Michael, Trevor",
           "spoiler": true
         },
         {
           "id": "story-002",
-          "name": "Placeholder story mission 2",
-          "description": "One-line description goes here.",
+          "name": "Franklin and Lamar",
+          "description": "Franklin and Lamar repossess two sports cars for Simeon and race them back to the dealership.",
+          "character": "Franklin",
           "spoiler": true
         },
         {
           "id": "story-003",
-          "name": "Placeholder story mission 3",
-          "description": "One-line description goes here.",
+          "name": "Repossession",
+          "description": "Franklin and Lamar repossess a motorbike for Simeon and have to fight their way out.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-004",
+          "name": "Complications",
+          "description": "Franklin is sent to repossess a car in Rockford Hills and meets its owner, Michael.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-005",
+          "name": "Father/Son",
+          "description": "Michael and Franklin chase down Michael's yacht to get Jimmy back.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-006",
+          "name": "Chop",
+          "description": "A deal with the Ballas turns into an ambush, and Franklin uses Chop to track down a runaway gang member.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-007",
+          "name": "Marriage Counseling",
+          "description": "Michael catches Amanda with her tennis coach and takes revenge on the wrong house.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-008",
+          "name": "Daddy's Little Girl",
+          "description": "A Michael family mission involving his daughter Tracey.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-009",
+          "name": "Friend Request",
+          "description": "Michael helps Lester sabotage the launch of a Lifeinvader phone.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-010",
+          "name": "The Long Stretch",
+          "description": "Franklin backs up Lamar and Stretch at a deal that turns into a shootout.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-011",
+          "name": "The Good Husband",
+          "description": "Optional Michael family mission with Amanda.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-012",
+          "name": "Casing the Jewel Store",
+          "description": "Michael scouts the Vangelico jewelry store's security for the first heist.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-013",
+          "name": "Carbine Rifles",
+          "description": "Heist setup: steal carbine rifles for The Jewel Store Job. Loud approach only.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-014",
+          "name": "BZ Gas Grenades",
+          "description": "Heist setup: steal BZ gas grenades for The Jewel Store Job. Smart approach only.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-015",
+          "name": "Bugstars Equipment",
+          "description": "Heist setup: steal a Bugstars pest-control van. Smart approach only.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-016",
+          "name": "The Jewel Store Job",
+          "description": "Rob the Vangelico jewelry store using the smart or loud approach, then escape.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-017",
+          "name": "Mr. Philips",
+          "description": "Trevor is introduced in Sandy Shores and goes after The Lost MC.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-018",
+          "name": "Trevor Philips Industries",
+          "description": "Trevor starts building his business in Blaine County and takes on a rival gang.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-019",
+          "name": "Nervous Ron",
+          "description": "Trevor and Ron go after The Lost MC's business.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-020",
+          "name": "Crystal Maze",
+          "description": "Trevor attacks the O'Neil brothers' meth operation.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-021",
+          "name": "Friends Reunited",
+          "description": "Trevor arrives in Los Santos and tracks down Michael.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-022",
+          "name": "Fame or Shame",
+          "description": "Michael and Trevor go after Lazlow at a talent show taping.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-023",
+          "name": "Dead Man Walking",
+          "description": "Michael carries out a dangerous favor for FIB agents Dave Norton and Steve Haines.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-024",
+          "name": "Three's Company",
+          "description": "All three protagonists team up for an FIB extraction job.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-025",
+          "name": "By the Book",
+          "description": "Trevor carries out a brutal interrogation for the FIB while Michael hunts the target.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-026",
+          "name": "Hood Safari",
+          "description": "Trevor joins Franklin and Lamar on a drug deal that turns violent.",
+          "character": "Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-027",
+          "name": "Did Somebody Say Yoga?",
+          "description": "Michael's yoga session at home goes strangely wrong.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-028",
+          "name": "Scouting the Port",
+          "description": "Trevor scouts the Los Santos docks for the next heist.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-029",
+          "name": "Minisub",
+          "description": "Heist setup: steal a mini submarine for The Merryweather Heist.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-030",
+          "name": "Cargobob",
+          "description": "Heist setup: steal a Cargobob helicopter for The Merryweather Heist.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-031",
+          "name": "The Merryweather Heist",
+          "description": "Steal a Merryweather weapon shipment using the offshore or freighter approach.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-032",
+          "name": "The Hotel Assassination",
+          "description": "Lester's first contract for Franklin, required for the story.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-033",
+          "name": "Boiler Suits",
+          "description": "Heist setup for Blitz Play: get boiler suits for the crew.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-034",
+          "name": "Masks",
+          "description": "Heist setup for Blitz Play: buy masks for the crew.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-035",
+          "name": "Trash Truck",
+          "description": "Heist setup for Blitz Play: steal a garbage truck.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-036",
+          "name": "Tow Truck",
+          "description": "Heist setup for Blitz Play: steal a tow truck.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-037",
+          "name": "Blitz Play",
+          "description": "The crew ambushes an armored truck in Los Santos for the FIB.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-038",
+          "name": "I Fought the Law...",
+          "description": "The crew steals high-end cars and escapes the police.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-039",
+          "name": "Eye in the Sky",
+          "description": "Franklin and Trevor team up, with Trevor in the air.",
+          "character": "Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-040",
+          "name": "Mr. Richards",
+          "description": "Michael meets film producer Solomon Richards and starts working in the movie business.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-041",
+          "name": "Caida Libre",
+          "description": "Michael and Trevor pull off a high-altitude job that ends in freefall.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-042",
+          "name": "Deep Inside",
+          "description": "Franklin steals a prop car from a film set.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-043",
+          "name": "Minor Turbulence",
+          "description": "Trevor intercepts a cargo plane carrying Merryweather goods.",
+          "character": "Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-044",
+          "name": "Paleto Score Setup",
+          "description": "Michael and Trevor scout the Blaine County Savings Bank in Paleto Bay.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-045",
+          "name": "Predator",
+          "description": "The crew hunts down a target for the FIB, with help from Chop.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-046",
+          "name": "Military Hardware",
+          "description": "Heist setup: steal military equipment for The Paleto Score.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-047",
+          "name": "The Paleto Score",
+          "description": "Rob the Paleto Bay bank in heavy armor and fight your way out.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-048",
+          "name": "Derailed",
+          "description": "Michael and Trevor take on a job involving a train.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-049",
+          "name": "Monkey Business",
+          "description": "The crew steals a chemical agent from Humane Labs.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-050",
+          "name": "Hang Ten",
+          "description": "Michael and Trevor mission after Monkey Business.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-051",
+          "name": "Surveying the Score",
+          "description": "The crew scouts the Union Depository for the Big Score.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-052",
+          "name": "Bury the Hatchet",
+          "description": "Michael and Trevor return to North Yankton and uncover the truth about the 2004 job.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-053",
+          "name": "Pack Man",
+          "description": "Franklin and Trevor steal a truckload of cars for Devin Weston.",
+          "character": "Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-054",
+          "name": "Fresh Meat",
+          "description": "Franklin rescues Michael from the Triads.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-055",
+          "name": "The Ballad of Rocco",
+          "description": "Michael deals with Rocco, who is causing trouble for Solomon's film.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-056",
+          "name": "Cleaning out the Bureau",
+          "description": "Michael goes undercover as a janitor to scout the FIB building.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-057",
+          "name": "Architect's Plans",
+          "description": "Franklin steals the FIB building's blueprints.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-058",
+          "name": "Fire Truck",
+          "description": "Heist setup: steal a fire truck. Fire Crew approach only.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-059",
+          "name": "The Bureau Raid",
+          "description": "Raid the FIB building using the Fire Crew or Roof Entry approach.",
+          "character": "Michael, Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-060",
+          "name": "The Wrap Up",
+          "description": "A standoff between rival agencies turns into a firefight.",
+          "character": "Michael, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-061",
+          "name": "Reuniting the Family",
+          "description": "Michael tries to bring his family back together.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-062",
+          "name": "Doting Dad",
+          "description": "Optional Michael family mission.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-063",
+          "name": "Legal Trouble",
+          "description": "Michael chases down someone trying to take Solomon's film.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-064",
+          "name": "Lamar Down",
+          "description": "All three protagonists rescue Lamar from the Ballas.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-065",
+          "name": "Meltdown",
+          "description": "Michael attends the premiere of Solomon's film.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-066",
+          "name": "Parenting 101",
+          "description": "Optional Michael family mission.",
+          "character": "Michael",
+          "spoiler": true
+        },
+        {
+          "id": "story-067",
+          "name": "Planning the Big Score",
+          "description": "Plan the Union Depository heist and choose the Subtle or Obvious approach.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-068",
+          "name": "Stingers",
+          "description": "Heist setup for The Big Score. Subtle approach only.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-069",
+          "name": "Gauntlet",
+          "description": "Heist setup: steal three Gauntlet getaway cars. Subtle approach only.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-070",
+          "name": "Sidetracked",
+          "description": "Heist setup for The Big Score. Obvious approach only.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-071",
+          "name": "Driller",
+          "description": "Heist setup: steal a drill for The Big Score. Obvious approach only.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-072",
+          "name": "The Big Score",
+          "description": "Rob the Union Depository's gold reserve.",
+          "character": "Michael, Franklin, Trevor",
+          "spoiler": true
+        },
+        {
+          "id": "story-073",
+          "name": "Something Sensible",
+          "description": "Ending A. One of three final missions: pick only one.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-074",
+          "name": "The Time's Come",
+          "description": "Ending B. One of three final missions: pick only one.",
+          "character": "Franklin",
+          "spoiler": true
+        },
+        {
+          "id": "story-075",
+          "name": "The Third Way",
+          "description": "Ending C, widely treated as canon. One of three final missions: pick only one.",
+          "character": "Michael, Franklin, Trevor",
           "spoiler": true
         }
       ]
     },
     {
       "id": "side",
-      "name": "Side Quests",
+      "name": "Side quests",
       "items": [
         {
           "id": "side-001",
-          "name": "Placeholder side quest 1",
-          "description": "One-line description goes here."
+          "name": "Pulling Favors",
+          "description": "Tow an abandoned car to the LSPD impound for Tonya.",
+          "character": "Franklin",
+          "giver": "Tonya"
         },
         {
           "id": "side-002",
-          "name": "Placeholder side quest 2",
-          "description": "One-line description goes here."
+          "name": "Pulling Another Favor",
+          "description": "A second impound tow for Tonya.",
+          "character": "Franklin",
+          "giver": "Tonya"
+        },
+        {
+          "id": "side-003",
+          "name": "Pulling Favors Again",
+          "description": "Tow a stalled car to a repair shop.",
+          "character": "Franklin",
+          "giver": "Tonya"
+        },
+        {
+          "id": "side-004",
+          "name": "Still Pulling Favors",
+          "description": "Tow a broken-down car to its destination.",
+          "character": "Franklin",
+          "giver": "Tonya"
+        },
+        {
+          "id": "side-005",
+          "name": "Pulling One Last Favor",
+          "description": "Tonya's final tow job.",
+          "character": "Franklin",
+          "giver": "Tonya"
+        },
+        {
+          "id": "side-006",
+          "name": "Shift Work",
+          "description": "Win an evening street race against Hao's crew.",
+          "character": "Franklin",
+          "giver": "Hao"
+        },
+        {
+          "id": "side-007",
+          "name": "Paparazzo",
+          "description": "Chase a celebrity so Beverly can get his photos.",
+          "character": "Franklin",
+          "giver": "Beverly"
+        },
+        {
+          "id": "side-008",
+          "name": "Paparazzo - The Sex Tape",
+          "description": "Film a celebrity in secret and escape security.",
+          "character": "Franklin",
+          "giver": "Beverly"
+        },
+        {
+          "id": "side-009",
+          "name": "Paparazzo - The Partnership",
+          "description": "Beverly proposes a partnership.",
+          "character": "Franklin",
+          "giver": "Beverly"
+        },
+        {
+          "id": "side-010",
+          "name": "Paparazzo - The Meltdown",
+          "description": "Chase Poppy Mitchell so her arrest can be photographed.",
+          "character": "Franklin",
+          "giver": "Beverly"
+        },
+        {
+          "id": "side-011",
+          "name": "Paparazzo - The Highness",
+          "description": "Photograph a princess at a drug deal without being seen.",
+          "character": "Franklin",
+          "giver": "Beverly"
+        },
+        {
+          "id": "side-012",
+          "name": "Paparazzo - Reality Check",
+          "description": "Beverly's final job.",
+          "character": "Franklin",
+          "giver": "Beverly"
+        },
+        {
+          "id": "side-013",
+          "name": "Grass Roots - Franklin",
+          "description": "Meet Barry, who is campaigning to legalize marijuana.",
+          "character": "Franklin",
+          "giver": "Barry"
+        },
+        {
+          "id": "side-014",
+          "name": "Grass Roots - The Pickup",
+          "description": "Deliver a truck to Barry without attracting the police.",
+          "character": "Franklin",
+          "giver": "Barry"
+        },
+        {
+          "id": "side-015",
+          "name": "Grass Roots - The Drag",
+          "description": "Tow a stash car to Barry's place.",
+          "character": "Franklin",
+          "giver": "Barry"
+        },
+        {
+          "id": "side-016",
+          "name": "Grass Roots - The Smoke-In",
+          "description": "Make a delivery to Barry's smoke-in at City Hall.",
+          "character": "Franklin",
+          "giver": "Barry"
+        },
+        {
+          "id": "side-017",
+          "name": "Exercising Demons - Franklin",
+          "description": "Beat Mary-Ann in a triathlon.",
+          "character": "Franklin",
+          "giver": "Mary-Ann"
+        },
+        {
+          "id": "side-018",
+          "name": "A Starlet in Vinewood",
+          "description": "Confront Peter Dreyfuss. Unlocks after collecting all 50 Letter Scraps.",
+          "character": "Franklin",
+          "giver": "Peter Dreyfuss"
+        },
+        {
+          "id": "side-019",
+          "name": "Far Out",
+          "description": "Meet Omega, who sends you looking for spaceship parts.",
+          "character": "Franklin",
+          "giver": "Omega"
+        },
+        {
+          "id": "side-020",
+          "name": "The Final Frontier",
+          "description": "Return to Omega after collecting all 50 Spaceship Parts.",
+          "character": "Franklin",
+          "giver": "Omega"
+        },
+        {
+          "id": "side-021",
+          "name": "Risk Assessment",
+          "description": "Skydive onto Mount Chiliad and race Dom down on bikes.",
+          "character": "Franklin",
+          "giver": "Dom"
+        },
+        {
+          "id": "side-022",
+          "name": "Liquidity Risk",
+          "description": "Ride an ATV out of a cargo plane and skydive after Dom.",
+          "character": "Franklin",
+          "giver": "Dom"
+        },
+        {
+          "id": "side-023",
+          "name": "Targeted Risk",
+          "description": "Parachute onto a moving flatbed truck.",
+          "character": "Franklin",
+          "giver": "Dom"
+        },
+        {
+          "id": "side-024",
+          "name": "Uncalculated Risk",
+          "description": "Dom's final stunt. Unlocks after all 13 parachute jumps.",
+          "character": "Franklin",
+          "giver": "Dom"
+        },
+        {
+          "id": "side-025",
+          "name": "The Last One",
+          "description": "Hunt for Bigfoot. Unlocks only at 100% completion.",
+          "character": "Franklin",
+          "giver": "Sasquatch hunter"
+        },
+        {
+          "id": "side-026",
+          "name": "Grass Roots - Michael",
+          "description": "Michael tries Barry's product and fights off hallucinated aliens.",
+          "character": "Michael",
+          "giver": "Barry"
+        },
+        {
+          "id": "side-027",
+          "name": "Exercising Demons - Michael",
+          "description": "Beat Mary-Ann in a foot race.",
+          "character": "Michael",
+          "giver": "Mary-Ann"
+        },
+        {
+          "id": "side-028",
+          "name": "Seeking the Truth",
+          "description": "First Epsilon mission, after the Epsilon website evaluation.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-029",
+          "name": "Accepting the Truth",
+          "description": "Visit an Epsilon room after a donation.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-030",
+          "name": "Assuming the Truth",
+          "description": "Deliver five vehicles for the Epsilon Program.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-031",
+          "name": "Chasing the Truth",
+          "description": "Search a field for Epsilon artifacts with a scanner.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-032",
+          "name": "Bearing the Truth",
+          "description": "Wear Epsilon robes for ten days.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-033",
+          "name": "Delivering the Truth",
+          "description": "Fly an Epsilon plane to Sandy Shores Airfield.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-034",
+          "name": "Exercising the Truth",
+          "description": "Complete a five-mile desert walk in robes.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-035",
+          "name": "Unknowing the Truth",
+          "description": "The Epsilon Program's final task.",
+          "character": "Michael",
+          "giver": "Epsilon Program"
+        },
+        {
+          "id": "side-036",
+          "name": "Death at Sea",
+          "description": "Meet Abigail, who sends you after submarine pieces.",
+          "character": "Michael",
+          "giver": "Abigail"
+        },
+        {
+          "id": "side-037",
+          "name": "What Lies Beneath",
+          "description": "Return to Abigail after collecting all 30 Submarine Pieces.",
+          "character": "Michael",
+          "giver": "Abigail"
+        },
+        {
+          "id": "side-038",
+          "name": "Grass Roots - Trevor",
+          "description": "Trevor tries Barry's product and fights off hallucinated clowns.",
+          "character": "Trevor",
+          "giver": "Barry"
+        },
+        {
+          "id": "side-039",
+          "name": "Exercising Demons - Trevor",
+          "description": "Beat Mary-Ann in a bike race.",
+          "character": "Trevor",
+          "giver": "Mary-Ann"
+        },
+        {
+          "id": "side-040",
+          "name": "Target Practice",
+          "description": "Prove your shooting skills to Cletus.",
+          "character": "Trevor",
+          "giver": "Cletus"
+        },
+        {
+          "id": "side-041",
+          "name": "Fair Game",
+          "description": "Go hunting with Cletus.",
+          "character": "Trevor",
+          "giver": "Cletus"
+        },
+        {
+          "id": "side-042",
+          "name": "The Civil Border Patrol",
+          "description": "Help two self-appointed border patrolmen.",
+          "character": "Trevor",
+          "giver": "Joe and Josef"
+        },
+        {
+          "id": "side-043",
+          "name": "An American Welcome",
+          "description": "Another job for the border patrolmen.",
+          "character": "Trevor",
+          "giver": "Joe and Josef"
+        },
+        {
+          "id": "side-044",
+          "name": "Minute Man Blues",
+          "description": "The final border patrol mission.",
+          "character": "Trevor",
+          "giver": "Joe and Josef"
+        },
+        {
+          "id": "side-045",
+          "name": "Special Bonds",
+          "description": "Meet Maude, who hands out bail bond jobs.",
+          "character": "Trevor",
+          "giver": "Maude"
+        },
+        {
+          "id": "side-046",
+          "name": "Mrs. Philips",
+          "description": "Trevor's mother pays a visit.",
+          "character": "Trevor",
+          "giver": "Mrs. Philips"
+        },
+        {
+          "id": "side-047",
+          "name": "Damaged Goods",
+          "description": "Follow-up to Mrs. Philips.",
+          "character": "Trevor",
+          "giver": "Mrs. Philips"
+        },
+        {
+          "id": "side-048",
+          "name": "Nigel and Mrs. Thornhill",
+          "description": "Meet two celebrity-obsessed British tourists.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-049",
+          "name": "Vinewood Souvenirs - Willy",
+          "description": "Get a souvenir from Willy for Nigel.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-050",
+          "name": "Vinewood Souvenirs - Tyler",
+          "description": "Steal Tyler Dixon's clothes without being seen.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-051",
+          "name": "Vinewood Souvenirs - Kerry",
+          "description": "Chase Kerry McIntosh's dog and take its collar.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-052",
+          "name": "Vinewood Souvenirs - Mark",
+          "description": "Get Mark Fostenburg's golf club.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-053",
+          "name": "Vinewood Souvenirs - Al Di Napoli",
+          "description": "Kidnap actor Al Di Napoli for Nigel.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-054",
+          "name": "Vinewood Souvenirs - The Last Act",
+          "description": "The final Vinewood Souvenirs job.",
+          "character": "Trevor",
+          "giver": "Nigel"
+        },
+        {
+          "id": "side-055",
+          "name": "Extra Commission",
+          "description": "Destroy 15 of a rival realtor's For Sale signs.",
+          "character": "Trevor",
+          "giver": "Josh"
+        },
+        {
+          "id": "side-056",
+          "name": "Closing the Deal",
+          "description": "Chase down and beat up the rival realtor.",
+          "character": "Trevor",
+          "giver": "Josh"
+        },
+        {
+          "id": "side-057",
+          "name": "Surreal Estate",
+          "description": "Burn down Josh's house for the insurance money.",
+          "character": "Trevor",
+          "giver": "Josh"
+        },
+        {
+          "id": "side-058",
+          "name": "Breach of Contract",
+          "description": "Josh betrays Trevor to the police.",
+          "character": "Trevor",
+          "giver": "Josh"
+        },
+        {
+          "id": "side-059",
+          "name": "Rampage 1: Rednecks",
+          "description": "Kill 25 rednecks within 2 minutes.",
+          "character": "Trevor",
+          "giver": "Rampage"
+        },
+        {
+          "id": "side-060",
+          "name": "Rampage 2: Vagos",
+          "description": "Kill 30 Vagos within 2 minutes.",
+          "character": "Trevor",
+          "giver": "Rampage"
+        },
+        {
+          "id": "side-061",
+          "name": "Rampage 3: Ballas",
+          "description": "Kill 30 Ballas within 2 minutes.",
+          "character": "Trevor",
+          "giver": "Rampage"
+        },
+        {
+          "id": "side-062",
+          "name": "Rampage 4: Military",
+          "description": "Kill 35 soldiers and destroy tanks within 3 minutes, using a grenade launcher.",
+          "character": "Trevor",
+          "giver": "Rampage"
+        },
+        {
+          "id": "side-063",
+          "name": "Rampage 5: Hipsters",
+          "description": "Kill 20 hipsters within 2 minutes.",
+          "character": "Trevor",
+          "giver": "Rampage"
+        },
+        {
+          "id": "side-064",
+          "name": "Bail Bond: Ralph Ostrowski",
+          "description": "Bring in a fugitive hiding at the Davis Quartz quarry. Alive pays more.",
+          "character": "Trevor",
+          "giver": "Maude"
+        },
+        {
+          "id": "side-065",
+          "name": "Bail Bond: Larry Tupper",
+          "description": "Bring in a fugitive at a barn near Harmony. Alive pays more.",
+          "character": "Trevor",
+          "giver": "Maude"
+        },
+        {
+          "id": "side-066",
+          "name": "Bail Bond: Glenn Scoville",
+          "description": "Bring in a fugitive on Mount Chiliad. Alive pays more.",
+          "character": "Trevor",
+          "giver": "Maude"
+        },
+        {
+          "id": "side-067",
+          "name": "Bail Bond: Curtis Weaver",
+          "description": "Bring in a fugitive at a commune east of Paleto Bay. Alive pays more.",
+          "character": "Trevor",
+          "giver": "Maude"
+        },
+        {
+          "id": "side-068",
+          "name": "The Multi Target Assassination",
+          "description": "Optional Lester contract with a stock-market tie-in.",
+          "character": "Franklin",
+          "giver": "Lester"
+        },
+        {
+          "id": "side-069",
+          "name": "The Vice Assassination",
+          "description": "Optional Lester contract with a stock-market tie-in.",
+          "character": "Franklin",
+          "giver": "Lester"
+        },
+        {
+          "id": "side-070",
+          "name": "The Bus Assassination",
+          "description": "Optional Lester contract with a stock-market tie-in.",
+          "character": "Franklin",
+          "giver": "Lester"
+        },
+        {
+          "id": "side-071",
+          "name": "The Construction Assassination",
+          "description": "Optional Lester contract with a stock-market tie-in.",
+          "character": "Franklin",
+          "giver": "Lester"
         }
       ]
     },
@@ -49,13 +1043,73 @@
       "items": [
         {
           "id": "col-001",
-          "name": "Placeholder collectible 1",
-          "description": "One-line description goes here."
+          "name": "Letter Scraps (50)",
+          "description": "Collect all 50 to piece together a confession, unlock A Starlet in Vinewood and the A Mystery, Solved achievement.",
+          "character": "Any",
+          "count": 50
         },
         {
           "id": "col-002",
-          "name": "Placeholder collectible 2",
-          "description": "One-line description goes here."
+          "name": "Spaceship Parts (50)",
+          "description": "Available after Far Out. Collect all 50 for The Final Frontier, the Space Docker vehicle and the From Beyond the Stars achievement.",
+          "character": "Franklin",
+          "count": 50
+        },
+        {
+          "id": "col-003",
+          "name": "Submarine Pieces (30)",
+          "description": "Available after Death at Sea. Collect all 30 for What Lies Beneath.",
+          "character": "Michael",
+          "count": 30
+        },
+        {
+          "id": "col-004",
+          "name": "Nuclear Waste (30)",
+          "description": "Underwater barrels collected with a submersible after buying the Sonar Collections Dock. Pays per barrel and unlocks Waste Management.",
+          "character": "Michael, Trevor",
+          "count": 30
+        },
+        {
+          "id": "col-005",
+          "name": "Epsilon Tracts (10)",
+          "description": "Part of the Epsilon Program missions.",
+          "character": "Michael",
+          "count": 10
+        },
+        {
+          "id": "col-006",
+          "name": "Stunt Jumps (50)",
+          "description": "Land a clean jump on each ramp. 25 count toward 100%; all 50 unlock Show Off.",
+          "character": "Any",
+          "count": 50
+        },
+        {
+          "id": "col-007",
+          "name": "Under the Bridge (50)",
+          "description": "Fly a plane under each bridge. 25 count toward 100%; all 50 plus all Knife Flights unlock Close Shave.",
+          "character": "Any",
+          "count": 50
+        },
+        {
+          "id": "col-008",
+          "name": "Knife Flights (15)",
+          "description": "Fly a plane sideways through each narrow gap. 8 count toward 100%.",
+          "character": "Any",
+          "count": 15
+        },
+        {
+          "id": "col-009",
+          "name": "Peyote Plants (27)",
+          "description": "Enhanced Edition. Eating one turns you into an animal for a short time.",
+          "character": "Any",
+          "count": 27
+        },
+        {
+          "id": "col-010",
+          "name": "Monkey Mosaics (50)",
+          "description": "Enhanced Edition. Photograph all 50 wall mosaics.",
+          "character": "Any",
+          "count": 50
         }
       ]
     }
@@ -63,12 +1117,342 @@
   "cheats": [
     {
       "id": "cheat-001",
-      "name": "Placeholder cheat",
-      "effect": "Replace once codes are confirmed after launch.",
-      "details": "Optional longer notes: how to enter it, whether it disables achievements, and so on.",
+      "name": "Invincibility",
+      "effect": "Temporary invincibility.",
+      "details": "Phone: 1-999-7246545537. PC: type PAINKILLER in the console (~). Using cheats disables trophies and achievements for that play session.",
       "codes": {
-        "playstation": "R1, R2, L1, X",
-        "xbox": "RB, RT, LB, A"
+        "playstation": "Right, X, Right, Left, Right, R1, Right, Left, X, Triangle",
+        "xbox": "Right, A, Right, Left, Right, RB, Right, Left, A, Y"
+      }
+    },
+    {
+      "id": "cheat-002",
+      "name": "Max Health and Armor",
+      "effect": "Refills health and armor.",
+      "details": "Phone: 1-999-887853. PC: type TURTLE in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Circle, L1, Triangle, R2, X, Square, Circle, Right, Square, L1, L1, L1",
+        "xbox": "B, LB, Y, RT, A, X, B, Right, X, LB, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-003",
+      "name": "Give Weapons",
+      "effect": "Gives a set of weapons and ammo.",
+      "details": "Phone: 1-999-866587. PC: type TOOLUP in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Triangle, R2, Left, L1, X, Right, Triangle, Down, Square, L1, L1, L1",
+        "xbox": "Y, RT, Left, LB, A, Right, Y, Down, X, LB, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-004",
+      "name": "Lower Wanted Level",
+      "effect": "Removes one wanted star.",
+      "details": "Phone: 1-999-52993787. PC: type LAWYERUP in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R1, R1, Circle, R2, Right, Left, Right, Left, Right, Left",
+        "xbox": "RB, RB, B, RT, Right, Left, Right, Left, Right, Left"
+      }
+    },
+    {
+      "id": "cheat-005",
+      "name": "Raise Wanted Level",
+      "effect": "Adds one wanted star.",
+      "details": "Phone: 1-999-38448483. PC: type FUGITIVE in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R1, R1, Circle, R2, Left, Right, Left, Right, Left, Right",
+        "xbox": "RB, RB, B, RT, Left, Right, Left, Right, Left, Right"
+      }
+    },
+    {
+      "id": "cheat-006",
+      "name": "Recharge Special Ability",
+      "effect": "Refills your character's special ability bar.",
+      "details": "Phone: 1-999-7693787. PC: type POWERUP in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "X, X, Square, R1, L1, X, Right, Left, X",
+        "xbox": "A, A, X, RB, LB, A, Right, Left, A"
+      }
+    },
+    {
+      "id": "cheat-007",
+      "name": "Super Jump",
+      "effect": "Jump much higher.",
+      "details": "Phone: 1-999-4678648. PC: type HOPTOIT in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Left, Left, Triangle, Triangle, Right, Right, Left, Right, Square, R1, R2",
+        "xbox": "Left, Left, Y, Y, Right, Right, Left, Right, X, RB, RT"
+      }
+    },
+    {
+      "id": "cheat-008",
+      "name": "Fast Run",
+      "effect": "Run faster.",
+      "details": "Phone: 1-999-2282463. PC: type CATCHME in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Triangle, Left, Right, Right, L2, L1, Square",
+        "xbox": "Y, Left, Right, Right, LT, LB, X"
+      }
+    },
+    {
+      "id": "cheat-009",
+      "name": "Fast Swim",
+      "effect": "Swim faster.",
+      "details": "Phone: 1-999-46844557. PC: type GOTGILLS in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Left, Left, L1, Right, Right, R2, Left, L2, Right",
+        "xbox": "Left, Left, LB, Right, Right, RT, Left, LT, Right"
+      }
+    },
+    {
+      "id": "cheat-010",
+      "name": "Moon Gravity",
+      "effect": "Lowers gravity for you and vehicles.",
+      "details": "Phone: 1-999-3562837. PC: type FLOATER in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Left, Left, L1, R1, L1, Right, Left, L1, Left",
+        "xbox": "Left, Left, LB, RB, LB, Right, Left, LB, Left"
+      }
+    },
+    {
+      "id": "cheat-011",
+      "name": "Skyfall",
+      "effect": "Launches you high into the sky.",
+      "details": "Phone: 1-999-7593255. PC: type SKYFALL in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "L1, L2, R1, R2, Left, Right, Left, Right, L1, L2, R1, R2, Left, Right, Left, Right",
+        "xbox": "LB, LT, RB, RT, Left, Right, Left, Right, LB, LT, RB, RT, Left, Right, Left, Right"
+      }
+    },
+    {
+      "id": "cheat-012",
+      "name": "Give Parachute",
+      "effect": "Gives you a parachute.",
+      "details": "Phone: 1-999-7593483. PC: type SKYDIVE in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Left, Right, L1, L2, R1, R2, R2, Left, Left, Right, L1",
+        "xbox": "Left, Right, LB, LT, RB, RT, RT, Left, Left, Right, LB"
+      }
+    },
+    {
+      "id": "cheat-013",
+      "name": "Explosive Melee Attacks",
+      "effect": "Punches and kicks cause explosions.",
+      "details": "Phone: 1-999-46842637. PC: type HOTHANDS in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Right, Left, X, Triangle, R1, Circle, Circle, Circle, L2",
+        "xbox": "Right, Left, A, Y, RB, B, B, B, LT"
+      }
+    },
+    {
+      "id": "cheat-014",
+      "name": "Explosive Bullets",
+      "effect": "Bullets explode on impact.",
+      "details": "Phone: 1-999-444439. PC: type HIGHEX in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Right, Square, X, Left, R1, R2, Left, Right, Right, L1, L1, L1",
+        "xbox": "Right, X, A, Left, RB, RT, Left, Right, Right, LB, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-015",
+      "name": "Flaming Bullets",
+      "effect": "Bullets set targets on fire.",
+      "details": "Phone: 1-999-4623634279. PC: type INCENDIARY in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "L1, R1, Square, R1, Left, R2, R1, Left, Square, Right, L1, L1",
+        "xbox": "LB, RB, X, RB, Left, RT, RB, Left, X, Right, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-016",
+      "name": "Slow Motion Aim",
+      "effect": "Slows time while aiming.",
+      "details": "Enter up to 3 times to increase the effect; a 4th time turns it off. Phone: 1-999-3323393. PC: type DEADEYE in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Square, L2, R1, Triangle, Left, Square, L2, Right, X",
+        "xbox": "X, LT, RB, Y, Left, X, LT, Right, A"
+      }
+    },
+    {
+      "id": "cheat-017",
+      "name": "Slow Motion",
+      "effect": "Slows down the whole game.",
+      "details": "Enter up to 3 times to increase the effect; a 4th time turns it off. Phone: 1-999-756966. PC: type SLOWMO in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Triangle, Left, Right, Right, Square, R2, R1",
+        "xbox": "Y, Left, Right, Right, X, RT, RB"
+      }
+    },
+    {
+      "id": "cheat-018",
+      "name": "Drunk Mode",
+      "effect": "Your character stumbles around drunk.",
+      "details": "Phone: 1-999-547867. PC: type LIQUOR in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Triangle, Right, Right, Left, Right, Square, Circle, Left",
+        "xbox": "Y, Right, Right, Left, Right, X, B, Left"
+      }
+    },
+    {
+      "id": "cheat-019",
+      "name": "Change Weather",
+      "effect": "Cycles through weather types.",
+      "details": "Enter again to switch to the next weather type. Phone: 1-999-6253487246. PC: type MAKEITRAIN in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R2, X, L1, L1, L2, L2, L2, Square",
+        "xbox": "RT, A, LB, LB, LT, LT, LT, X"
+      }
+    },
+    {
+      "id": "cheat-020",
+      "name": "Slidey Cars",
+      "effect": "Cars lose grip and slide.",
+      "details": "Phone: 1-999-7669329. PC: type SNOWDAY in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Triangle, R1, R1, Left, R1, L1, R2, L1",
+        "xbox": "Y, RB, RB, Left, RB, LB, RT, LB"
+      }
+    },
+    {
+      "id": "cheat-021",
+      "name": "Spawn Buzzard Attack Helicopter",
+      "effect": "Spawns a Buzzard attack helicopter.",
+      "details": "Phone: 1-999-2899633. PC: type BUZZOFF in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Circle, Circle, L1, Circle, Circle, Circle, L1, L2, R1, Triangle, Circle, Triangle",
+        "xbox": "B, B, LB, B, B, B, LB, LT, RB, Y, B, Y"
+      }
+    },
+    {
+      "id": "cheat-022",
+      "name": "Spawn Comet",
+      "effect": "Spawns a Comet sports car.",
+      "details": "Phone: 1-999-26638. PC: type COMET in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R1, Circle, R2, Right, L1, L2, X, X, Square, R1",
+        "xbox": "RB, B, RT, Right, LB, LT, A, A, X, RB"
+      }
+    },
+    {
+      "id": "cheat-023",
+      "name": "Spawn Rapid GT",
+      "effect": "Spawns a Rapid GT sports car.",
+      "details": "Phone: 1-999-7274348. PC: type RAPIDGT in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R2, L1, Circle, Right, L1, R1, Right, Left, Circle, R2",
+        "xbox": "RT, LB, B, Right, LB, RB, Right, Left, B, RT"
+      }
+    },
+    {
+      "id": "cheat-024",
+      "name": "Spawn Limo",
+      "effect": "Spawns a stretch limo.",
+      "details": "Phone: 1-999-84639663. PC: type VINEWOOD in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R2, Right, L2, Left, Left, R1, L1, Circle, Right",
+        "xbox": "RT, Right, LT, Left, Left, RB, LB, B, Right"
+      }
+    },
+    {
+      "id": "cheat-025",
+      "name": "Spawn Sanchez",
+      "effect": "Spawns a Sanchez dirt bike.",
+      "details": "Phone: 1-999-6337623. PC: type OFFROAD in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Circle, X, L1, Circle, Circle, L1, Circle, R1, R2, L2, L1, L1",
+        "xbox": "B, A, LB, B, B, LB, B, RB, RT, LT, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-026",
+      "name": "Spawn PCJ-600",
+      "effect": "Spawns a PCJ-600 motorbike.",
+      "details": "Phone: 1-999-762538. PC: type ROCKET in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "R1, Right, Left, Right, R2, Left, Right, Square, Right, L2, L1, L1",
+        "xbox": "RB, Right, Left, Right, RT, Left, Right, X, Right, LT, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-027",
+      "name": "Spawn BMX",
+      "effect": "Spawns a BMX bike.",
+      "details": "Phone: 1-999-226348. PC: type BANDIT in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Left, Left, Right, Right, Left, Right, Square, Circle, Triangle, R1, R2",
+        "xbox": "Left, Left, Right, Right, Left, Right, X, B, Y, RB, RT"
+      }
+    },
+    {
+      "id": "cheat-028",
+      "name": "Spawn Trashmaster",
+      "effect": "Spawns a garbage truck.",
+      "details": "Phone: 1-999-8727433. PC: type TRASHED in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Circle, R1, Circle, R1, Left, Left, R1, L1, Circle, Right",
+        "xbox": "B, RB, B, RB, Left, Left, RB, LB, B, Right"
+      }
+    },
+    {
+      "id": "cheat-029",
+      "name": "Spawn Caddy",
+      "effect": "Spawns a golf cart.",
+      "details": "Phone: 1-999-4653461. PC: type HOLEIN1 in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Circle, L1, Left, R1, L2, X, R1, L1, Circle, X",
+        "xbox": "B, LB, Left, RB, LT, A, RB, LB, B, A"
+      }
+    },
+    {
+      "id": "cheat-030",
+      "name": "Spawn Stunt Plane",
+      "effect": "Spawns a stunt plane.",
+      "details": "Phone: 1-999-227678676. PC: type BARNSTORM in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Circle, Right, L1, L2, Left, R1, L1, L1, Left, Left, X, Triangle",
+        "xbox": "B, Right, LB, LT, Left, RB, LB, LB, Left, Left, A, Y"
+      }
+    },
+    {
+      "id": "cheat-031",
+      "name": "Spawn Duster",
+      "effect": "Spawns a Duster crop-dusting plane.",
+      "details": "Phone: 1-999-35977729. PC: type FLYSPRAY in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "Right, Left, R1, R1, R1, Left, Triangle, Triangle, X, Circle, L1, L1",
+        "xbox": "Right, Left, RB, RB, RB, Left, Y, Y, A, B, LB, LB"
+      }
+    },
+    {
+      "id": "cheat-032",
+      "name": "Spawn Dodo",
+      "effect": "Spawns a Dodo seaplane.",
+      "details": "Phone only on consoles. May need the vehicle unlocked in your version of the game. Phone: 1-999-3984628. PC: type EXTINCT in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "1-999-3984628",
+        "xbox": "1-999-3984628"
+      }
+    },
+    {
+      "id": "cheat-033",
+      "name": "Spawn Kraken",
+      "effect": "Spawns a Kraken submarine.",
+      "details": "Phone only on consoles. May need the vehicle unlocked in your version of the game. Phone: 1-999-2822537. PC: type BUBBLES in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "1-999-2822537",
+        "xbox": "1-999-2822537"
+      }
+    },
+    {
+      "id": "cheat-034",
+      "name": "Spawn Duke O'Death",
+      "effect": "Spawns the armored Duke O'Death muscle car.",
+      "details": "Phone only on consoles. May need the vehicle unlocked in your version of the game. Phone: 1-999-33284227. PC: type DEATHCAR in the console (~). Using cheats disables trophies and achievements for that play session.",
+      "codes": {
+        "playstation": "1-999-33284227",
+        "xbox": "1-999-33284227"
       }
     }
   ]
