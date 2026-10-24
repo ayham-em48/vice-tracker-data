@@ -1,0 +1,75 @@
+{
+  "$schema": "./data.schema.json",
+  "version": 1,
+  "updatedAt": "2026-10-24",
+  "categories": [
+    {
+      "id": "story",
+      "name": "Story missions",
+      "items": [
+        {
+          "id": "story-001",
+          "name": "Placeholder story mission 1",
+          "description": "One-line description goes here.",
+          "spoiler": true
+        },
+        {
+          "id": "story-002",
+          "name": "Placeholder story mission 2",
+          "description": "One-line description goes here.",
+          "spoiler": true
+        },
+        {
+          "id": "story-003",
+          "name": "Placeholder story mission 3",
+          "description": "One-line description goes here.",
+          "spoiler": true
+        }
+      ]
+    },
+    {
+      "id": "side",
+      "name": "Side quests",
+      "items": [
+        {
+          "id": "side-001",
+          "name": "Placeholder side quest 1",
+          "description": "One-line description goes here."
+        },
+        {
+          "id": "side-002",
+          "name": "Placeholder side quest 2",
+          "description": "One-line description goes here."
+        }
+      ]
+    },
+    {
+      "id": "collectibles",
+      "name": "Collectibles",
+      "items": [
+        {
+          "id": "col-001",
+          "name": "Placeholder collectible 1",
+          "description": "One-line description goes here."
+        },
+        {
+          "id": "col-002",
+          "name": "Placeholder collectible 2",
+          "description": "One-line description goes here."
+        }
+      ]
+    }
+  ],
+  "cheats": [
+    {
+      "id": "cheat-001",
+      "name": "Placeholder cheat",
+      "effect": "Replace once codes are confirmed after launch.",
+      "details": "Optional longer notes: how to enter it, whether it disables achievements, and so on.",
+      "codes": {
+        "playstation": "R1, R2, L1, X",
+        "xbox": "RB, RT, LB, A"
+      }
+    }
+  ]
+}
