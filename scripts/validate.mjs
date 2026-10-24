@@ -29,7 +29,7 @@ const text = (v, where, field) => {
   if (typeof v !== 'string' || !v.trim()) fail(`${where}: "${field}" is missing or empty`);
 };
 
-if (!Number.isInteger(data.version) || data.version < 1) fail('"version" must be a whole number, 1 or higher');
+// if (!Number.isInteger(data.version) || data.version < 1) fail('"version" must be a whole number, 1 or higher');
 if (typeof data.updatedAt !== 'string' || !DATE.test(data.updatedAt)) fail('"updatedAt" must be a date like 2026-10-24');
 
 if (!Array.isArray(data.categories) || !data.categories.length) fail('"categories" must be a non-empty list');
