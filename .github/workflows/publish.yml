@@ -1,0 +1,55 @@
+# Checks data.json on every push, and publishes it to GitHub Pages only if the check passes,
+# so a broken file never reaches players.
+name: Validate and publish
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check data.json
+        run: |
+          # When data.json changed, compare with the previous commit so a missing version bump or a removed id fails.
+          if git show HEAD~1:data.json > /tmp/previous.json 2>/dev/null && ! git diff --quiet HEAD~1 HEAD -- data.json; then
+            node scripts/validate.mjs /tmp/previous.json
+          else
+            node scripts/validate.mjs
+          fi
+
+  publish:
+    needs: validate
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect site files
+        run: mkdir site && cp data.json data.schema.json site/
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
