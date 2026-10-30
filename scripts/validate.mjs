@@ -29,7 +29,7 @@ const text = (v, where, field) => {
   if (typeof v !== 'string' || !v.trim()) fail(`${where}: "${field}" is missing or empty`);
 };
 
-// if (!Number.isInteger(data.version) || data.version < 1) fail('"version" must be a whole number, 1 or higher');
+if (!Number.isInteger(data.version) || data.version < 1) fail('"version" must be a whole number, 1 or higher');
 if (typeof data.updatedAt !== 'string' || !DATE.test(data.updatedAt)) fail('"updatedAt" must be a date like 2026-10-24');
 
 if (!Array.isArray(data.categories) || !data.categories.length) fail('"categories" must be a non-empty list');
@@ -44,6 +44,8 @@ for (const [ci, cat] of (data.categories ?? []).entries()) {
     text(item?.name, at, 'name');
     if (item?.description !== undefined && typeof item.description !== 'string') fail(`${at}: "description" must be text`);
     if (item?.spoiler !== undefined && typeof item.spoiler !== 'boolean') fail(`${at}: "spoiler" must be true or false`);
+    for (const f of ['character', 'giver']) if (item?.[f] !== undefined) text(item[f], at, f);
+    if (item?.count !== undefined && !(Number.isInteger(item.count) && item.count >= 1)) fail(`${at}: "count" must be a whole number, 1 or higher`);
   }
 }
 
@@ -59,6 +61,49 @@ for (const [i, c] of (data.cheats ?? []).entries()) {
   for (const p of platforms) {
     if (p !== 'playstation' && p !== 'xbox') fail(`${at}: unknown platform "${p}" (use playstation or xbox)`);
     else text(codes[p], at, `codes.${p}`);
+  }
+}
+
+// Home screen cards. Card ids are their own namespace, so they may match category ids.
+const CARD_TYPES = ['favorites', 'category', 'cheats'];
+const STATUSES = ['live', 'partial', 'coming_soon', 'hidden'];
+const BADGE_STYLES = ['new', 'hot', 'info'];
+const categoryIds = new Set((data.categories ?? []).map(c => c?.id));
+const maxLen = (v, n, at, field) => {
+  if (v === undefined) return;
+  if (typeof v !== 'string') fail(`${at}: "${field}" must be text`);
+  else if (v.length > n) fail(`${at}: "${field}" is ${v.length} characters, max ${n}`);
+};
+if (data.cards !== undefined) {
+  if (!Array.isArray(data.cards)) fail('"cards" must be a list');
+  const cardIds = new Set();
+  for (const [i, card] of (Array.isArray(data.cards) ? data.cards : []).entries()) {
+    const at = `cards[${i}] (${card?.id ?? '?'})`;
+    if (typeof card?.id !== 'string' || !ID.test(card.id)) fail(`${at}: id must be lowercase letters, numbers and dashes`);
+    else if (cardIds.has(card.id)) fail(`${at}: card id "${card.id}" is used twice`);
+    else cardIds.add(card.id);
+    if (!CARD_TYPES.includes(card?.type)) fail(`${at}: "type" must be one of ${CARD_TYPES.join(', ')}`);
+    if (card?.type === 'category' && !categoryIds.has(card.categoryId)) fail(`${at}: "categoryId" "${card.categoryId}" doesn't match any category id`);
+    if (!Number.isInteger(card?.order)) fail(`${at}: "order" must be a whole number`);
+    if (card?.status !== undefined && !STATUSES.includes(card.status)) fail(`${at}: "status" must be one of ${STATUSES.join(', ')}`);
+    maxLen(card?.notice, 80, at, 'notice');
+    maxLen(card?.comingSoonText, 60, at, 'comingSoonText');
+    if (card?.title !== undefined) text(card.title, at, 'title');
+    const b = card?.badge;
+    if (b !== undefined) {
+      maxLen(b?.label, 12, at, 'badge.label');
+      if (b?.style !== undefined && !BADGE_STYLES.includes(b.style)) fail(`${at}: "badge.style" must be one of ${BADGE_STYLES.join(', ')}`);
+      if (b?.expiresAt !== undefined && (typeof b.expiresAt !== 'string' || !DATE.test(b.expiresAt))) fail(`${at}: "badge.expiresAt" must be a date like 2026-11-26`);
+    }
+  }
+}
+
+if (data.ads !== undefined) {
+  const ads = data.ads;
+  if (typeof ads !== 'object' || ads === null || Array.isArray(ads)) fail('"ads" must be an object');
+  else {
+    for (const f of ['enabled', 'listBanner', 'detailBanner']) if (ads[f] !== undefined && typeof ads[f] !== 'boolean') fail(`ads: "${f}" must be true or false`);
+    if (ads.nativeEvery !== undefined && !(Number.isInteger(ads.nativeEvery) && ads.nativeEvery >= 4)) fail('ads: "nativeEvery" must be a whole number, 4 or higher');
   }
 }
 

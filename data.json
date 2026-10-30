@@ -1,7 +1,55 @@
 {
   "$schema": "./data.schema.json",
-  "version": 1.3,
-  "updatedAt": "2026-10-24",
+  "version": 2,
+  "updatedAt": "2026-10-30",
+  "cards": [
+    {
+      "id": "favorites",
+      "type": "favorites",
+      "order": 0,
+      "status": "live"
+    },
+    {
+      "id": "cheats",
+      "type": "cheats",
+      "order": 1,
+      "status": "live",
+      "badge": {
+        "label": "New",
+        "style": "new",
+        "expiresAt": "2026-11-26"
+      }
+    },
+    {
+      "id": "story",
+      "type": "category",
+      "categoryId": "story",
+      "order": 2,
+      "status": "partial",
+      "notice": "Still being added: more missions every day."
+    },
+    {
+      "id": "side",
+      "type": "category",
+      "categoryId": "side",
+      "order": 3,
+      "status": "live"
+    },
+    {
+      "id": "collectibles",
+      "type": "category",
+      "categoryId": "collectibles",
+      "order": 4,
+      "status": "coming_soon",
+      "comingSoonText": "Locations land after launch week."
+    }
+  ],
+  "ads": {
+    "enabled": true,
+    "nativeEvery": 6,
+    "listBanner": true,
+    "detailBanner": true
+  },
   "categories": [
     {
       "id": "story",
