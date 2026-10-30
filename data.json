@@ -45,10 +45,10 @@
     }
   ],
   "ads": {
-    "enabled": false,
-    "nativeEvery": 6,
+    "enabled": true,
+    "nativeEvery": 4,
     "listBanner": true,
-    "detailBanner": true
+    "detailBanner": false
   },
   "categories": [
     {
