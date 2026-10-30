@@ -14,7 +14,7 @@ Live file: `https://<your-username>.github.io/vice-tracker-data/data.json`
 ## Publishing an update
 
 1. Edit `data.json`. You can do this in the browser: open the file on GitHub, click the pencil icon, edit, commit.
-2. Raise `version` by 1 and set `updatedAt` to today's date.
+2. Raise `version` by 0.1 (2.1 → 2.2, 2.9 → 3.0) and set `updatedAt` to today's date.
 3. Commit to `main`.
 4. In the **Actions** tab, wait for **Validate and publish** to go green (about a minute). If it goes red, open the run: it lists exactly what's wrong. Nothing is published until it passes.
 5. GitHub Pages caches files for up to 10 minutes. After that, players get the update the next time they open the app or pull to refresh.
@@ -30,7 +30,7 @@ Live file: `https://<your-username>.github.io/vice-tracker-data/data.json`
 
 ```jsonc
 {
-  "version": 2,                     // whole number, +1 on every publish
+  "version": 2.1,                   // +0.1 on every publish: 2.1, 2.2 ... 2.9, 3.0
   "updatedAt": "2026-11-02",        // YYYY-MM-DD, shown in Settings
   "categories": [
     {

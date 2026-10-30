@@ -29,7 +29,10 @@ const text = (v, where, field) => {
   if (typeof v !== 'string' || !v.trim()) fail(`${where}: "${field}" is missing or empty`);
 };
 
-if (!Number.isInteger(data.version) || data.version < 1) fail('"version" must be a whole number, 1 or higher');
+// Versions go up in steps of 0.1 (2.1, 2.2, ... 2.9, 3.0). It's a plain number, so 2.10 would equal 2.1.
+const oneDecimal = v => typeof v === 'number' && Number.isFinite(v) && Math.abs(v * 10 - Math.round(v * 10)) < 1e-9;
+const nextVersion = v => (Math.round(v * 10) + 1) / 10;
+if (!oneDecimal(data.version) || data.version < 1) fail('"version" must be a number like 2.1, 1 or higher, with at most one decimal place');
 if (typeof data.updatedAt !== 'string' || !DATE.test(data.updatedAt)) fail('"updatedAt" must be a date like 2026-10-24');
 
 if (!Array.isArray(data.categories) || !data.categories.length) fail('"categories" must be a non-empty list');
@@ -110,7 +113,7 @@ if (data.ads !== undefined) {
 const previousPath = process.argv[2];
 if (previousPath) {
   const prev = load(previousPath);
-  if (data.version <= prev.version) fail(`"version" is ${data.version} but the live file is already ${prev.version}: bump it to ${prev.version + 1} or the app will ignore this update`);
+  if (data.version <= prev.version) fail(`"version" is ${data.version} but the live file is already ${prev.version}: bump it to ${nextVersion(prev.version)} or the app will ignore this update`);
   const ids = p => [...p.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]), ...p.cheats.map(c => c.id)];
   const now = new Set(ids(data));
   const gone = ids(prev).filter(id => !now.has(id));

@@ -7,9 +7,9 @@
   "properties": {
     "$schema": { "type": "string" },
     "version": {
-      "type": "integer",
+      "type": "number",
       "minimum": 1,
-      "description": "Bump by 1 on every publish. The app only downloads a file whose version is higher than the one it has."
+      "description": "Bump by 0.1 on every publish (2.1, 2.2, ... 2.9, 3.0). The app only downloads a file whose version is higher than the one it has."
     },
     "updatedAt": {
       "type": "string",
