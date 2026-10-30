@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 2.4,
+  "version": 2.5,
   "updatedAt": "2026-10-30",
   "cards": [
     {
@@ -46,9 +46,9 @@
   ],
   "ads": {
     "enabled": true,
-    "nativeEvery": 6,
+    "nativeEvery": 4,
     "listBanner": true,
-    "detailBanner": true
+    "detailBanner": false
   },
   "categories": [
     {
