@@ -48,7 +48,7 @@
     "enabled": true,
     "nativeEvery": 6,
     "listBanner": true,
-    "detailBanner": false
+    "detailBanner": true
   },
   "categories": [
     {
