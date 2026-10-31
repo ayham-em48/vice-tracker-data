@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 1.7,
+  "version": 1.8,
   "updatedAt": "2026-10-31",
   "update": {
     "latestVersion": "1.0.0",
@@ -21,19 +21,14 @@
       "id": "cheats",
       "type": "cheats",
       "order": 1,
-      "status": "live",
-      "badge": {
-        "label": "New",
-        "style": "hot",
-        "expiresAt": "2026-10-31"
-      }
+      "status": "live"
     },
     {
       "id": "story",
       "type": "category",
       "categoryId": "story",
       "order": 2,
-      "status": "partial",
+      "status": "live",
       "notice": "New missions daily, wait for it "
     },
     {
@@ -48,8 +43,16 @@
       "type": "category",
       "categoryId": "collectibles",
       "order": 4,
-      "status": "coming_soon",
+      "status": "live",
       "comingSoonText": "Will be available after Launch day ❤️"
+    },
+    {
+      "id": "news",
+      "type": "category",
+      "categoryId": "story",
+      "order": 5,
+      "status": "live",
+      "title": "News"
     }
   ],
   "ads": {
