@@ -15,6 +15,20 @@ The same site also hosts `privacy.html` and `support.html` (linked from the App 
 
 ## Publishing an update
 
+### With the editor (easiest)
+
+Open the editor at `https://ayham-em48.github.io/vice-tracker-data/admin.html` from any device, or double-click `admin.html` in this folder. The first time, it asks for a GitHub token: create a [fine-grained token](https://github.com/settings/personal-access-tokens/new) for this repo only, with **Contents: Read and write** and **Actions: Read**.
+
+Edit anything, then click **Submit** (or Ctrl+S). The editor:
+
+- sets `version` (+0.1) and `updatedAt` (today) for you,
+- checks the file with the same rules as the Action (`scripts/check.mjs`) and shows a "Validation failed" pop-up instead of pushing if anything's wrong,
+- commits `data.json` to `main`, follows the **Validate and publish** run, and tells you whether it went live, failed validation, or failed to publish.
+
+Ids of published items are locked in the editor. The page is public but does nothing without your token, which stays in your browser and is only sent to GitHub.
+
+### By hand
+
 1. Edit `data.json`. You can do this in the browser: open the file on GitHub, click the pencil icon, edit, commit.
 2. Raise `version` by 0.1 (2.1 → 2.2, 2.9 → 3.0) and set `updatedAt` to today's date.
 3. Commit to `main`.

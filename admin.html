@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Vice Tracker – Data editor</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0f0f13; --panel: #17171d; --panel2: #20202a; --line: #2c2c38;
+    --text: #ececf1; --muted: #9a9aaa; --accent: #FF3E8A; --ok: #2fbf71; --bad: #ff5a5a; --warn: #f5b041;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  h2 { font-size: 20px; margin: 0 0 4px; }
+  h3 { font-size: 15px; margin: 0 0 12px; }
+  p { margin: 0 0 12px; }
+  .muted { color: var(--muted); }
+  code { background: var(--panel2); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+
+  header { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 20px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  header .title { font-weight: 700; font-size: 15px; margin-right: auto; }
+  header .title small { font-weight: 400; color: var(--muted); margin-left: 8px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; border: 1px solid var(--line); background: var(--panel2); }
+  .pill.ok { color: var(--ok); } .pill.bad { color: var(--bad); cursor: pointer; } .pill.warn { color: var(--warn); }
+
+  .layout { display: grid; grid-template-columns: 230px 1fr; }
+  nav { position: sticky; top: 53px; height: calc(100vh - 53px); overflow: auto; padding: 12px 8px; border-right: 1px solid var(--line); }
+  nav .group { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 12px 10px 4px; }
+  nav button { display: flex; justify-content: space-between; width: 100%; padding: 7px 10px; border: 0; border-radius: 6px; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer; }
+  nav button:hover { background: var(--panel2); }
+  nav button.on { background: var(--panel2); color: var(--accent); font-weight: 600; }
+  nav button span:last-child { color: var(--muted); font-weight: 400; }
+  main { padding: 24px 28px 80px; max-width: 980px; width: 100%; }
+  .section-head { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .section-head > div:first-child { margin-right: auto; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px 14px; }
+  .wide { grid-column: 1 / -1; }
+  label.f { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  label.check { display: flex; align-items: center; gap: 8px; cursor: pointer; padding-top: 18px; }
+  .hint { font-size: 11px; color: var(--muted); }
+  .hint.over { color: var(--bad); }
+  input, select, textarea { width: 100%; background: var(--panel2); border: 1px solid var(--line); color: var(--text); border-radius: 6px; padding: 7px 9px; font: inherit; font-size: 14px; }
+  input[type=checkbox] { width: auto; accent-color: var(--accent); }
+  textarea { resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  input[readonly] { opacity: .55; cursor: not-allowed; }
+
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel2); color: var(--text); font: inherit; font-weight: 600; cursor: pointer; white-space: nowrap; }
+  .btn:hover { border-color: var(--muted); }
+  .btn:disabled { opacity: .45; cursor: default; }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.danger { color: var(--bad); }
+  .btn.small { padding: 4px 9px; font-size: 12px; }
+  .btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  .list { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-top: 1px solid var(--line); cursor: pointer; }
+  .row:first-child { border-top: 0; }
+  .row:hover { background: var(--panel2); }
+  .row .num { color: var(--muted); width: 32px; font-variant-numeric: tabular-nums; }
+  .row .name { font-weight: 600; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .row .id { color: var(--muted); font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  .tag { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--panel2); color: var(--muted); border: 1px solid var(--line); }
+  .tag.new { color: var(--ok); border-color: var(--ok); }
+  .tag.edited { color: var(--warn); border-color: var(--warn); }
+  .editor { padding: 14px; background: #121218; border-top: 1px solid var(--line); }
+  .editor .btns { margin-top: 14px; }
+  .empty { padding: 24px; text-align: center; color: var(--muted); }
+  .search { max-width: 280px; }
+
+  .modal-bg { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.65); padding: 16px; }
+  .modal { width: min(580px, 100%); max-height: 86vh; overflow: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .modal h3 { font-size: 18px; display: flex; align-items: center; gap: 10px; }
+  .modal.bad h3 { color: var(--bad); } .modal.ok h3 { color: var(--ok); }
+  .modal ul { margin: 0 0 14px; padding-left: 20px; }
+  .modal ul.errors li { margin-bottom: 6px; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+  .modal .btns { justify-content: flex-end; margin-top: 18px; }
+  .steps { list-style: none; padding: 0 !important; }
+  .steps li { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+  .steps .ico { width: 20px; text-align: center; }
+  .steps li.wait { color: var(--muted); } .steps li.ok .ico { color: var(--ok); } .steps li.bad { color: var(--bad); } .steps li.skip { color: var(--muted); text-decoration: line-through; }
+  .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 60; background: var(--panel2); border: 1px solid var(--line); padding: 10px 16px; border-radius: 8px; }
+
+  .connect { max-width: 520px; margin: 8vh auto; }
+  .stat { font-size: 26px; font-weight: 700; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; margin-bottom: 12px; }
+  .stats .card { margin: 0; }
+
+  @media (max-width: 760px) {
+    .layout { grid-template-columns: 1fr; }
+    nav { position: static; height: auto; display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+    nav .group { display: none; }
+    nav button { width: auto; white-space: nowrap; gap: 8px; }
+    main { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+// Data editor for data.json. Loads the file from GitHub, edits it in the browser, and on Submit commits it
+// to main (which runs the "Validate and publish" Action), then follows the run and reports the result.
+// Validation uses scripts/check.mjs from the repo, the same rules the Action runs.
+
+const DEFAULT_REPO = 'ayham-em48/vice-tracker-data';
+const WORKFLOW_FILE = 'publish.yml';
+
+const state = {
+  repo: localStorage.getItem('vt.repo') || DEFAULT_REPO,
+  branch: localStorage.getItem('vt.branch') || 'main',
+  token: localStorage.getItem('vt.token') || sessionStorage.getItem('vt.token') || '',
+  sha: null,          // blob sha of the loaded data.json, needed to commit
+  live: null,         // data.json as it is on GitHub
+  liveStr: '',
+  data: null,         // the working copy being edited
+  check: null, nextVersion: null,
+  liveIds: new Set(), liveCardIds: new Set(), liveJson: new Map(),
+  section: 'overview',
+  open: new Set(),    // expanded rows, keyed "section:id"
+  filter: {},
+  problems: [],
+  busy: false,
+};
+
+// ---------- helpers ----------
+
+function h(tag, props, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(props || {})) {
+    if (v == null || v === false) continue;
+    if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (k === 'class') el.className = v;
+    else if (k in el) el[k] = v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat(Infinity)) if (kid != null && kid !== false) el.append(kid instanceof Node ? kid : String(kid));
+  return el;
+}
+const $app = document.getElementById('app');
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const today = () => new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD in local time
+const clone = v => structuredClone(v);
+
+function fromB64(b64) {
+  const bin = atob(b64.replace(/\s/g, ''));
+  return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0)));
+}
+function toB64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let bin = '';
+  for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+
+async function gh(path, opts = {}) {
+  const res = await fetch(`https://api.github.com${path}`, {
+    cache: 'no-store',
+    ...opts,
+    headers: {
+      Accept: 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      Authorization: `Bearer ${state.token}`,
+      ...(opts.body ? { 'Content-Type': 'application/json' } : {}),
+    },
+  });
+  const body = res.status === 204 ? null : await res.json().catch(() => null);
+  if (!res.ok) {
+    const err = new Error(body?.message || `GitHub answered ${res.status}`);
+    err.status = res.status;
+    throw err;
+  }
+  return body;
+}
+const repoUrl = () => `https://github.com/${state.repo}`;
+
+// Key order used when saving, so diffs stay clean when optional fields are added.
+const ORDER = {
+  root: ['$schema', 'version', 'updatedAt', 'update', 'cards', 'ads', 'countdown', 'categories', 'cheats'],
+  update: ['latestVersion', 'minVersion', 'androidUrl', 'iosUrl', 'title', 'message'],
+  card: ['id', 'type', 'categoryId', 'order', 'status', 'title', 'notice', 'comingSoonText', 'badge'],
+  badge: ['label', 'style', 'expiresAt'],
+  ads: ['enabled', 'nativeEvery', 'listBanner', 'detailBanner'],
+  countdown: ['enabled', 'launchDate', 'game', 'outNowLabel', 'outNowDays'],
+  category: ['id', 'name', 'items'],
+  item: ['id', 'name', 'description', 'character', 'giver', 'count', 'spoiler'],
+  cheat: ['id', 'name', 'effect', 'details', 'codes'],
+  codes: ['playstation', 'xbox'],
+};
+function ordered(obj, keys) {
+  if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return obj;
+  const out = {};
+  for (const k of keys) if (k in obj) out[k] = obj[k];
+  for (const k of Object.keys(obj)) if (!(k in out)) out[k] = obj[k];
+  return out;
+}
+function normalize(d) {
+  const out = ordered(d, ORDER.root);
+  if (out.update) out.update = ordered(out.update, ORDER.update);
+  if (out.ads) out.ads = ordered(out.ads, ORDER.ads);
+  if (out.countdown) out.countdown = ordered(out.countdown, ORDER.countdown);
+  if (Array.isArray(out.cards)) out.cards = out.cards.map(c => {
+    const card = ordered(c, ORDER.card);
+    if (card.badge) card.badge = ordered(card.badge, ORDER.badge);
+    return card;
+  });
+  if (Array.isArray(out.categories)) out.categories = out.categories.map(c => {
+    const cat = ordered(c, ORDER.category);
+    if (Array.isArray(cat.items)) cat.items = cat.items.map(i => ordered(i, ORDER.item));
+    return cat;
+  });
+  if (Array.isArray(out.cheats)) out.cheats = out.cheats.map(c => {
+    const cheat = ordered(c, ORDER.cheat);
+    if (cheat.codes) cheat.codes = ordered(cheat.codes, ORDER.codes);
+    return cheat;
+  });
+  return out;
+}
+
+// What Submit would publish: the working copy with version bumped and updatedAt set to today.
+function buildNext() {
+  const next = normalize(clone(state.data));
+  next.version = state.nextVersion(state.live.version);
+  next.updatedAt = today();
+  return normalize(next);
+}
+const isDirty = () => JSON.stringify(normalize(state.data)) !== state.liveStr;
+
+function setLive(data) {
+  state.live = data;
+  state.liveStr = JSON.stringify(normalize(data));
+  state.liveIds = new Set([
+    ...data.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]),
+    ...data.cheats.map(c => c.id),
+  ]);
+  state.liveCardIds = new Set((data.cards || []).map(c => c.id));
+  state.liveJson = new Map([
+    ...data.categories.flatMap(c => c.items.map(i => ['item:' + i.id, JSON.stringify(ordered(i, ORDER.item))])),
+    ...data.cheats.map(c => ['cheat:' + c.id, JSON.stringify(normalize({ cheats: [c] }).cheats[0])]),
+  ]);
+}
+function rowTag(kind, obj) {
+  if (!state.liveIds.has(obj.id)) return h('span', { class: 'tag new' }, 'new');
+  const now = kind === 'item' ? JSON.stringify(ordered(obj, ORDER.item)) : JSON.stringify(normalize({ cheats: [obj] }).cheats[0]);
+  return now !== state.liveJson.get(kind + ':' + obj.id) ? h('span', { class: 'tag edited' }, 'edited') : null;
+}
+
+function allIds() {
+  return new Set([
+    ...state.liveIds,
+    ...state.data.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]),
+    ...state.data.cheats.map(c => c.id),
+  ]);
+}
+// Next free id following the list's pattern, e.g. story-042 -> story-043. Never reuses a live id.
+function nextId(list, fallbackPrefix) {
+  const counts = {};
+  for (const x of list) {
+    const m = /^(.*)-(\d+)$/.exec(x.id || '');
+    if (!m) continue;
+    const c = counts[m[1]] ||= { n: 0, max: 0, width: m[2].length };
+    c.n++; c.max = Math.max(c.max, +m[2]);
+  }
+  const best = Object.entries(counts).sort((a, b) => b[1].n - a[1].n)[0];
+  const [prefix, { max, width }] = best || [fallbackPrefix, { max: 0, width: 3 }];
+  const taken = allIds();
+  let n = max + 1, id;
+  do id = `${prefix}-${String(n++).padStart(width, '0')}`; while (taken.has(id));
+  return id;
+}
+const slug = s => s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+// ---------- form fields (bound straight to the object they edit) ----------
+
+function wrap(label, input, o, ...extra) {
+  return h('label', { class: 'f' + (o.wide ? ' wide' : '') }, h('span', null, label + (o.required ? ' *' : '')), input, ...extra, o.hint && h('small', { class: 'hint' }, o.hint));
+}
+function text(obj, key, label, o = {}) {
+  const props = { value: obj[key] ?? '', placeholder: o.placeholder || '', readOnly: !!o.readOnly, title: o.readOnly ? o.lockedReason || '' : '' };
+  const el = o.multiline ? h('textarea', { ...props, rows: o.rows || 2 }) : h('input', { ...props, type: o.type || 'text' });
+  const counter = o.max ? h('small', { class: 'hint' }) : null;
+  const count = () => {
+    if (!counter) return;
+    counter.textContent = `${el.value.length} / ${o.max}`;
+    counter.classList.toggle('over', el.value.length > o.max);
+  };
+  el.addEventListener('input', () => {
+    if (el.value === '' && !o.required) delete obj[key]; else obj[key] = el.value;
+    count(); o.onInput?.(el.value); changed();
+  });
+  count();
+  return wrap(label, el, o, counter);
+}
+function num(obj, key, label, o = {}) {
+  const el = h('input', { type: 'number', value: obj[key] ?? '', step: o.step ?? 1, placeholder: o.placeholder || '' });
+  if (o.min != null) el.min = o.min;
+  el.addEventListener('input', () => {
+    if (el.value === '') { if (o.required) obj[key] = null; else delete obj[key]; }
+    else obj[key] = Number(el.value);
+    o.onInput?.(); changed();
+  });
+  return wrap(label, el, o);
+}
+function bool(obj, key, label, o = {}) {
+  const el = h('input', { type: 'checkbox', checked: !!obj[key] });
+  el.addEventListener('change', () => {
+    if (!el.checked && o.omitFalse) delete obj[key]; else obj[key] = el.checked;
+    changed();
+  });
+  return h('label', { class: 'check' }, el, label);
+}
+function select(obj, key, label, options, o = {}) {
+  const el = h('select', null,
+    o.optional && h('option', { value: '' }, o.optionalLabel || '(default)'),
+    options.map(v => Array.isArray(v) ? h('option', { value: v[0] }, v[1]) : h('option', { value: v }, v)));
+  el.value = obj[key] ?? '';
+  el.addEventListener('change', () => {
+    if (el.value === '' && o.optional) delete obj[key]; else obj[key] = el.value;
+    o.onChange?.(); changed();
+  });
+  return wrap(label, el, o);
+}
+function idField(obj, label, locked, o = {}) {
+  return text(obj, 'id', label, {
+    required: true, readOnly: locked, ...o,
+    hint: locked ? 'Locked: players\' progress is stored against it.' : 'Lowercase letters, numbers and dashes. Permanent once published.',
+    lockedReason: 'This id is live. Changing it would wipe players\' progress.',
+  });
+}
+
+// ---------- modals ----------
+
+function modal({ title, tone = '', body = [], actions = [{ label: 'OK', primary: true }], dismissable = true }) {
+  let resolve;
+  const done = new Promise(r => resolve = r);
+  const close = value => { bg.remove(); document.removeEventListener('keydown', onKey); resolve(value); };
+  const onKey = e => { if (e.key === 'Escape' && dismissable) close(undefined); };
+  const bodyEl = h('div', null, body);
+  const btns = h('div', { class: 'btns' }, actions.map(a =>
+    h('button', { class: 'btn' + (a.primary ? ' primary' : '') + (a.danger ? ' danger' : ''), onclick: () => a.onClick ? a.onClick(close) : close(a.value ?? a.label) }, a.label)));
+  const box = h('div', { class: 'modal ' + tone, role: 'dialog' }, h('h3', null, title), bodyEl, btns);
+  const bg = h('div', { class: 'modal-bg', onclick: e => { if (e.target === bg && dismissable) close(undefined); } }, box);
+  document.body.append(bg);
+  document.addEventListener('keydown', onKey);
+  box.querySelector('.btn.primary')?.focus();
+  return { close, done, bodyEl, btns, box };
+}
+const errorList = errors => h('ul', { class: 'errors' }, errors.map(e => h('li', null, e)));
+
+function showValidationFailed(errors, intro, runUrl) {
+  return modal({
+    title: '✖ Validation failed', tone: 'bad',
+    body: [h('p', null, intro), errors.length ? errorList(errors) : null, runUrl && h('p', null, h('a', { href: runUrl, target: '_blank' }, 'Open the workflow run on GitHub'))],
+  }).done;
+}
+function showPublishFailed(message, { runUrl, download } = {}) {
+  return modal({
+    title: '✖ Publishing failed', tone: 'bad',
+    body: [h('p', null, message), runUrl && h('p', null, h('a', { href: runUrl, target: '_blank' }, 'Open the workflow run on GitHub'))],
+    actions: [
+      download && { label: 'Download my edits', onClick: () => downloadJson(download) },
+      { label: 'OK', primary: true },
+    ].filter(Boolean),
+  }).done;
+}
+function toast(msg) {
+  const t = h('div', { class: 'toast' }, msg);
+  document.body.append(t);
+  setTimeout(() => t.remove(), 2600);
+}
+function downloadJson(data) {
+  const a = h('a', { href: URL.createObjectURL(new Blob([JSON.stringify(data, null, 2) + '\n'], { type: 'application/json' })), download: 'data.json' });
+  a.click();
+}
+
+function progressModal(steps) {
+  const items = {};
+  const list = h('ul', { class: 'steps' }, steps.map(([key, label]) => items[key] = h('li', { class: 'wait' }, h('span', { class: 'ico' }, '•'), label)));
+  const link = h('p', { class: 'muted' });
+  const m = modal({ title: 'Publishing…', body: [list, link], actions: [], dismissable: false });
+  return {
+    set(key, status) {
+      const li = items[key];
+      li.className = status;
+      li.firstChild.replaceChildren(status === 'run' ? h('span', { class: 'spin' }) : status === 'ok' ? '✔' : status === 'bad' ? '✖' : status === 'skip' ? '–' : '•');
+    },
+    link(url) { link.replaceChildren(h('a', { href: url, target: '_blank' }, 'Watch the run on GitHub')); },
+    close: m.close,
+  };
+}
+
+// ---------- loading ----------
+
+async function connect() {
+  $app.replaceChildren(h('div', { class: 'connect card' }, h('p', null, h('span', { class: 'spin' }), '  Loading data.json from GitHub…')));
+  try {
+    const q = `?ref=${encodeURIComponent(state.branch)}`;
+    const [file, checkFile] = await Promise.all([
+      gh(`/repos/${state.repo}/contents/data.json${q}`),
+      gh(`/repos/${state.repo}/contents/scripts/check.mjs${q}`),
+    ]);
+    const mod = await import(URL.createObjectURL(new Blob([fromB64(checkFile.content)], { type: 'text/javascript' })));
+    state.check = mod.check;
+    state.nextVersion = mod.nextVersion;
+    const data = JSON.parse(fromB64(file.content));
+    state.sha = file.sha;
+    setLive(data);
+    state.data = clone(data);
+    render();
+    changed();
+  } catch (e) {
+    renderConnect(e.status === 401 ? 'GitHub rejected the token. Check it and try again.'
+      : e.status === 404 ? `Couldn't find data.json or scripts/check.mjs in ${state.repo} (${state.branch}). Check the repo name, and that the token can read it.`
+      : e.message);
+  }
+}
+
+async function reload() {
+  if (isDirty() && await modal({
+    title: 'Discard your changes?', body: [h('p', null, 'Reloading gets the latest data.json from GitHub and throws away everything you haven\'t submitted.')],
+    actions: [{ label: 'Cancel', value: false }, { label: 'Discard and reload', danger: true, primary: true, value: true }],
+  }).done !== true) return;
+  state.open.clear();
+  connect();
+}
+
+// ---------- submit ----------
+
+function summarize(next, prev) {
+  const out = [];
+  const diff = (label, a = [], b = []) => {
+    const A = new Map(a.map(x => [x.id, JSON.stringify(x)])), B = new Map(b.map(x => [x.id, JSON.stringify(x)]));
+    let add = 0, del = 0, edit = 0;
+    for (const [id, s] of A) if (!B.has(id)) add++; else if (B.get(id) !== s) edit++;
+    for (const id of B.keys()) if (!A.has(id)) del++;
+    const parts = [add && `${add} added`, edit && `${edit} edited`, del && `${del} removed`].filter(Boolean);
+    if (parts.length) out.push(`${label}: ${parts.join(', ')}`);
+    else if ([...A.keys()].join() !== [...B.keys()].join()) out.push(`${label}: reordered`);
+  };
+  for (const cat of next.categories) diff(cat.name || cat.id, cat.items, prev.categories.find(c => c.id === cat.id)?.items);
+  diff('Categories', next.categories.map(({ items, ...c }) => c), prev.categories.map(({ items, ...c }) => c));
+  diff('Cheats', next.cheats, prev.cheats);
+  diff('Home cards', next.cards, prev.cards);
+  for (const [k, label] of [['update', 'Update prompt'], ['ads', 'Ads'], ['countdown', 'Countdown']])
+    if (JSON.stringify(next[k]) !== JSON.stringify(normalize(prev)[k])) out.push(`${label}: changed`);
+  return out;
+}
+
+async function submit() {
+  if (state.busy) return;
+  if (!isDirty()) return toast('Nothing to publish: you haven\'t changed anything.');
+  const next = buildNext();
+  const errors = state.check(next, state.live);
+  if (errors.length) return showValidationFailed(errors, `Version ${next.version} wasn't pushed. Fix ${errors.length > 1 ? 'these problems' : 'this problem'} and submit again.`);
+
+  const message = h('input', { value: `Update data to version ${next.version}` });
+  const go = await modal({
+    title: `Publish version ${next.version}?`,
+    body: [
+      h('ul', null, summarize(next, state.live).map(s => h('li', null, s))),
+      h('p', { class: 'muted' }, `version ${state.live.version} → ${next.version}, updatedAt → ${next.updatedAt}`),
+      wrap('Commit message', message, {}),
+    ],
+    actions: [{ label: 'Cancel', value: false }, { label: 'Publish', primary: true, value: true }],
+  }).done;
+  if (go !== true) return;
+
+  state.busy = true;
+  const p = progressModal([['commit', 'Push data.json to GitHub'], ['start', 'Start the workflow'], ['validate', 'Validate'], ['publish', 'Publish to GitHub Pages']]);
+  let commitSha;
+  p.set('commit', 'run');
+  try {
+    const res = await gh(`/repos/${state.repo}/contents/data.json`, {
+      method: 'PUT',
+      body: JSON.stringify({ message: message.value.trim() || `Update data to version ${next.version}`, content: toB64(JSON.stringify(next, null, 2) + '\n'), sha: state.sha, branch: state.branch }),
+    });
+    commitSha = res.commit.sha;
+    state.sha = res.content.sha;
+    setLive(next);
+    state.data = clone(next);
+    render(); changed();
+  } catch (e) {
+    state.busy = false;
+    p.close();
+    const conflict = e.status === 409 || (e.status === 422 && /sha/i.test(e.message));
+    return showPublishFailed(conflict
+      ? 'data.json was changed on GitHub since you loaded it, so your version wasn\'t pushed (it would overwrite those changes). Download your edits to keep them, then Reload to get the latest file.'
+      : e.status === 403 || e.status === 404 ? `GitHub refused the push: ${e.message}. The token needs "Contents: Read and write" on ${state.repo}.`
+      : `Couldn't push to GitHub: ${e.message}`, { download: conflict ? next : null });
+  }
+  p.set('commit', 'ok');
+
+  try {
+    await followRun(commitSha, next, p);
+  } catch (e) {
+    p.close();
+    await showPublishFailed(`Your changes were pushed, but the editor couldn't follow the workflow: ${e.message}. ${e.status === 403 || e.status === 404 ? 'The token needs "Actions: Read". ' : ''}Check the Actions tab for the result.`, { runUrl: `${repoUrl()}/actions` });
+  } finally {
+    state.busy = false;
+  }
+}
+
+const jobStatus = j => !j ? 'wait' : j.status !== 'completed' ? (j.status === 'in_progress' ? 'run' : 'wait')
+  : j.conclusion === 'success' ? 'ok' : j.conclusion === 'skipped' ? 'skip' : 'bad';
+
+async function followRun(commitSha, next, p) {
+  p.set('start', 'run');
+  let run;
+  for (const until = Date.now() + 120000; !run && Date.now() < until; ) {
+    const { workflow_runs } = await gh(`/repos/${state.repo}/actions/runs?head_sha=${commitSha}&event=push&per_page=20`);
+    run = workflow_runs.find(r => r.path?.endsWith(WORKFLOW_FILE));
+    if (!run) await sleep(4000);
+  }
+  if (!run) {
+    p.set('start', 'bad'); p.close();
+    return showPublishFailed('The changes were pushed, but the "Validate and publish" workflow didn\'t start within 2 minutes. Check the Actions tab: Actions may be disabled, or GitHub may be slow.', { runUrl: `${repoUrl()}/actions` });
+  }
+  p.set('start', 'ok');
+  p.link(run.html_url);
+
+  let jobs = [], done = false;
+  for (const until = Date.now() + 15 * 60000; !done && Date.now() < until; ) {
+    const [j, r] = await Promise.all([gh(`/repos/${state.repo}/actions/runs/${run.id}/jobs`), gh(`/repos/${state.repo}/actions/runs/${run.id}`)]);
+    jobs = j.jobs; run = r;
+    p.set('validate', jobStatus(jobs.find(x => x.name === 'validate')));
+    p.set('publish', jobStatus(jobs.find(x => x.name === 'publish')));
+    done = run.status === 'completed';
+    if (!done) await sleep(4000);
+  }
+  p.close();
+  if (!done) return showPublishFailed('The workflow is still running after 15 minutes. Check it on GitHub.', { runUrl: run.html_url });
+
+  const validate = jobs.find(x => x.name === 'validate');
+  const publish = jobs.find(x => x.name === 'publish');
+  if (validate?.conclusion !== 'success') {
+    if (validate?.conclusion === 'cancelled') return showPublishFailed('The workflow was cancelled before validation finished, usually because a newer publish started. Players still have the previous version.', { runUrl: run.html_url });
+    return showValidationFailed(await jobErrors(validate), `GitHub's check rejected version ${next.version}. It's committed to ${state.branch} but was NOT published: players still have the previous version. Fix the problem and submit again.`, validate?.html_url || run.html_url);
+  }
+  if (publish?.conclusion !== 'success') {
+    return showPublishFailed(publish?.conclusion === 'cancelled'
+      ? `Version ${next.version} passed validation, but publishing was cancelled, usually because a newer publish started. Players don't have this version yet.`
+      : `Version ${next.version} passed validation, but deploying it to GitHub Pages failed, so players don't have it yet. Open the run for details; you can re-run it from there.`, { runUrl: publish?.html_url || run.html_url });
+  }
+  return modal({
+    title: '✔ Published', tone: 'ok',
+    body: [h('p', null, `Version ${next.version} is live. GitHub Pages caches for up to 10 minutes; after that players get it the next time they open the app or pull to refresh.`),
+      h('p', null, h('a', { href: run.html_url, target: '_blank' }, 'View the run'))],
+  }).done;
+}
+
+// The validator's messages from the job log, when GitHub lets the browser read it.
+async function jobErrors(job) {
+  if (!job) return [];
+  try {
+    const res = await fetch(`https://api.github.com/repos/${state.repo}/actions/jobs/${job.id}/logs`, { headers: { Authorization: `Bearer ${state.token}` } });
+    if (!res.ok) return [];
+    return (await res.text()).split('\n').map(l => l.replace(/^\S+Z\s/, '')).filter(l => /^\s+- /.test(l)).map(l => l.replace(/^\s+- /, ''));
+  } catch { return []; }
+}
+
+// ---------- live status ----------
+
+let statusTimer;
+function changed() {
+  clearTimeout(statusTimer);
+  statusTimer = setTimeout(refreshStatus, 200);
+}
+function refreshStatus() {
+  if (!state.data) return;
+  state.problems = state.check(buildNext(), state.live);
+  const dirty = isDirty();
+  const s = document.getElementById('status');
+  if (s) s.replaceChildren(
+    dirty ? h('span', { class: 'pill warn' }, '● Unsaved changes') : h('span', { class: 'pill' }, 'No changes'),
+    state.problems.length
+      ? h('span', { class: 'pill bad', onclick: () => showValidationFailed(state.problems, 'Submitting now would fail with:') }, `✖ ${state.problems.length} problem${state.problems.length > 1 ? 's' : ''}`)
+      : h('span', { class: 'pill ok' }, '✔ Valid'),
+  );
+  const btn = document.getElementById('submit');
+  if (btn) btn.disabled = !dirty;
+}
+
+// ---------- screens ----------
+
+function renderConnect(error) {
+  const f = { repo: state.repo, branch: state.branch, token: state.token, remember: !!localStorage.getItem('vt.token') || !state.token };
+  $app.replaceChildren(h('div', { class: 'connect' },
+    h('h2', null, 'Vice Tracker data editor'),
+    h('p', { class: 'muted' }, 'Edit data.json and publish it to the app.'),
+    error && h('div', { class: 'card', style: 'border-color: var(--bad); color: var(--bad)' }, error),
+    h('div', { class: 'card' }, h('div', { class: 'grid' },
+      text(f, 'repo', 'Repository', { required: true }),
+      text(f, 'branch', 'Branch', { required: true }),
+      text(f, 'token', 'GitHub token', { required: true, type: 'password', wide: true, placeholder: 'github_pat_…' }),
+      h('p', { class: 'hint wide' }, 'A fine-grained personal access token for this repo only, with ', h('b', null, 'Contents: Read and write'), ' and ', h('b', null, 'Actions: Read'), '. Create one at ',
+        h('a', { href: 'https://github.com/settings/personal-access-tokens/new', target: '_blank' }, 'GitHub → Settings → Developer settings'), '. It is only sent to api.github.com.'),
+      bool(f, 'remember', 'Remember on this device'),
+    ),
+    h('div', { class: 'btns', style: 'margin-top: 16px' }, h('button', { class: 'btn primary', onclick: () => {
+      if (!f.repo || !f.branch || !f.token) return;
+      Object.assign(state, { repo: f.repo.trim(), branch: f.branch.trim(), token: f.token.trim() });
+      localStorage.setItem('vt.repo', state.repo);
+      localStorage.setItem('vt.branch', state.branch);
+      localStorage.removeItem('vt.token'); sessionStorage.removeItem('vt.token');
+      (f.remember ? localStorage : sessionStorage).setItem('vt.token', state.token);
+      connect();
+    } }, 'Connect'))),
+  ));
+}
+function sections() {
+  const d = state.data;
+  return [
+    ['General'],
+    ['overview', 'Overview'],
+    ['update', 'Update prompt'],
+    ['ads', 'Ads'],
+    ['countdown', 'Countdown'],
+    ['cards', 'Home cards', d.cards?.length ?? 0],
+    ['Content'],
+    ...d.categories.map((c, i) => ['cat:' + i, c.name || c.id || 'New category', c.items.length]),
+    ['cheats', 'Cheats', d.cheats.length],
+    ['categories', 'Manage categories', d.categories.length],
+  ];
+}
+
+function render() {
+  const nav = h('nav', null, sections().map(([key, label, count]) => label === undefined
+    ? h('div', { class: 'group' }, key)
+    : h('button', { class: state.section === key ? 'on' : '', onclick: () => { state.section = key; render(); scrollTo(0, 0); } }, h('span', null, label), h('span', null, count ?? ''))));
+  const main = h('main');
+  renderSection(main);
+  $app.replaceChildren(
+    h('header', null,
+      h('div', { class: 'title' }, 'Vice Tracker data', h('small', null, h('a', { href: repoUrl(), target: '_blank' }, state.repo), ` · v${state.live.version}`)),
+      h('div', { id: 'status', class: 'btns' }),
+      h('button', { class: 'btn', onclick: reload, title: 'Get the latest data.json from GitHub' }, 'Reload'),
+      h('button', { class: 'btn', onclick: disconnect, title: 'Change repo or token' }, 'Settings'),
+      h('button', { class: 'btn primary', id: 'submit', onclick: submit }, 'Submit'),
+    ),
+    h('div', { class: 'layout' }, nav, main),
+  );
+  refreshStatus();
+}
+function disconnect() {
+  if (isDirty() && !confirm('You have unsubmitted changes. Leave the editor anyway?')) return;
+  state.data = null;
+  renderConnect();
+}
+// Re-render everything (nav counts, lists) without jumping to the top.
+function refreshNav() {
+  const y = scrollY;
+  render();
+  scrollTo(0, y);
+}
+
+function head(title, sub, ...actions) {
+  return h('div', { class: 'section-head' }, h('div', null, h('h2', null, title), sub && h('p', { class: 'muted', style: 'margin:0' }, sub)), ...actions);
+}
+
+function renderSection(main) {
+  const s = state.section;
+  if (s === 'overview') return main.append(...overview());
+  if (s === 'update') return main.append(...optionalSection('update', 'Update prompt', 'The pop-up asking players on an old app version to update.', {
+    latestVersion: '1.0.0', minVersion: '1.0.0', androidUrl: '', iosUrl: '', title: 'Update available', message: '',
+  }, u => h('div', { class: 'card grid' },
+    text(u, 'latestVersion', 'Latest app version', { placeholder: '1.0.0', hint: 'Older apps get an optional prompt.' }),
+    text(u, 'minVersion', 'Minimum app version', { placeholder: '1.0.0', hint: 'Older apps get a required prompt.' }),
+    text(u, 'androidUrl', 'Play Store URL', { wide: true, placeholder: 'https://…' }),
+    text(u, 'iosUrl', 'App Store URL', { wide: true, placeholder: 'https://…' }),
+    text(u, 'title', 'Title', { max: 40, wide: true }),
+    text(u, 'message', 'Message', { max: 200, wide: true, multiline: true, rows: 3 }),
+  )));
+  if (s === 'ads') return main.append(...optionalSection('ads', 'Ads', 'Remote ad settings. Missing values fall back to the app\'s defaults.', {
+    enabled: true, nativeEvery: 6, listBanner: true, detailBanner: true,
+  }, a => h('div', { class: 'card grid' },
+    bool(a, 'enabled', 'Ads enabled (master switch)'),
+    num(a, 'nativeEvery', 'Native ad every N list items', { min: 4, hint: 'Minimum 4.' }),
+    bool(a, 'listBanner', 'Banner on lists'),
+    bool(a, 'detailBanner', 'Banner on detail pages'),
+  )));
+  if (s === 'countdown') return main.append(...optionalSection('countdown', 'Countdown', 'Countdown to the game\'s launch on the home screen.', {
+    enabled: false, launchDate: '', game: '', outNowLabel: 'Out now', outNowDays: 7,
+  }, c => h('div', { class: 'card grid' },
+    bool(c, 'enabled', 'Show the countdown'),
+    text(c, 'launchDate', 'Launch date', { type: 'date' }),
+    text(c, 'game', 'Game'),
+    text(c, 'outNowLabel', '"Out now" label', { hint: 'Shown instead of the countdown once the date passes.' }),
+    num(c, 'outNowDays', 'Show "out now" for (days)', { min: 0 }),
+  )));
+  if (s === 'cards') return main.append(...cardsSection());
+  if (s === 'cheats') return main.append(...cheatsSection());
+  if (s === 'categories') return main.append(...categoriesSection());
+  if (s.startsWith('cat:')) {
+    const cat = state.data.categories[+s.slice(4)];
+    if (!cat) { state.section = 'overview'; return renderSection(main); }
+    return main.append(...itemsSection(cat));
+  }
+}
+
+function overview() {
+  const d = state.data, live = state.live;
+  const items = d.categories.reduce((n, c) => n + c.items.length, 0);
+  return [
+    head('Overview', 'Everything in data.json. Pick a section on the left to edit it, then Submit to publish.'),
+    h('div', { class: 'stats' },
+      [['Version', live.version, `next: ${state.nextVersion(live.version)}`], ['Updated', live.updatedAt, `next: ${today()}`],
+       ['Items', items, `${d.categories.length} categories`], ['Cheats', d.cheats.length, ''], ['Home cards', d.cards?.length ?? 0, '']]
+        .map(([l, v, sub]) => h('div', { class: 'card' }, h('div', { class: 'muted' }, l), h('div', { class: 'stat' }, v), h('div', { class: 'hint' }, sub)))),
+    h('div', { class: 'card' },
+      h('h3', null, 'How publishing works'),
+      h('ul', { class: 'muted', style: 'margin:0; padding-left: 20px' },
+        h('li', null, h('b', null, 'version'), ' and ', h('b', null, 'updatedAt'), ' are set automatically on Submit (+0.1, and today\'s date).'),
+        h('li', null, 'The editor checks your changes with the same rules as the GitHub Action before pushing anything.'),
+        h('li', null, 'Submit commits data.json to ', h('code', null, state.branch), ', which runs "Validate and publish". The editor follows the run and tells you if validation or publishing fails.'),
+        h('li', null, 'Ids of published items are locked: players\' progress is stored against them. Removing a published item is rejected by the check.'),
+      )),
+  ];
+}
+
+function optionalSection(key, title, sub, defaults, body) {
+  const d = state.data;
+  if (!d[key]) return [head(title, sub), h('div', { class: 'card empty' },
+    h('p', null, `There's no "${key}" section in data.json, so the app uses its defaults.`),
+    h('button', { class: 'btn primary', onclick: () => { d[key] = clone(defaults); changed(); refreshNav(); } }, `Add ${title.toLowerCase()} settings`))];
+  return [head(title, sub, h('button', { class: 'btn danger small', onclick: () => {
+    if (confirm(`Remove the whole "${key}" section? The app falls back to its defaults.`)) { delete d[key]; changed(); refreshNav(); }
+  } }, 'Remove section')), body(d[key])];
+}
+
+// Expandable list shared by items and cheats.
+function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, kind }) {
+  const filterInput = h('input', { class: 'search', type: 'search', placeholder: 'Search name or id…', value: state.filter[key] || '' });
+  const list = h('div', { class: 'list' });
+  const draw = () => {
+    const q = (state.filter[key] || '').toLowerCase();
+    const rows = arr.map((x, i) => [x, i]).filter(([x]) => !q || `${x.name} ${x.id}`.toLowerCase().includes(q));
+    list.replaceChildren(...(rows.length ? rows.flatMap(([x, i]) => {
+      const openKey = `${key}:${i}`;
+      const isOpen = state.open.has(openKey);
+      const nameEl = h('span', { class: 'name' }, x.name || '(no name)');
+      const row = h('div', { class: 'row', onclick: () => { isOpen ? state.open.delete(openKey) : state.open.add(openKey); draw(); } },
+        h('span', { class: 'num' }, i + 1), nameEl, ...rowBits(x), rowTag(kind, x), h('span', { class: 'id' }, x.id), h('span', { class: 'muted' }, isOpen ? '▾' : '▸'));
+      if (!isOpen) return [row];
+      const move = d => { const j = i + d; if (j < 0 || j >= arr.length) return; [arr[i], arr[j]] = [arr[j], arr[i]]; state.open.delete(openKey); state.open.add(`${key}:${j}`); changed(); draw(); };
+      const del = () => {
+        const live = state.liveIds.has(x.id);
+        if (!confirm(live ? `"${x.name}" is published. Removing it wipes players' progress on it, and the publish check will reject it. Remove anyway?` : `Remove "${x.name || x.id}"?`)) return;
+        arr.splice(i, 1); state.open.clear(); changed(); refreshNav();
+      };
+      return [row, h('div', { class: 'editor' }, editor(x, v => nameEl.textContent = v || '(no name)'),
+        h('div', { class: 'btns' },
+          h('button', { class: 'btn small', onclick: () => move(-1), disabled: i === 0 }, '↑ Move up'),
+          h('button', { class: 'btn small', onclick: () => move(1), disabled: i === arr.length - 1 }, '↓ Move down'),
+          h('span', { style: 'flex:1' }),
+          h('button', { class: 'btn small danger', onclick: del }, 'Remove')))];
+    }) : [h('div', { class: 'empty' }, arr.length ? 'Nothing matches your search.' : 'Nothing here yet.')]));
+  };
+  filterInput.addEventListener('input', () => { state.filter[key] = filterInput.value; draw(); });
+  const add = () => {
+    arr.push(makeNew());
+    state.filter[key] = ''; filterInput.value = '';
+    state.open.add(`${key}:${arr.length - 1}`);
+    changed(); refreshNav();
+    const editors = document.querySelectorAll('.editor');
+    const last = editors[editors.length - 1];
+    last?.scrollIntoView({ block: 'center' });
+    last?.querySelector('input:not([readonly])')?.focus();
+  };
+  draw();
+  return [head(title, sub, filterInput, h('button', { class: 'btn primary', onclick: add }, addLabel)), list];
+}
+
+function itemsSection(cat) {
+  const i = state.data.categories.indexOf(cat);
+  return expandList({
+    key: 'cat' + i + ':' + cat.id, arr: cat.items, kind: 'item',
+    title: cat.name || 'New category', sub: `${cat.items.length} items · category id ${cat.id || '(none)'}`,
+    addLabel: '+ Add item',
+    makeNew: () => ({ id: nextId(cat.items, cat.id || 'item'), name: '' }),
+    rowBits: x => [x.character && h('span', { class: 'tag' }, x.character), x.spoiler && h('span', { class: 'tag' }, 'spoiler'), x.count && h('span', { class: 'tag' }, '×' + x.count)],
+    editor: (x, onName) => h('div', { class: 'grid' },
+      idField(x, 'Id', state.liveIds.has(x.id)),
+      text(x, 'name', 'Name', { required: true, onInput: onName }),
+      text(x, 'description', 'Description', { wide: true, multiline: true, hint: 'One line shown in the list. Optional.' }),
+      text(x, 'character', 'Character(s)', { placeholder: 'Michael, Franklin' }),
+      text(x, 'giver', 'Quest giver', { placeholder: 'Optional' }),
+      num(x, 'count', 'Count', { min: 1, placeholder: 'Optional', hint: 'How many to find (collectibles).' }),
+      bool(x, 'spoiler', 'Spoiler (hide name until completed)', { omitFalse: true }),
+    ),
+  });
+}
+
+function cheatsSection() {
+  return expandList({
+    key: 'cheats', arr: state.data.cheats, kind: 'cheat',
+    title: 'Cheats', sub: `${state.data.cheats.length} cheat codes`,
+    addLabel: '+ Add cheat',
+    makeNew: () => ({ id: nextId(state.data.cheats, 'cheat'), name: '', effect: '', codes: {} }),
+    rowBits: x => [x.codes?.playstation && h('span', { class: 'tag' }, 'PS'), x.codes?.xbox && h('span', { class: 'tag' }, 'Xbox')],
+    editor: (x, onName) => {
+      x.codes ??= {};
+      return h('div', { class: 'grid' },
+        idField(x, 'Id', state.liveIds.has(x.id)),
+        text(x, 'name', 'Name', { required: true, onInput: onName }),
+        text(x, 'effect', 'Effect', { required: true, wide: true, hint: 'One line on what it does.' }),
+        text(x, 'details', 'Details', { wide: true, multiline: true, rows: 3, hint: 'Optional longer notes.' }),
+        text(x.codes, 'playstation', 'PlayStation code', { wide: true, placeholder: 'Right, X, Right, …' }),
+        text(x.codes, 'xbox', 'Xbox code', { wide: true, placeholder: 'Right, A, Right, …', hint: 'At least one of the two codes.' }),
+      );
+    },
+  });
+}
+
+function categoriesSection() {
+  const cats = state.data.categories;
+  return [
+    head('Manage categories', 'Add, rename, reorder or remove categories. Edit their items from the left menu.',
+      h('button', { class: 'btn primary', onclick: () => { cats.push({ id: '', name: '', items: [] }); changed(); refreshNav(); } }, '+ Add category')),
+    ...cats.map((c, i) => {
+      const locked = state.liveIds.has(c.id);
+      const idWrap = idField(c, 'Id', locked);
+      let lastName = c.name || '';
+      const move = d => { const j = i + d; [cats[i], cats[j]] = [cats[j], cats[i]]; changed(); refreshNav(); };
+      return h('div', { class: 'card' },
+        h('div', { class: 'grid' },
+          text(c, 'name', 'Name', { required: true, onInput: v => {
+            // A new category's id follows its name until the id is edited by hand.
+            if (!locked && (!c.id || c.id === slug(lastName))) { c.id = slug(v); idWrap.querySelector('input').value = c.id; }
+            lastName = v;
+          } }),
+          idWrap,
+          h('div', { class: 'f' }, h('span', { class: 'hint' }, 'Items'), h('div', { style: 'padding-top: 6px' }, c.items.length,
+            ' · ', h('a', { href: '#', onclick: e => { e.preventDefault(); state.section = 'cat:' + i; render(); } }, 'edit items'))),
+        ),
+        h('div', { class: 'btns', style: 'margin-top: 12px' },
+          h('button', { class: 'btn small', disabled: i === 0, onclick: () => move(-1) }, '↑ Move up'),
+          h('button', { class: 'btn small', disabled: i === cats.length - 1, onclick: () => move(1) }, '↓ Move down'),
+          h('span', { style: 'flex:1' }),
+          h('button', { class: 'btn small danger', onclick: () => {
+            if (!confirm(locked ? `"${c.name}" is published with ${c.items.length} items. Removing it wipes players' progress and the publish check will reject it. Remove anyway?` : `Remove "${c.name || 'this category'}"?`)) return;
+            cats.splice(i, 1); state.open.clear(); changed(); refreshNav();
+          } }, 'Remove')),
+      );
+    }),
+    state.data.cards && h('p', { class: 'hint' }, 'New categories don\'t show on the home screen until you add a card for them under Home cards.'),
+  ];
+}
+
+function cardsSection() {
+  const d = state.data;
+  if (!d.cards) return [head('Home cards', 'The stacked cards on the home screen.'), h('div', { class: 'card empty' },
+    h('p', null, 'There\'s no "cards" section, so the app shows Favorites, one card per category, then Cheats.'),
+    h('button', { class: 'btn primary', onclick: () => {
+      d.cards = [{ id: 'favorites', type: 'favorites', order: 0, status: 'live' },
+        ...d.categories.map((c, i) => ({ id: c.id, type: 'category', categoryId: c.id, order: i + 1, status: 'live' })),
+        { id: 'cheats', type: 'cheats', order: d.categories.length + 1, status: 'live' }];
+      changed(); refreshNav();
+    } }, 'Add cards (starting from the defaults)'))];
+  const cards = d.cards;
+  const sorted = [...cards].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+  const catOptions = d.categories.map(c => [c.id, `${c.name} (${c.id})`]);
+  return [
+    head('Home cards', 'Lower order shows higher. Favorites is always first.',
+      h('button', { class: 'btn', onclick: refreshNav, title: 'Re-sort the list by order' }, 'Sort by order'),
+      h('button', { class: 'btn primary', onclick: () => {
+        const max = Math.max(-1, ...cards.map(c => c.order ?? 0));
+        cards.push({ id: '', type: 'category', categoryId: d.categories[0]?.id, order: max + 1, status: 'live' }); changed(); refreshNav();
+      } }, '+ Add card')),
+    ...sorted.map(card => {
+      const locked = state.liveCardIds.has(card.id);
+      const re = () => refreshNav();
+      return h('div', { class: 'card' },
+        h('h3', null, card.title || (card.type === 'category' ? d.categories.find(c => c.id === card.categoryId)?.name : card.type) || 'New card',
+          ' ', h('span', { class: 'tag' }, card.status || 'live'), !locked && h('span', { class: 'tag new' }, 'new')),
+        h('div', { class: 'grid' },
+          text(card, 'id', 'Card id', { required: true, readOnly: locked, hint: locked ? 'Locked once published.' : 'Can match its category id.' }),
+          select(card, 'type', 'Type', ['favorites', 'category', 'cheats'], { onChange: () => { if (card.type !== 'category') delete card.categoryId; else card.categoryId ??= d.categories[0]?.id; re(); } }),
+          card.type === 'category' && select(card, 'categoryId', 'Category', catOptions),
+          num(card, 'order', 'Order', { required: true }),
+          select(card, 'status', 'Status', [['live', 'Live'], ['partial', 'Partial (open, with a notice)'], ['coming_soon', 'Coming soon (locked)'], ['hidden', 'Hidden']], { onChange: re }),
+          text(card, 'title', 'Title override', { placeholder: 'Optional' }),
+          card.status === 'partial' && text(card, 'notice', 'Notice banner', { max: 80, wide: true }),
+          card.status === 'coming_soon' && text(card, 'comingSoonText', 'Coming soon text', { max: 60, wide: true, placeholder: 'Coming soon' }),
+          card.badge
+            ? [text(card.badge, 'label', 'Badge label', { required: true, max: 12 }),
+               select(card.badge, 'style', 'Badge style', ['new', 'hot', 'info'], { optional: true, optionalLabel: 'info (default)' }),
+               text(card.badge, 'expiresAt', 'Badge expires', { type: 'date', hint: 'Optional. Hidden after this date.' })]
+            : null,
+        ),
+        h('div', { class: 'btns', style: 'margin-top: 12px' },
+          card.badge
+            ? h('button', { class: 'btn small', onclick: () => { delete card.badge; changed(); re(); } }, 'Remove badge')
+            : h('button', { class: 'btn small', onclick: () => { card.badge = { label: 'New', style: 'new' }; changed(); re(); } }, '+ Add badge'),
+          h('span', { style: 'flex:1' }),
+          h('button', { class: 'btn small danger', onclick: () => { if (confirm('Remove this card?')) { cards.splice(cards.indexOf(card), 1); changed(); re(); } } }, 'Remove card')),
+      );
+    }),
+  ];
+}
+
+// ---------- start ----------
+
+addEventListener('beforeunload', e => { if (state.data && isDirty()) { e.preventDefault(); e.returnValue = ''; } });
+addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 's' && state.data) { e.preventDefault(); submit(); } });
+state.token ? connect() : renderConnect();
+</script>
+</body>
+</html>
