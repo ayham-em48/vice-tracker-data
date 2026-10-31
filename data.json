@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 1.0,
+  "version": 1.1,
   "updatedAt": "2026-10-30",
   "update": {
     "latestVersion": "1.0.0",
@@ -53,9 +53,9 @@
     }
   ],
   "ads": {
-    "enabled": true,
-    "nativeEvery": 6,
-    "listBanner": true,
+    "enabled": false,
+    "nativeEvery": 8,
+    "listBanner": false,
     "detailBanner": true
   },
   "countdown": {
