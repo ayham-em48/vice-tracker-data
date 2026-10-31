@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 1.9,
+  "version": 2,
   "updatedAt": "2026-10-31",
   "update": {
     "latestVersion": "1.0.0",
@@ -48,8 +48,7 @@
     },
     {
       "id": "news",
-      "type": "category",
-      "categoryId": "news",
+      "type": "cheats",
       "order": 5,
       "status": "live",
       "title": "News"
