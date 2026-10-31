@@ -111,6 +111,8 @@
 
 const DEFAULT_REPO = 'ayham-em48/vice-tracker-data';
 const WORKFLOW_FILE = 'publish.yml';
+// Added to the commit message by "Submit anyway"; the workflow then reports problems as warnings and publishes.
+const FORCE_MARKER = '[submit anyway]';
 
 const state = {
   repo: localStorage.getItem('vt.repo') || DEFAULT_REPO,
@@ -457,12 +459,23 @@ async function submit() {
   if (!isDirty()) return toast('Nothing to publish: you haven\'t changed anything.');
   const next = buildNext();
   const errors = state.check(next, state.live);
-  if (errors.length) return showValidationFailed(errors, `Version ${next.version} wasn't pushed. Fix ${errors.length > 1 ? 'these problems' : 'this problem'} and submit again.`);
+  // Show the problems first. "Submit anyway" publishes regardless: the commit is tagged so the Action
+  // reports the problems as warnings instead of blocking the publish.
+  if (errors.length && await modal({
+    title: `⚠ ${errors.length} problem${errors.length > 1 ? 's' : ''} found`, tone: 'bad',
+    body: [
+      h('p', null, `The check found ${errors.length > 1 ? 'these problems' : 'this problem'} in version ${next.version}. Go back and fix ${errors.length > 1 ? 'them' : 'it'}, or submit anyway to publish your changes as they are.`),
+      errorList(errors),
+    ],
+    actions: [{ label: 'Go back and fix', primary: true, value: false }, { label: 'Submit anyway', danger: true, value: true }],
+  }).done !== true) return;
+  const force = errors.length > 0;
 
   const message = h('input', { value: `Update data to version ${next.version}` });
   const go = await modal({
     title: `Publish version ${next.version}?`,
     body: [
+      force && h('p', { style: 'color: var(--bad)' }, `Submitting anyway with ${errors.length} problem${errors.length > 1 ? 's' : ''}.`),
       h('ul', null, summarize(next, state.live).map(s => h('li', null, s))),
       h('p', { class: 'muted' }, `version ${state.live.version} → ${next.version}, updatedAt → ${next.updatedAt}`),
       wrap('Commit message', message, {}),
@@ -478,7 +491,7 @@ async function submit() {
   try {
     const res = await gh(`/repos/${state.repo}/contents/data.json`, {
       method: 'PUT',
-      body: JSON.stringify({ message: message.value.trim() || `Update data to version ${next.version}`, content: toB64(JSON.stringify(next, null, 2) + '\n'), sha: state.sha, branch: state.branch }),
+      body: JSON.stringify({ message: (message.value.trim() || `Update data to version ${next.version}`) + (force ? `\n\n${FORCE_MARKER} (${errors.length} problem${errors.length > 1 ? 's' : ''})` : ''), content: toB64(JSON.stringify(next, null, 2) + '\n'), sha: state.sha, branch: state.branch }),
     });
     commitSha = res.commit.sha;
     state.sha = res.content.sha;
@@ -497,7 +510,7 @@ async function submit() {
   p.set('commit', 'ok');
 
   try {
-    await followRun(commitSha, next, p);
+    await followRun(commitSha, next, p, force ? errors : []);
   } catch (e) {
     p.close();
     await showPublishFailed(`Your changes were pushed, but the editor couldn't follow the workflow: ${e.message}. ${e.status === 403 || e.status === 404 ? 'The token needs "Actions: Read". ' : ''}Check the Actions tab for the result.`, { runUrl: `${repoUrl()}/actions` });
@@ -509,7 +522,7 @@ async function submit() {
 const jobStatus = j => !j ? 'wait' : j.status !== 'completed' ? (j.status === 'in_progress' ? 'run' : 'wait')
   : j.conclusion === 'success' ? 'ok' : j.conclusion === 'skipped' ? 'skip' : 'bad';
 
-async function followRun(commitSha, next, p) {
+async function followRun(commitSha, next, p, warnings = []) {
   p.set('start', 'run');
   let run;
   for (const until = Date.now() + 120000; !run && Date.now() < until; ) {
@@ -550,6 +563,7 @@ async function followRun(commitSha, next, p) {
   return modal({
     title: '✔ Published', tone: 'ok',
     body: [h('p', null, `Version ${next.version} is live. GitHub Pages caches for up to 10 minutes; after that players get it the next time they open the app or pull to refresh.`),
+      warnings.length ? h('p', { class: 'muted' }, `Submitted anyway with ${warnings.length} problem${warnings.length > 1 ? 's' : ''}; they show as warnings on the run.`) : null,
       h('p', null, h('a', { href: run.html_url, target: '_blank' }, 'View the run'))],
   }).done;
 }
@@ -579,7 +593,7 @@ function refreshStatus() {
   if (s) s.replaceChildren(
     dirty ? h('span', { class: 'pill warn' }, '● Unsaved changes') : h('span', { class: 'pill' }, 'No changes'),
     state.problems.length
-      ? h('span', { class: 'pill bad', onclick: () => showValidationFailed(state.problems, 'Submitting now would fail with:') }, `✖ ${state.problems.length} problem${state.problems.length > 1 ? 's' : ''}`)
+      ? h('span', { class: 'pill bad', onclick: () => showValidationFailed(state.problems, 'Submit will show these problems and let you fix them or submit anyway:') }, `✖ ${state.problems.length} problem${state.problems.length > 1 ? 's' : ''}`)
       : h('span', { class: 'pill ok' }, '✔ Valid'),
   );
   const btn = document.getElementById('submit');
@@ -718,7 +732,7 @@ function overview() {
         h('li', null, h('b', null, 'version'), ' and ', h('b', null, 'updatedAt'), ' are set automatically on Submit (+0.1, and today\'s date).'),
         h('li', null, 'The editor checks your changes with the same rules as the GitHub Action before pushing anything.'),
         h('li', null, 'Submit commits data.json to ', h('code', null, state.branch), ', which runs "Validate and publish". The editor follows the run and tells you if validation or publishing fails.'),
-        h('li', null, 'Ids of published items are locked: players\' progress is stored against them. Removing a published item is rejected by the check.'),
+        h('li', null, 'Ids of published items are locked: players\' progress is stored against them. Removing a published item is flagged by the check; use "Submit anyway" if you mean it.'),
       )),
   ];
 }
@@ -750,7 +764,7 @@ function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, 
       const move = d => { const j = i + d; if (j < 0 || j >= arr.length) return; [arr[i], arr[j]] = [arr[j], arr[i]]; state.open.delete(openKey); state.open.add(`${key}:${j}`); changed(); draw(); };
       const del = () => {
         const live = state.liveIds.has(x.id);
-        if (!confirm(live ? `"${x.name}" is published. Removing it wipes players' progress on it, and the publish check will reject it. Remove anyway?` : `Remove "${x.name || x.id}"?`)) return;
+        if (!confirm(live ? `"${x.name}" is published. Removing it wipes players' progress on it, so Submit will flag it and you'll need to choose "Submit anyway". Remove it?` : `Remove "${x.name || x.id}"?`)) return;
         arr.splice(i, 1); state.open.clear(); changed(); refreshNav();
       };
       return [row, h('div', { class: 'editor' }, editor(x, v => nameEl.textContent = v || '(no name)'),
@@ -843,8 +857,12 @@ function categoriesSection() {
           h('button', { class: 'btn small', disabled: i === cats.length - 1, onclick: () => move(1) }, '↓ Move down'),
           h('span', { style: 'flex:1' }),
           h('button', { class: 'btn small danger', onclick: () => {
-            if (!confirm(locked ? `"${c.name}" is published with ${c.items.length} items. Removing it wipes players' progress and the publish check will reject it. Remove anyway?` : `Remove "${c.name || 'this category'}"?`)) return;
-            cats.splice(i, 1); state.open.clear(); changed(); refreshNav();
+            const cards = (state.data.cards ?? []).filter(k => k.type === 'category' && k.categoryId === c.id);
+            const cardNote = cards.length ? ` Its home card${cards.length > 1 ? 's' : ''} will be removed too.` : '';
+            if (!confirm((locked ? `"${c.name}" is published with ${c.items.length} items. Removing it wipes players' progress, so Submit will flag it and you'll need to choose "Submit anyway".` : `Remove "${c.name || 'this category'}"?`) + cardNote)) return;
+            cats.splice(i, 1);
+            if (cards.length) state.data.cards = state.data.cards.filter(k => !cards.includes(k));
+            state.open.clear(); changed(); refreshNav();
           } }, 'Remove')),
       );
     }),
