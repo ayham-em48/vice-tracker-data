@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 2.1,
+  "version": 2.2,
   "updatedAt": "2026-10-31",
   "update": {
     "latestVersion": "1.0.0",
@@ -1168,17 +1168,6 @@
           "description": "Enhanced Edition. Photograph all 50 wall mosaics.",
           "character": "Any",
           "count": 50
-        }
-      ]
-    },
-    {
-      "id": "news",
-      "name": "News",
-      "items": [
-        {
-          "id": "news-001",
-          "name": "HOT 🔥: New missions daily",
-          "description": "New missions daily hopefully "
         }
       ]
     }
