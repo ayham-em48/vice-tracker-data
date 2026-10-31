@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 2,
+  "version": 2.1,
   "updatedAt": "2026-10-31",
   "update": {
     "latestVersion": "1.0.0",
@@ -45,13 +45,6 @@
       "order": 4,
       "status": "live",
       "comingSoonText": "Will be available after Launch day ❤️"
-    },
-    {
-      "id": "news",
-      "type": "cheats",
-      "order": 5,
-      "status": "live",
-      "title": "News"
     }
   ],
   "ads": {
