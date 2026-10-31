@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 1.5,
+  "version": 1.6,
   "updatedAt": "2026-10-31",
   "update": {
     "latestVersion": "1.0.0",
@@ -21,14 +21,20 @@
       "id": "cheats",
       "type": "cheats",
       "order": 1,
-      "status": "live"
+      "status": "live",
+      "badge": {
+        "label": "New",
+        "style": "hot",
+        "expiresAt": "2026-10-31"
+      }
     },
     {
       "id": "story",
       "type": "category",
       "categoryId": "story",
       "order": 2,
-      "status": "live"
+      "status": "partial",
+      "notice": "New missions daily, wait for it "
     },
     {
       "id": "side",
