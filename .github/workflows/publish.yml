@@ -29,11 +29,14 @@ jobs:
           node-version: 20
       - name: Check data.json
         run: |
+          # "[submit anyway]" in the commit message (the editor's Submit anyway button adds it) turns problems into warnings.
+          FORCE=""
+          if git log -1 --format=%B | grep -qiF '[submit anyway]'; then FORCE="--force"; fi
           # When data.json changed, compare with the previous commit so a missing version bump or a removed id fails.
           if git show HEAD~1:data.json > /tmp/previous.json 2>/dev/null && ! git diff --quiet HEAD~1 HEAD -- data.json; then
-            node scripts/validate.mjs /tmp/previous.json
+            node scripts/validate.mjs /tmp/previous.json $FORCE
           else
-            node scripts/validate.mjs
+            node scripts/validate.mjs $FORCE
           fi
 
   publish:

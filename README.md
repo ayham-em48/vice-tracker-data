@@ -22,7 +22,7 @@ Open the editor at `https://ayham-em48.github.io/vice-tracker-data/admin.html` f
 Edit anything, then click **Submit** (or Ctrl+S). The editor:
 
 - sets `version` (+0.1) and `updatedAt` (today) for you,
-- checks the file with the same rules as the Action (`scripts/check.mjs`) and shows a "Validation failed" pop-up instead of pushing if anything's wrong,
+- checks the file with the same rules as the Action (`scripts/check.mjs`) and, if anything's wrong, lists the problems before pushing. Choose **Go back and fix**, or **Submit anyway** to publish as is: that adds `[submit anyway]` to the commit message, and the Action then reports the problems as warnings instead of blocking the publish,
 - commits `data.json` to `main`, follows the **Validate and publish** run, and tells you whether it went live, failed validation, or failed to publish.
 
 Ids of published items are locked in the editor. The page is public but does nothing without your token, which stays in your browser and is only sent to GitHub.
@@ -39,7 +39,7 @@ Ids of published items are locked in the editor. The page is public but does not
 
 - **Never change or reuse an `id`.** Players' progress is stored against it. Renaming `story-001` to `story-1` silently un-ticks it for everyone. Change `name` freely instead.
 - **Always bump `version`.** Without it, the app ignores the update.
-- **Don't delete items players may have ticked.** It loses their progress on those items. The check fails if an `id` disappears; if you really mean it, the check's message tells you which ones.
+- **Don't delete items players may have ticked.** It loses their progress on those items. The check fails if an `id` disappears and lists which ones; if you really mean it, use **Submit anyway** in the editor (or put `[submit anyway]` in the commit message when editing by hand). Removing a category in the editor also removes its home card.
 - `id`s are lowercase letters, numbers and dashes, unique across categories, items and cheats. Card ids are separate, so a card can share its category's id (`"id": "story"`, `"categoryId": "story"`).
 
 ## Format
