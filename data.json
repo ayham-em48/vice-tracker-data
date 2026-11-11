@@ -1,7 +1,7 @@
 {
   "$schema": "./data.schema.json",
-  "version": 2.2,
-  "updatedAt": "2026-10-31",
+  "version": 2.3,
+  "updatedAt": "2026-11-11",
   "update": {
     "latestVersion": "1.0.0",
     "minVersion": "1.0.0",
@@ -21,29 +21,36 @@
       "id": "cheats",
       "type": "cheats",
       "order": 1,
-      "status": "live"
+      "status": "live",
+      "badge": {
+        "label": "GTA V",
+        "style": "info",
+        "expiresAt": "2026-11-19"
+      }
     },
     {
       "id": "story",
       "type": "category",
       "categoryId": "story",
       "order": 2,
-      "status": "live",
-      "notice": "New missions daily, wait for it "
+      "status": "coming_soon",
+      "notice": "New missions daily, wait for it ",
+      "comingSoonText": "Will be available on Launch day 🔥"
     },
     {
       "id": "side",
       "type": "category",
       "categoryId": "side",
       "order": 3,
-      "status": "live"
+      "status": "coming_soon",
+      "comingSoonText": "Will be available after Launch day ❤️"
     },
     {
       "id": "collectibles",
       "type": "category",
       "categoryId": "collectibles",
       "order": 4,
-      "status": "live",
+      "status": "hidden",
       "comingSoonText": "Will be available after Launch day ❤️"
     }
   ],
