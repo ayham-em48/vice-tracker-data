@@ -112,6 +112,7 @@
           "name": { "type": "string", "minLength": 1 },
           "effect": { "type": "string", "minLength": 1 },
           "details": { "type": "string" },
+          "tag": { "enum": ["unofficial", "verified"], "description": "Optional trust label. unofficial: reported by others, not yet confirmed in game by us. verified: tested by us." },
           "codes": {
             "type": "object",
             "additionalProperties": false,

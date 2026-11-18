@@ -192,7 +192,7 @@ const ORDER = {
   countdown: ['enabled', 'launchDate', 'game', 'outNowLabel', 'outNowDays'],
   category: ['id', 'name', 'items'],
   item: ['id', 'name', 'description', 'character', 'giver', 'count', 'spoiler'],
-  cheat: ['id', 'name', 'effect', 'details', 'codes'],
+  cheat: ['id', 'name', 'effect', 'details', 'tag', 'codes'],
   codes: ['playstation', 'xbox'],
 };
 function ordered(obj, keys) {
@@ -816,7 +816,7 @@ function cheatsSection() {
     title: 'Cheats', sub: `${state.data.cheats.length} cheat codes`,
     addLabel: '+ Add cheat',
     makeNew: () => ({ id: nextId(state.data.cheats, 'cheat'), name: '', effect: '', codes: {} }),
-    rowBits: x => [x.codes?.playstation && h('span', { class: 'tag' }, 'PS'), x.codes?.xbox && h('span', { class: 'tag' }, 'Xbox')],
+    rowBits: x => [x.tag && h('span', { class: 'tag' }, x.tag === 'unofficial' ? 'Unofficial' : 'Verified'), x.codes?.playstation && h('span', { class: 'tag' }, 'PS'), x.codes?.xbox && h('span', { class: 'tag' }, 'Xbox')],
     editor: (x, onName) => {
       x.codes ??= {};
       return h('div', { class: 'grid' },
@@ -824,6 +824,7 @@ function cheatsSection() {
         text(x, 'name', 'Name', { required: true, onInput: onName }),
         text(x, 'effect', 'Effect', { required: true, wide: true, hint: 'One line on what it does.' }),
         text(x, 'details', 'Details', { wide: true, multiline: true, rows: 3, hint: 'Optional longer notes.' }),
+        select(x, 'tag', 'Tag', [['unofficial', 'Unofficial'], ['verified', 'Verified']], { optional: true, optionalLabel: 'None' }),
         text(x.codes, 'playstation', 'PlayStation code', { wide: true, placeholder: 'Right, X, Right, …' }),
         text(x.codes, 'xbox', 'Xbox code', { wide: true, placeholder: 'Right, A, Right, …', hint: 'At least one of the two codes.' }),
       );
