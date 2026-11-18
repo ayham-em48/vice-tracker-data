@@ -1,7 +1,7 @@
 {
   "$schema": "./data.schema.json",
-  "version": 2.4,
-  "updatedAt": "2026-11-11",
+  "version": 2.5,
+  "updatedAt": "2026-11-18",
   "update": {
     "latestVersion": "1.0.0",
     "minVersion": "1.0.0",
@@ -1180,6 +1180,39 @@
     }
   ],
   "cheats": [
+    {
+      "id": "g6-cheat-money-250k",
+      "name": "$250,000 (Unofficial)",
+      "effect": "Gives $250,000 cash.",
+      "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Up, Right, Down, Left, Up, Left, Down, Right",
+        "xbox": "Phone open, hold LB + RB: Up, Right, Down, Left, Up, Left, Down, Right"
+      }
+    },
+    {
+      "id": "g6-cheat-unlimited-focus",
+      "name": "Unlimited Focus (Unofficial)",
+      "effect": "Unlimited Focus meter.",
+      "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Up, Down, Up, Down, Up, Down, Up, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Up, Down, Up, Down, Up, Down, Up, Right"
+      }
+    },
+    {
+      "id": "g6-cheat-attack-force",
+      "name": "Attack Force (Unofficial)",
+      "effect": "Combat cheat; exact effect not yet described by sources.",
+      "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Down"
+      }
+    },
     {
       "id": "cheat-001",
       "name": "Invincibility",

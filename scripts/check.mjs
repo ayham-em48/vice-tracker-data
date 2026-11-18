@@ -49,6 +49,7 @@ export function check(data, prev) {
     checkId(c?.id, at);
     text(c?.name, at, 'name');
     text(c?.effect, at, 'effect');
+    if (c?.tag !== undefined && !['unofficial', 'verified'].includes(c.tag)) fail(`${at}: "tag" must be unofficial or verified`);
     const codes = c?.codes ?? {};
     const platforms = Object.keys(codes);
     if (!platforms.length) fail(`${at}: "codes" needs at least one of playstation / xbox`);
