@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 2.8,
+  "version": 2.9,
   "updatedAt": "2026-11-19",
   "update": {
     "latestVersion": "1.0.0",
@@ -1333,7 +1333,7 @@
       "name": "Attack Force (Unofficial)",
       "effect": "Combat cheat; exact effect not yet described by sources.",
       "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
-      "tag": "verified",
+      "tag": "unofficial",
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Down",
         "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Down"
