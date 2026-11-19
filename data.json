@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 3.3,
+  "version": 3.4,
   "updatedAt": "2026-11-19",
   "update": {
     "latestVersion": "1.0.0",
@@ -18,9 +18,31 @@
       "status": "live"
     },
     {
+      "id": "challenges",
+      "type": "challenges",
+      "order": 1,
+      "status": "live",
+      "badge": {
+        "label": "New",
+        "style": "new",
+        "expiresAt": "2026-11-30"
+      }
+    },
+    {
+      "id": "milestones",
+      "type": "milestones",
+      "order": 2,
+      "status": "live",
+      "badge": {
+        "label": "New",
+        "style": "new",
+        "expiresAt": "2026-11-30"
+      }
+    },
+    {
       "id": "cheats",
       "type": "cheats",
-      "order": 1,
+      "order": 3,
       "status": "live",
       "badge": {
         "label": "New",
@@ -32,7 +54,7 @@
       "id": "story",
       "type": "category",
       "categoryId": "story",
-      "order": 2,
+      "order": 4,
       "status": "partial",
       "notice": "Verifying missions daily 🚀"
     },
@@ -40,7 +62,7 @@
       "id": "side",
       "type": "category",
       "categoryId": "side",
-      "order": 3,
+      "order": 5,
       "status": "partial",
       "notice": "Unofficial, from launch-week guides. Verifying daily 🚀",
       "badge": {
@@ -53,7 +75,7 @@
       "id": "collectibles",
       "type": "category",
       "categoryId": "collectibles",
-      "order": 4,
+      "order": 6,
       "status": "partial",
       "notice": "Unofficial. 100% needs 15 of the 18 card sets. Verifying daily 🚀",
       "badge": {
@@ -1196,6 +1218,688 @@
       ]
     }
   ],
+  "challenges": [
+    {
+      "id": "g6-ch-combat",
+      "name": "Combat",
+      "items": [
+        {
+          "id": "g6-ch-combat-speed-kills",
+          "name": "Speed Kills",
+          "description": "Kill 3 enemies within 30 seconds"
+        },
+        {
+          "id": "g6-ch-combat-melee-combat",
+          "name": "Melee Combat",
+          "description": "Kill or knock out 5 enemies in a row with melee weapons, without dying"
+        },
+        {
+          "id": "g6-ch-combat-explosive-combat",
+          "name": "Explosive Combat",
+          "description": "Kill or injure 3 enemies with one explosive"
+        },
+        {
+          "id": "g6-ch-combat-headshots",
+          "name": "Headshots",
+          "description": "Kill 4 enemies with headshots during one Combat Focus use"
+        },
+        {
+          "id": "g6-ch-combat-drive-bys",
+          "name": "Drive-Bys",
+          "description": "Kill 5 enemies from a vehicle within 1 minute, without exiting"
+        },
+        {
+          "id": "g6-ch-combat-stealth-sniping",
+          "name": "Stealth Sniping",
+          "description": "Kill 7 unaware enemies with a scoped sniper rifle, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-combat-incendiary",
+          "name": "Incendiary",
+          "description": "Kill or injure 5 enemies with fire within 15 seconds"
+        },
+        {
+          "id": "g6-ch-combat-revolver-headshots",
+          "name": "Revolver Headshots",
+          "description": "Kill 6 enemies with revolver headshots, without reloading or switching weapons"
+        },
+        {
+          "id": "g6-ch-combat-long-range-sniping",
+          "name": "Long-Range Sniping",
+          "description": "Kill 3 enemies within 10 seconds with a scoped sniper rifle from 300 feet"
+        },
+        {
+          "id": "g6-ch-combat-high-explosive",
+          "name": "High Explosive",
+          "description": "Kill or injure 8 enemies with explosives within 20 seconds, without taking damage"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-criminal",
+      "name": "Criminal",
+      "items": [
+        {
+          "id": "g6-ch-criminal-mugging",
+          "name": "Mugging",
+          "description": "Rob 5 pedestrians"
+        },
+        {
+          "id": "g6-ch-criminal-stick-ups",
+          "name": "Stick Ups",
+          "description": "Rob 3 stores in a day, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-criminal-carjacking",
+          "name": "Carjacking",
+          "description": "Steal 3 vehicles and take them to a Pay 'n' Spray in a day, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-criminal-mugging-spree",
+          "name": "Mugging Spree",
+          "description": "Steal $500 from pedestrians in a day, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-criminal-cop-car-theft",
+          "name": "Cop Car Theft",
+          "description": "Stay wanted for 5 minutes while driving a stolen police vehicle"
+        },
+        {
+          "id": "g6-ch-criminal-cop-weapon-theft",
+          "name": "Cop Weapon Theft",
+          "description": "Steal weapons from the trunks of 5 different police vehicles, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-criminal-stick-up-spree",
+          "name": "Stick Up Spree",
+          "description": "Rob 2 stores in each of Leonida's 5 counties within 20 minutes, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-criminal-cop-tow",
+          "name": "Cop Tow",
+          "description": "Tow an occupied police vehicle for 1 mile without stopping"
+        },
+        {
+          "id": "g6-ch-criminal-carjacking-spree",
+          "name": "Carjacking Spree",
+          "description": "Register or respray stolen vehicles from 10 manufacturers at a Pay 'n' Spray within 30 minutes, without dying or being arrested"
+        },
+        {
+          "id": "g6-ch-criminal-carjacking-pro",
+          "name": "Carjacking Pro",
+          "description": "Make $100,000 selling stolen vehicles to fences or Pay 'n' Spray in a day, without dying or being arrested"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-exploration",
+      "name": "Exploration",
+      "items": [
+        {
+          "id": "g6-ch-exploration-waink-locations",
+          "name": "WAiNK Locations",
+          "description": "Scan 4 landmarks, curiosities or sculptures with WAiNK"
+        },
+        {
+          "id": "g6-ch-exploration-skyscrapers",
+          "name": "Skyscrapers",
+          "description": "Climb to the highest point of the 5 tallest Vice-Dale County skyscrapers"
+        },
+        {
+          "id": "g6-ch-exploration-collectible-cards",
+          "name": "Collectible Cards",
+          "description": "Find 3 collectible cards in each county"
+        },
+        {
+          "id": "g6-ch-exploration-encyclopedia",
+          "name": "Encyclopedia",
+          "description": "Discover 100 animals, vehicles and weapons"
+        },
+        {
+          "id": "g6-ch-exploration-underwater-discoveries",
+          "name": "Underwater Discoveries",
+          "description": "Find and explore 25 ocean-floor sights"
+        },
+        {
+          "id": "g6-ch-exploration-rail-tour",
+          "name": "Rail Tour",
+          "description": "Travel 1 mile by train in each county within a day, without skipping"
+        },
+        {
+          "id": "g6-ch-exploration-underwater-treasures",
+          "name": "Underwater Treasures",
+          "description": "Find 85 underwater treasures"
+        },
+        {
+          "id": "g6-ch-exploration-black-hole-wrecks",
+          "name": "Black Hole Wrecks",
+          "description": "Find all 11 Black Hole Wrecks"
+        },
+        {
+          "id": "g6-ch-exploration-road-trip",
+          "name": "Road Trip",
+          "description": "Visit every city and town in Leonida within a day without leaving your vehicle, except to refuel"
+        },
+        {
+          "id": "g6-ch-exploration-helipad-flyovers",
+          "name": "Helipad Flyovers",
+          "description": "Fly at 100 feet or lower over all 41 Vice City and Vice Beach helipads within 10 minutes"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-fitness",
+      "name": "Fitness",
+      "items": [
+        {
+          "id": "g6-ch-fitness-gym-member",
+          "name": "Gym Member",
+          "description": "Become a member of any gym"
+        },
+        {
+          "id": "g6-ch-fitness-foot-travel",
+          "name": "Foot Travel",
+          "description": "Walk 5 miles in a day"
+        },
+        {
+          "id": "g6-ch-fitness-pro-cyclist",
+          "name": "Pro Cyclist",
+          "description": "Cycle 15 miles in a day"
+        },
+        {
+          "id": "g6-ch-fitness-pro-swimmer",
+          "name": "Pro Swimmer",
+          "description": "Swim 3 miles in a day"
+        },
+        {
+          "id": "g6-ch-fitness-balanced-workout",
+          "name": "Balanced Workout",
+          "description": "Use every type of gym equipment in one day"
+        },
+        {
+          "id": "g6-ch-fitness-strength-regime",
+          "name": "Strength Regime",
+          "description": "Keep Strength Level 4 with Jason and Lucia together for 5 days in a row"
+        },
+        {
+          "id": "g6-ch-fitness-cardio-regime",
+          "name": "Cardio Regime",
+          "description": "Keep Cardio Level 4 with Jason and Lucia together for 5 days in a row"
+        },
+        {
+          "id": "g6-ch-fitness-waning-sands-run",
+          "name": "Waning Sands Run",
+          "description": "Walk from The Tip pier gate to Waning Sands in 13 minutes, without taking damage"
+        },
+        {
+          "id": "g6-ch-fitness-tequesta-swim",
+          "name": "Tequesta Swim",
+          "description": "Swim from Tequesta Retreat to Starfish Island in 15 minutes"
+        },
+        {
+          "id": "g6-ch-fitness-southwind-cycle",
+          "name": "Southwind Cycle",
+          "description": "Cycle from Williams Guest House in Grayson to Chicky's Tiki Bar in Southwind in 22 minutes, without falling off"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-shopping",
+      "name": "Shopping",
+      "items": [
+        {
+          "id": "g6-ch-shopping-vehicle-modder",
+          "name": "Vehicle Modder",
+          "description": "Make 5 modifications at a mod shop"
+        },
+        {
+          "id": "g6-ch-shopping-grocery-shopper",
+          "name": "Grocery Shopper",
+          "description": "Spend over $250 at convenience or liquor stores in a day"
+        },
+        {
+          "id": "g6-ch-shopping-well-armed",
+          "name": "Well Armed",
+          "description": "Buy 3 sidearms and 3 longarms from Ammu-Nation"
+        },
+        {
+          "id": "g6-ch-shopping-well-groomed",
+          "name": "Well Groomed",
+          "description": "Spend over $1,000 at barbershops, hairdressers or salons"
+        },
+        {
+          "id": "g6-ch-shopping-stylishly-armed",
+          "name": "Stylishly Armed",
+          "description": "Buy cosmetic upgrades for 5 sidearms and 5 longarms at Ammu-Nation"
+        },
+        {
+          "id": "g6-ch-shopping-well-dressed",
+          "name": "Well Dressed",
+          "description": "Spend over $5,000 on clothes"
+        },
+        {
+          "id": "g6-ch-shopping-custom-ride",
+          "name": "Custom Ride",
+          "description": "Spend over $20,000 at a mod shop in one visit"
+        },
+        {
+          "id": "g6-ch-shopping-heavily-armed",
+          "name": "Heavily Armed",
+          "description": "Spend over $50,000 at Ammu-Nation"
+        },
+        {
+          "id": "g6-ch-shopping-serious-modder",
+          "name": "Serious Modder",
+          "description": "Spend over $125,000 at mod shops"
+        },
+        {
+          "id": "g6-ch-shopping-nest-egg",
+          "name": "Nest Egg",
+          "description": "Deposit $1.5 million into your BuckMe checking account"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-sports",
+      "name": "Sports",
+      "items": [
+        {
+          "id": "g6-ch-sports-basketball-rookie",
+          "name": "Basketball Rookie",
+          "description": "Score at three different hoops in a day"
+        },
+        {
+          "id": "g6-ch-sports-golf-rookie",
+          "name": "Golf Rookie",
+          "description": "Complete 18 holes at King Gator or Frontier Adventure Golf in 30 minutes, at three under par or better"
+        },
+        {
+          "id": "g6-ch-sports-basketball-streak",
+          "name": "Basketball Streak",
+          "description": "Score 10 back-to-back shots within 2 minutes"
+        },
+        {
+          "id": "g6-ch-sports-pool-streak",
+          "name": "Pool Streak",
+          "description": "Win pool games at three locations in a day, without losing or quitting"
+        },
+        {
+          "id": "g6-ch-sports-basketball-tour",
+          "name": "Basketball Tour",
+          "description": "Score a shot in every county"
+        },
+        {
+          "id": "g6-ch-sports-golf-pro",
+          "name": "Golf Pro",
+          "description": "Complete 18 holes at both King Gator and Frontier Adventure Golf in a day, at par or better"
+        },
+        {
+          "id": "g6-ch-sports-triple-bank",
+          "name": "Triple Bank",
+          "description": "Hit the cue ball off three rails before potting a ball"
+        },
+        {
+          "id": "g6-ch-sports-basketball-pro",
+          "name": "Basketball Pro",
+          "description": "Score a shot at all 100 hoops in Leonida"
+        },
+        {
+          "id": "g6-ch-sports-8-ball-break",
+          "name": "8-Ball Break",
+          "description": "Win a pool game by sinking the eight-ball on the break"
+        },
+        {
+          "id": "g6-ch-sports-double-hole-in-one",
+          "name": "Double Hole in One",
+          "description": "Get two holes-in-one in a row at King Gator or Frontier Adventure Golf"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-survival",
+      "name": "Survival",
+      "items": [
+        {
+          "id": "g6-ch-survival-alligator-kills",
+          "name": "Alligator Kills",
+          "description": "Kill 3 wild alligators"
+        },
+        {
+          "id": "g6-ch-survival-big-fish",
+          "name": "Big Fish",
+          "description": "Catch a fish weighing at least 20 lbs"
+        },
+        {
+          "id": "g6-ch-survival-marksman",
+          "name": "Marksman",
+          "description": "Earn a medal at both shooting ranges in a day"
+        },
+        {
+          "id": "g6-ch-survival-catch-of-the-day",
+          "name": "Catch of the Day",
+          "description": "Catch three fish using each lure type in a day"
+        },
+        {
+          "id": "g6-ch-survival-zoologist",
+          "name": "Zoologist",
+          "description": "Study 20 animal species"
+        },
+        {
+          "id": "g6-ch-survival-angler",
+          "name": "Angler",
+          "description": "Catch 4 fish species within 6 minutes"
+        },
+        {
+          "id": "g6-ch-survival-pro-marksman",
+          "name": "Pro Marksman",
+          "description": "Earn gold in the Master challenge for three shooting-range events in a row, without failing or quitting"
+        },
+        {
+          "id": "g6-ch-survival-hunting-spree",
+          "name": "Hunting Spree",
+          "description": "Kill a boar, rattlesnake and panther within 15 minutes, without taking damage"
+        },
+        {
+          "id": "g6-ch-survival-pro-angler",
+          "name": "Pro Angler",
+          "description": "Catch every fish species"
+        },
+        {
+          "id": "g6-ch-survival-legendary-hunter",
+          "name": "Legendary Hunter",
+          "description": "Kill all 8 unique animals"
+        }
+      ]
+    },
+    {
+      "id": "g6-ch-vehicle",
+      "name": "Vehicle",
+      "items": [
+        {
+          "id": "g6-ch-vehicle-vehicle-discovery",
+          "name": "Vehicle Discovery",
+          "description": "Examine or discover 6 vehicles"
+        },
+        {
+          "id": "g6-ch-vehicle-wheelie",
+          "name": "Wheelie",
+          "description": "Do a wheelie for a quarter mile"
+        },
+        {
+          "id": "g6-ch-vehicle-winning-streak",
+          "name": "Winning Streak",
+          "description": "Finish first in 3 races using a muscle car, sports car and supercar"
+        },
+        {
+          "id": "g6-ch-vehicle-throttled",
+          "name": "Throttled",
+          "description": "Stay over 100 mph in a motor vehicle for 2 minutes"
+        },
+        {
+          "id": "g6-ch-vehicle-drawbridge-jump",
+          "name": "Drawbridge Jump",
+          "description": "Jump more than 100 feet over a drawbridge three times without exiting"
+        },
+        {
+          "id": "g6-ch-vehicle-top-speed",
+          "name": "Top Speed",
+          "description": "Reach 175 mph in a car, truck or motorcycle"
+        },
+        {
+          "id": "g6-ch-vehicle-train-landing",
+          "name": "Train Landing",
+          "description": "Land a flying plane on a moving train without destroying it"
+        },
+        {
+          "id": "g6-ch-vehicle-oceanarium-jump",
+          "name": "Oceanarium Jump",
+          "description": "Jump from at least half a mile up and parachute into the Vice City Oceanarium's orca or dolphin tank without dying"
+        },
+        {
+          "id": "g6-ch-vehicle-rally-winner",
+          "name": "Rally Winner",
+          "description": "Win 3 races in a row in a day at Thrillbilly Mud Club, Gellhorn International Raceway and Boone Speedway, without quitting or restarting"
+        },
+        {
+          "id": "g6-ch-vehicle-train-jump",
+          "name": "Train Jump",
+          "description": "Jump a motorcycle at least 75 feet and land on a moving train twice within 20 minutes"
+        }
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "g6-ms-player",
+      "name": "Player",
+      "items": [
+        {
+          "id": "g6-ms-drunk",
+          "name": "Spend $2,500 on alcohol",
+          "description": "Unlocks Drunk"
+        },
+        {
+          "id": "g6-ms-raise-heat",
+          "name": "Lose a 3-star Wanted level 25 times",
+          "description": "Unlocks Raise Heat Level"
+        },
+        {
+          "id": "g6-ms-raise-wanted",
+          "name": "Lose a 3-star Wanted level 50 times",
+          "description": "Unlocks Raise Wanted Level"
+        },
+        {
+          "id": "g6-ms-no-fall-damage",
+          "name": "Survive 20 falls from 40 ft",
+          "description": "Unlocks No Fall Damage"
+        },
+        {
+          "id": "g6-ms-parachute",
+          "name": "Do 50 skydives or BASE jumps from 300 ft or higher",
+          "description": "Unlocks Parachute"
+        },
+        {
+          "id": "g6-ms-body-armor",
+          "name": "Complete 100 workouts",
+          "description": "Unlocks Body Armor"
+        },
+        {
+          "id": "g6-ms-repair-vehicle",
+          "name": "Win 10 races (1st place) at Gellhorn, Thrillbilly Mud Club or Boone Speedway",
+          "description": "Unlocks Repair Vehicle"
+        },
+        {
+          "id": "g6-ms-unlimited-nitrous",
+          "name": "Complete 50 stunt jumps",
+          "description": "Unlocks Unlimited Nitrous"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-combat",
+      "name": "Combat",
+      "items": [
+        {
+          "id": "g6-ms-max-ammo",
+          "name": "Win 25 bronze-or-better medals at shooting ranges",
+          "description": "Unlocks Max Ammo"
+        },
+        {
+          "id": "g6-ms-infinite-ammo",
+          "name": "Win 25 silver-or-better medals at shooting ranges",
+          "description": "Unlocks Infinite Ammo"
+        },
+        {
+          "id": "g6-ms-no-reload",
+          "name": "Win 25 gold medals at shooting ranges",
+          "description": "Unlocks No Reload"
+        },
+        {
+          "id": "g6-ms-all-explosive-weapons",
+          "name": "Throw 100 grenades",
+          "description": "Unlocks All Explosive Weapons"
+        },
+        {
+          "id": "g6-ms-incendiary-ammo",
+          "name": "Burn 100 enemies with fire damage",
+          "description": "Unlocks Incendiary Ammo"
+        },
+        {
+          "id": "g6-ms-exploding-bottles",
+          "name": "Throw 100 Molotovs",
+          "description": "Unlocks Exploding Bottles"
+        },
+        {
+          "id": "g6-ms-explosive-shotgun",
+          "name": "Hit 100 enemies with explosive damage",
+          "description": "Unlocks Explosive Shotgun"
+        },
+        {
+          "id": "g6-ms-hauners-h-at",
+          "name": "Destroy 100 vehicles",
+          "description": "Unlocks Hauners H-AT"
+        },
+        {
+          "id": "g6-ms-exploding-balls",
+          "name": "Hit 20 enemies with explosive damage",
+          "description": "Unlocks Exploding Balls"
+        },
+        {
+          "id": "g6-ms-vehicle-force",
+          "name": "Kill 25 enemies with a vehicle",
+          "description": "Unlocks Vehicle Force"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-vehicles",
+      "name": "Vehicles",
+      "items": [
+        {
+          "id": "g6-ms-spawn-ambulance",
+          "name": "Discover the Interstate Ambulance in the Progress menu",
+          "description": "Unlocks Interstate Ambulance"
+        },
+        {
+          "id": "g6-ms-spawn-flamingo",
+          "name": "Destroy 50 cocaine flamingos",
+          "description": "Unlocks Inflatable Flamingo"
+        },
+        {
+          "id": "g6-ms-spawn-pumper",
+          "name": "Discover the MTL Pumper in the Progress menu",
+          "description": "Unlocks MTL Pumper"
+        },
+        {
+          "id": "g6-ms-spawn-bulldozer",
+          "name": "Discover the HVY Bulldozer in the Progress menu",
+          "description": "Unlocks HVY Bulldozer"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-world",
+      "name": "Time of day",
+      "items": [
+        {
+          "id": "g6-ms-move-time-forward",
+          "name": "Find 10 collectible watches",
+          "description": "Unlocks Move Time Forward"
+        },
+        {
+          "id": "g6-ms-pause-time",
+          "name": "Find 20 collectible watches",
+          "description": "Unlocks Pause Time of Day"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-filters",
+      "name": "Screen filters",
+      "items": [
+        {
+          "id": "g6-ms-filter-golden-hour",
+          "name": "Spend 4 hours holding hands with your partner",
+          "description": "Unlocks Golden Hour Filter"
+        },
+        {
+          "id": "g6-ms-filter-powdered-sugar",
+          "name": "Scan all space debris with WAiNK",
+          "description": "Unlocks Powdered Sugar Filter"
+        },
+        {
+          "id": "g6-ms-filter-pinhole",
+          "name": "Clear 25 gang operations with your partner",
+          "description": "Unlocks Pinhole Filter"
+        },
+        {
+          "id": "g6-ms-filter-neon-jungle",
+          "name": "Discover all 16 Girlypop vehicles",
+          "description": "Unlocks Neon Jungle Filter"
+        },
+        {
+          "id": "g6-ms-filter-yesteryear",
+          "name": "Discover the Ridgway",
+          "description": "Unlocks Yesteryear Filter"
+        },
+        {
+          "id": "g6-ms-filter-cataclysm",
+          "name": "Discover Martha's Vamos in the Progress menu",
+          "description": "Unlocks Cataclysm Filter"
+        },
+        {
+          "id": "g6-ms-filter-videotape",
+          "name": "Complete 50 activities with your partner",
+          "description": "Unlocks Videotape Filter"
+        },
+        {
+          "id": "g6-ms-filter-dark-mirror",
+          "name": "Make $500,000 selling vehicles",
+          "description": "Unlocks Dark Mirror Filter"
+        },
+        {
+          "id": "g6-ms-filter-migraine",
+          "name": "Survive 6 minutes at a 6-star Wanted level",
+          "description": "Unlocks Migraine Filter"
+        },
+        {
+          "id": "g6-ms-filter-dollhouse",
+          "name": "Spend 8 hours with your partner",
+          "description": "Unlocks Dollhouse Filter"
+        },
+        {
+          "id": "g6-ms-filter-bubblegum",
+          "name": "Find all 24 Vice City Flamingos collectible cards",
+          "description": "Unlocks Bubblegum Filter"
+        },
+        {
+          "id": "g6-ms-filter-fast-forward",
+          "name": "Complete 50 meditations",
+          "description": "Unlocks Fast Forward Filter"
+        },
+        {
+          "id": "g6-ms-filter-fisheye",
+          "name": "Catch 100 fish",
+          "description": "Unlocks Fisheye Filter"
+        },
+        {
+          "id": "g6-ms-filter-faded-glory",
+          "name": "Rob 50 stores with your partner",
+          "description": "Unlocks Faded Glory Filter"
+        },
+        {
+          "id": "g6-ms-filter-pixel-art",
+          "name": "Make $250,000 selling collectibles",
+          "description": "Unlocks Pixel Art Filter"
+        },
+        {
+          "id": "g6-ms-filter-hellscape",
+          "name": "Steal 100 cop vehicles",
+          "description": "Unlocks Hellscape Filter"
+        }
+      ]
+    }
+  ],
   "cheats": [
     {
       "id": "g6-cheat-money-250k",
@@ -1206,6 +1910,9 @@
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Up, Right, Down, Left, Up, Left, Down, Right",
         "xbox": "Phone open, hold LB + RB: Up, Right, Down, Left, Up, Left, Down, Right"
+      },
+      "unlock": {
+        "type": "story"
       }
     },
     {
@@ -1217,6 +1924,9 @@
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Down, Up, Up, Down, Up, Down, Up, Down, Up, Right",
         "xbox": "Phone open, hold LB + RB: Down, Up, Up, Down, Up, Down, Up, Down, Up, Right"
+      },
+      "unlock": {
+        "type": "story"
       }
     },
     {
@@ -1228,6 +1938,894 @@
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Down",
         "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Down"
+      },
+      "unlock": {
+        "type": "story"
+      }
+    },
+    {
+      "id": "g6-cheat-drunk",
+      "name": "Drunk (Unofficial)",
+      "effect": "Makes your character drunk.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, spend $2,500 on alcohol. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right",
+        "xbox": "Phone open, hold LB + RB: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-drunk"
+      }
+    },
+    {
+      "id": "g6-cheat-raise-heat",
+      "name": "Raise Heat Level (Unofficial)",
+      "effect": "Raises your heat level.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, lose a 3-star Wanted level 25 times. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Down, Right, Down, Up, Down, Up",
+        "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Down, Up"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-raise-heat"
+      }
+    },
+    {
+      "id": "g6-cheat-raise-wanted",
+      "name": "Raise Wanted Level (Unofficial)",
+      "effect": "Raises your Wanted level.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, lose a 3-star Wanted level 50 times. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Down, Right, Down, Up, Right, Up",
+        "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Right, Up"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-raise-wanted"
+      }
+    },
+    {
+      "id": "g6-cheat-no-fall-damage",
+      "name": "No Fall Damage (Unofficial)",
+      "effect": "You take no damage from falls.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, survive 20 falls from 40 ft. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-no-fall-damage"
+      }
+    },
+    {
+      "id": "g6-cheat-parachute",
+      "name": "Parachute (Unofficial)",
+      "effect": "Gives you a parachute.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, do 50 skydives or BASE jumps from 300 ft or higher. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-parachute"
+      }
+    },
+    {
+      "id": "g6-cheat-body-armor",
+      "name": "Body Armor (Unofficial)",
+      "effect": "Gives you full body armor.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, complete 100 workouts. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-body-armor"
+      }
+    },
+    {
+      "id": "g6-cheat-repair-vehicle",
+      "name": "Repair Vehicle (Unofficial)",
+      "effect": "Repairs the vehicle you are in.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, win 10 races (1st place) at Gellhorn, Thrillbilly Mud Club or Boone Speedway. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-repair-vehicle"
+      }
+    },
+    {
+      "id": "g6-cheat-unlimited-nitrous",
+      "name": "Unlimited Nitrous (Unofficial)",
+      "effect": "Unlimited nitrous boost.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 50 stunt jumps. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-unlimited-nitrous"
+      }
+    },
+    {
+      "id": "g6-cheat-max-ammo",
+      "name": "Max Ammo (Unofficial)",
+      "effect": "Fills the ammo of every weapon you carry.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, win 25 bronze-or-better medals at shooting ranges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-max-ammo"
+      }
+    },
+    {
+      "id": "g6-cheat-infinite-ammo",
+      "name": "Infinite Ammo (Unofficial)",
+      "effect": "Ammo never runs out.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, win 25 silver-or-better medals at shooting ranges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-infinite-ammo"
+      }
+    },
+    {
+      "id": "g6-cheat-no-reload",
+      "name": "No Reload (Unofficial)",
+      "effect": "Fire without reloading.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, win 25 gold medals at shooting ranges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-no-reload"
+      }
+    },
+    {
+      "id": "g6-cheat-all-explosive-weapons",
+      "name": "All Explosive Weapons (Unofficial)",
+      "effect": "Gives you every explosive weapon.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, throw 100 grenades. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-all-explosive-weapons"
+      }
+    },
+    {
+      "id": "g6-cheat-incendiary-ammo",
+      "name": "Incendiary Ammo (Unofficial)",
+      "effect": "Your bullets set targets on fire.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, burn 100 enemies with fire damage. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-incendiary-ammo"
+      }
+    },
+    {
+      "id": "g6-cheat-exploding-bottles",
+      "name": "Exploding Bottles (Unofficial)",
+      "effect": "Thrown bottles explode.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, throw 100 Molotovs. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-exploding-bottles"
+      }
+    },
+    {
+      "id": "g6-cheat-explosive-shotgun",
+      "name": "Explosive Shotgun (Unofficial)",
+      "effect": "Shotgun rounds explode.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, hit 100 enemies with explosive damage. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-explosive-shotgun"
+      }
+    },
+    {
+      "id": "g6-cheat-hauners-h-at",
+      "name": "Hauners H-AT (Unofficial)",
+      "effect": "Gives you the Hauners H-AT launcher.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, destroy 100 vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-hauners-h-at"
+      }
+    },
+    {
+      "id": "g6-cheat-exploding-balls",
+      "name": "Exploding Balls (Unofficial)",
+      "effect": "Thrown balls explode.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, hit 20 enemies with explosive damage. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Right"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-exploding-balls"
+      }
+    },
+    {
+      "id": "g6-cheat-vehicle-force",
+      "name": "Vehicle Force (Unofficial)",
+      "effect": "Vehicle combat cheat (exact effect to confirm in game).",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, kill 25 enemies with a vehicle. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Left, Up, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Left, Up, Down"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-vehicle-force"
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-ambulance",
+      "name": "Spawn Interstate Ambulance (Unofficial)",
+      "effect": "Spawns an Interstate Ambulance.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, discover the Interstate Ambulance in the Progress menu. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-spawn-ambulance"
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-airboat",
+      "name": "Spawn Airboat (Unofficial)",
+      "effect": "Spawns an Airboat.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Survival challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-survival",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-banshee",
+      "name": "Spawn Bravado Banshee (Unofficial)",
+      "effect": "Spawns a Bravado Banshee.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Combat challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-combat",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-bmx",
+      "name": "Spawn Tuff BMX (Unofficial)",
+      "effect": "Spawns a Tuff BMX.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Fitness challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-fitness",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-boomazoom",
+      "name": "Spawn Maibatsu Boomazoom (Unofficial)",
+      "effect": "Spawns a Maibatsu Boomazoom.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, complete 5 Shopping challenges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Left, Up, Left",
+        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Left, Up, Left"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-shopping",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-carbon-rs",
+      "name": "Spawn Nagasaki Carbon RS (Unofficial)",
+      "effect": "Spawns a Nagasaki Carbon RS.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Exploration challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-exploration",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-dominator",
+      "name": "Spawn '65 Vapid Dominator (Unofficial)",
+      "effect": "Spawns a '65 Vapid Dominator.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Fitness challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-fitness",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-emerus",
+      "name": "Spawn Progen Emerus (Unofficial)",
+      "effect": "Spawns a Progen Emerus.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Vehicle challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-vehicle",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-flamingo",
+      "name": "Spawn Inflatable Flamingo (Unofficial)",
+      "effect": "Spawns an Inflatable Flamingo.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, destroy 50 cocaine flamingos. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-spawn-flamingo"
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-pumper",
+      "name": "Spawn MTL Pumper (Unofficial)",
+      "effect": "Spawns an MTL Pumper fire truck.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, discover the MTL Pumper in the Progress menu. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Right, Right, Up",
+        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Up"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-spawn-pumper"
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-taxi",
+      "name": "Spawn Vapid Stanier G2 Taxi (Unofficial)",
+      "effect": "Spawns a Vapid Stanier G2 Taxi.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Sports challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-sports",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-lazer",
+      "name": "Spawn Hauners P-996 Lazer (Unofficial)",
+      "effect": "Spawns a Hauners P-996 Lazer jet.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 80 challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "count": 80
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-bulldozer",
+      "name": "Spawn HVY Bulldozer (Unofficial)",
+      "effect": "Spawns an HVY Bulldozer.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, discover the HVY Bulldozer in the Progress menu. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Right, Right, Down",
+        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Down"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-spawn-bulldozer"
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-mallard",
+      "name": "Spawn Lapwing Mallard (Unofficial)",
+      "effect": "Spawns a Lapwing Mallard.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Vehicle challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-vehicle",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-golfer",
+      "name": "Spawn Brimstone Golfer (Unofficial)",
+      "effect": "Spawns a Brimstone Golfer.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Sports challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-sports",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-rhino",
+      "name": "Spawn Hauners Rhino Tank (Unofficial)",
+      "effect": "Spawns a Hauners Rhino Tank.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Survival challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-survival",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-sanchez",
+      "name": "Spawn Maibatsu Sanchez (Unofficial)",
+      "effect": "Spawns a Maibatsu Sanchez.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Criminal challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-criminal",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-sea-sparrow",
+      "name": "Spawn Nagasaki Sea Sparrow (Unofficial)",
+      "effect": "Spawns a Nagasaki Sea Sparrow.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Exploration challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-exploration",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-speeder",
+      "name": "Spawn Speeder 700 GT (Unofficial)",
+      "effect": "Spawns a Speeder 700 GT.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Combat challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-combat",
+        "count": 5
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-thrax",
+      "name": "Spawn Truffade Thrax (Unofficial)",
+      "effect": "Spawns a Truffade Thrax.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Shopping challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-shopping",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-spawn-zombie-bobber",
+      "name": "Spawn Western Zombie Bobber (Unofficial)",
+      "effect": "Spawns a Western Zombie Bobber.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Criminal challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "challenges",
+        "group": "g6-ch-criminal",
+        "count": 10
+      }
+    },
+    {
+      "id": "g6-cheat-move-time-forward",
+      "name": "Move Time Forward (Unofficial)",
+      "effect": "Moves the time of day forward.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, find 10 collectible watches. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-move-time-forward"
+      }
+    },
+    {
+      "id": "g6-cheat-pause-time",
+      "name": "Pause Time of Day (Unofficial)",
+      "effect": "Freezes the time of day.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, find 20 collectible watches. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-pause-time"
+      }
+    },
+    {
+      "id": "g6-cheat-cycle-weather",
+      "name": "Cycle Weather (Unofficial)",
+      "effect": "Cycles through weather types.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, finish the main story. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Right, Up, Down, Right, Up, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Right, Up, Down, Right, Up, Right"
+      },
+      "unlock": {
+        "type": "story"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-golden-hour",
+      "name": "Golden Hour Filter (Unofficial)",
+      "effect": "Applies the Golden Hour screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, spend 4 hours holding hands with your partner. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-golden-hour"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-powdered-sugar",
+      "name": "Powdered Sugar Filter (Unofficial)",
+      "effect": "Applies the Powdered Sugar screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, scan all space debris with WAiNK. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-powdered-sugar"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-pinhole",
+      "name": "Pinhole Filter (Unofficial)",
+      "effect": "Applies the Pinhole screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, clear 25 gang operations with your partner. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-pinhole"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-neon-jungle",
+      "name": "Neon Jungle Filter (Unofficial)",
+      "effect": "Applies the Neon Jungle screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, discover all 16 Girlypop vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-neon-jungle"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-yesteryear",
+      "name": "Yesteryear Filter (Unofficial)",
+      "effect": "Applies the Yesteryear screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, discover the Ridgway. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-yesteryear"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-cataclysm",
+      "name": "Cataclysm Filter (Unofficial)",
+      "effect": "Applies the Cataclysm screen filter.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, discover Martha's Vamos in the Progress menu. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-cataclysm"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-videotape",
+      "name": "Videotape Filter (Unofficial)",
+      "effect": "Applies the Videotape screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 50 activities with your partner. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-videotape"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-dark-mirror",
+      "name": "Dark Mirror Filter (Unofficial)",
+      "effect": "Applies the Dark Mirror screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, make $500,000 selling vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-dark-mirror"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-migraine",
+      "name": "Migraine Filter (Unofficial)",
+      "effect": "Applies the Migraine screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, survive 6 minutes at a 6-star Wanted level. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-migraine"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-dollhouse",
+      "name": "Dollhouse Filter (Unofficial)",
+      "effect": "Applies the Dollhouse screen filter.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, spend 8 hours with your partner. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-dollhouse"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-bubblegum",
+      "name": "Bubblegum Filter (Unofficial)",
+      "effect": "Applies the Bubblegum screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, find all 24 Vice City Flamingos collectible cards. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-bubblegum"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-fast-forward",
+      "name": "Fast Forward Filter (Unofficial)",
+      "effect": "Applies the Fast Forward screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 50 meditations. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-fast-forward"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-fisheye",
+      "name": "Fisheye Filter (Unofficial)",
+      "effect": "Applies the Fisheye screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, catch 100 fish. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-fisheye"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-faded-glory",
+      "name": "Faded Glory Filter (Unofficial)",
+      "effect": "Applies the Faded Glory screen filter.",
+      "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, rob 50 stores with your partner. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-faded-glory"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-pixel-art",
+      "name": "Pixel Art Filter (Unofficial)",
+      "effect": "Applies the Pixel Art screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, make $250,000 selling collectibles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-pixel-art"
+      }
+    },
+    {
+      "id": "g6-cheat-filter-hellscape",
+      "name": "Hellscape Filter (Unofficial)",
+      "effect": "Applies the Hellscape screen filter.",
+      "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, steal 100 cop vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
+      "tag": "unofficial",
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
+      },
+      "unlock": {
+        "type": "milestone",
+        "id": "g6-ms-filter-hellscape"
       }
     }
   ]

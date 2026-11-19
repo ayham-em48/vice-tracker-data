@@ -184,7 +184,7 @@ const repoUrl = () => `https://github.com/${state.repo}`;
 
 // Key order used when saving, so diffs stay clean when optional fields are added.
 const ORDER = {
-  root: ['$schema', 'version', 'updatedAt', 'update', 'cards', 'ads', 'countdown', 'categories', 'cheats'],
+  root: ['$schema', 'version', 'updatedAt', 'update', 'cards', 'ads', 'countdown', 'categories', 'challenges', 'milestones', 'cheats'],
   update: ['latestVersion', 'minVersion', 'androidUrl', 'iosUrl', 'title', 'message'],
   card: ['id', 'type', 'categoryId', 'order', 'status', 'title', 'notice', 'comingSoonText', 'badge'],
   badge: ['label', 'style', 'expiresAt'],
@@ -192,7 +192,8 @@ const ORDER = {
   countdown: ['enabled', 'launchDate', 'game', 'outNowLabel', 'outNowDays'],
   category: ['id', 'name', 'items'],
   item: ['id', 'name', 'description', 'character', 'giver', 'count', 'spoiler'],
-  cheat: ['id', 'name', 'effect', 'details', 'tag', 'codes'],
+  cheat: ['id', 'name', 'effect', 'details', 'tag', 'unlock', 'codes'],
+  unlock: ['type', 'group', 'count', 'id'],
   codes: ['playstation', 'xbox'],
 };
 function ordered(obj, keys) {
@@ -217,8 +218,14 @@ function normalize(d) {
     if (Array.isArray(cat.items)) cat.items = cat.items.map(i => ordered(i, ORDER.item));
     return cat;
   });
+  for (const key of ['challenges', 'milestones']) if (Array.isArray(out[key])) out[key] = out[key].map(g => {
+    const group = ordered(g, ORDER.category);
+    if (Array.isArray(group.items)) group.items = group.items.map(i => ordered(i, ORDER.item));
+    return group;
+  });
   if (Array.isArray(out.cheats)) out.cheats = out.cheats.map(c => {
     const cheat = ordered(c, ORDER.cheat);
+    if (cheat.unlock) cheat.unlock = ordered(cheat.unlock, ORDER.unlock);
     if (cheat.codes) cheat.codes = ordered(cheat.codes, ORDER.codes);
     return cheat;
   });
@@ -239,11 +246,13 @@ function setLive(data) {
   state.liveStr = JSON.stringify(normalize(data));
   state.liveIds = new Set([
     ...data.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]),
+    ...[...(data.challenges || []), ...(data.milestones || [])].flatMap(g => [g.id, ...g.items.map(i => i.id)]),
     ...data.cheats.map(c => c.id),
   ]);
   state.liveCardIds = new Set((data.cards || []).map(c => c.id));
   state.liveJson = new Map([
     ...data.categories.flatMap(c => c.items.map(i => ['item:' + i.id, JSON.stringify(ordered(i, ORDER.item))])),
+    ...[...(data.challenges || []), ...(data.milestones || [])].flatMap(g => g.items.map(i => ['item:' + i.id, JSON.stringify(ordered(i, ORDER.item))])),
     ...data.cheats.map(c => ['cheat:' + c.id, JSON.stringify(normalize({ cheats: [c] }).cheats[0])]),
   ]);
 }
@@ -257,6 +266,7 @@ function allIds() {
   return new Set([
     ...state.liveIds,
     ...state.data.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]),
+    ...[...(state.data.challenges || []), ...(state.data.milestones || [])].flatMap(g => [g.id, ...g.items.map(i => i.id)]),
     ...state.data.cheats.map(c => c.id),
   ]);
 }
@@ -447,6 +457,8 @@ function summarize(next, prev) {
   };
   for (const cat of next.categories) diff(cat.name || cat.id, cat.items, prev.categories.find(c => c.id === cat.id)?.items);
   diff('Categories', next.categories.map(({ items, ...c }) => c), prev.categories.map(({ items, ...c }) => c));
+  for (const g of next.challenges || []) diff(`${g.name || g.id} challenges`, g.items, (prev.challenges || []).find(x => x.id === g.id)?.items);
+  for (const g of next.milestones || []) diff(`${g.name || g.id} milestones`, g.items, (prev.milestones || []).find(x => x.id === g.id)?.items);
   diff('Cheats', next.cheats, prev.cheats);
   diff('Home cards', next.cards, prev.cards);
   for (const [k, label] of [['update', 'Update prompt'], ['ads', 'Ads'], ['countdown', 'Countdown']])
@@ -640,6 +652,8 @@ function sections() {
     ...d.categories.map((c, i) => ['cat:' + i, c.name || c.id || 'New category', c.items.length]),
     ['cheats', 'Cheats', d.cheats.length],
     ['categories', 'Manage categories', d.categories.length],
+    ...((d.challenges || []).length ? [['Challenges'], ...d.challenges.map((g, i) => ['chg:' + i, g.name || g.id, g.items.length])] : []),
+    ...((d.milestones || []).length ? [['Milestones'], ...d.milestones.map((g, i) => ['msg:' + i, g.name || g.id, g.items.length])] : []),
   ];
 }
 
@@ -710,6 +724,12 @@ function renderSection(main) {
   if (s === 'cards') return main.append(...cardsSection());
   if (s === 'cheats') return main.append(...cheatsSection());
   if (s === 'categories') return main.append(...categoriesSection());
+  if (s.startsWith('chg:') || s.startsWith('msg:')) {
+    const key = s.startsWith('chg:') ? 'challenges' : 'milestones';
+    const g = (state.data[key] || [])[+s.slice(4)];
+    if (!g) { state.section = 'overview'; return renderSection(main); }
+    return main.append(...challengesSection(g, key));
+  }
   if (s.startsWith('cat:')) {
     const cat = state.data.categories[+s.slice(4)];
     if (!cat) { state.section = 'overview'; return renderSection(main); }
@@ -810,6 +830,43 @@ function itemsSection(cat) {
   });
 }
 
+function challengesSection(g, key = 'challenges') {
+  const i = state.data[key].indexOf(g);
+  const unit = key === 'challenges' ? 'challenge' : 'milestone';
+  return expandList({
+    key: key.slice(0, 3) + i + ':' + g.id, arr: g.items, kind: 'item',
+    title: `${g.name} ${unit}s`, sub: `${g.items.length} ${unit}s · group id ${g.id}. Which cheat each one unlocks is set on the cheat (Unlock).`,
+    addLabel: `+ Add ${unit}`,
+    makeNew: () => ({ id: nextId(g.items, g.id), name: '' }),
+    rowBits: () => [],
+    editor: (x, onName) => h('div', { class: 'grid' },
+      idField(x, 'Id', state.liveIds.has(x.id)),
+      text(x, 'name', 'Name', { required: true, onInput: onName }),
+      text(x, 'description', 'Description', { wide: true, multiline: true, hint: 'What to do in game.' }),
+    ),
+  });
+}
+
+// Unlock rule fields; switching type drops the fields the new type doesn't use.
+function unlockFields(x, re) {
+  const types = [['story', 'Finish the main story'], ['challenges', 'Tick N challenges'], ['milestone', 'Tick a milestone']];
+  const milestones = (state.data.milestones || []).flatMap(g => g.items.map(i => [i.id, `${g.name}: ${i.name}`]));
+  const holder = { type: x.unlock?.type };
+  const groups = (state.data.challenges || []).map(g => [g.id, g.name]);
+  const fields = [select(holder, 'type', 'Unlock', types, { optional: true, optionalLabel: 'Always unlocked', onChange: () => {
+    if (!holder.type) delete x.unlock;
+    else if (holder.type === 'story') x.unlock = { type: 'story' };
+    else if (holder.type === 'milestone') x.unlock = { type: 'milestone', id: milestones[0]?.[0] };
+    else x.unlock = { type: 'challenges', group: groups[0]?.[0], count: 5 };
+    changed(); re();
+  } })];
+  if (x.unlock?.type === 'challenges') fields.push(
+    select(x.unlock, 'group', 'Challenge group', groups, { optional: true, optionalLabel: 'All groups' }),
+    num(x.unlock, 'count', 'Challenges needed', { min: 1 }));
+  if (x.unlock?.type === 'milestone') fields.push(select(x.unlock, 'id', 'Milestone', milestones, { wide: true }));
+  return fields;
+}
+
 function cheatsSection() {
   return expandList({
     key: 'cheats', arr: state.data.cheats, kind: 'cheat',
@@ -825,8 +882,9 @@ function cheatsSection() {
         text(x, 'effect', 'Effect', { required: true, wide: true, hint: 'One line on what it does.' }),
         text(x, 'details', 'Details', { wide: true, multiline: true, rows: 3, hint: 'Optional longer notes.' }),
         select(x, 'tag', 'Tag', [['unofficial', 'Unofficial'], ['verified', 'Verified']], { optional: true, optionalLabel: 'None' }),
+        ...unlockFields(x, () => refreshNav()),
         text(x.codes, 'playstation', 'PlayStation code', { wide: true, placeholder: 'Right, X, Right, …' }),
-        text(x.codes, 'xbox', 'Xbox code', { wide: true, placeholder: 'Right, A, Right, …', hint: 'At least one of the two codes.' }),
+        text(x.codes, 'xbox', 'Xbox code', { wide: true, placeholder: 'Right, A, Right, …', hint: 'At least one of the two codes, unless the cheat has an unlock rule.' }),
       );
     },
   });
@@ -899,7 +957,7 @@ function cardsSection() {
           ' ', h('span', { class: 'tag' }, card.status || 'live'), !locked && h('span', { class: 'tag new' }, 'new')),
         h('div', { class: 'grid' },
           text(card, 'id', 'Card id', { required: true, readOnly: locked, hint: locked ? 'Locked once published.' : 'Can match its category id.' }),
-          select(card, 'type', 'Type', ['favorites', 'category', 'cheats'], { onChange: () => { if (card.type !== 'category') delete card.categoryId; else card.categoryId ??= d.categories[0]?.id; re(); } }),
+          select(card, 'type', 'Type', ['favorites', 'category', 'cheats', 'challenges', 'milestones'], { onChange: () => { if (card.type !== 'category') delete card.categoryId; else card.categoryId ??= d.categories[0]?.id; re(); } }),
           card.type === 'category' && select(card, 'categoryId', 'Category', catOptions),
           num(card, 'order', 'Order', { required: true }),
           select(card, 'status', 'Status', [['live', 'Live'], ['partial', 'Partial (open, with a notice)'], ['coming_soon', 'Coming soon (locked)'], ['hidden', 'Hidden']], { onChange: re }),
