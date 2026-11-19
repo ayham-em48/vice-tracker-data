@@ -25,7 +25,7 @@
         "additionalProperties": false,
         "properties": {
           "id": { "$ref": "#/$defs/id", "description": "Stable card id; never rename once shipped." },
-          "type": { "enum": ["favorites", "category", "cheats"] },
+          "type": { "enum": ["favorites", "category", "cheats", "challenges"], "description": "challenges: a card that opens the Challenges page." },
           "categoryId": { "$ref": "#/$defs/id", "description": "Required for category cards. Must match a categories[].id." },
           "order": { "type": "integer", "description": "Lower shows higher. Favorites is always first." },
           "status": { "enum": ["live", "partial", "coming_soon", "hidden"], "default": "live" },
@@ -101,6 +101,32 @@
         }
       }
     },
+    "challenges": {
+      "type": "array",
+      "description": "In-game challenges grouped by category (Combat, Criminal, ...). Players tick them on the Challenges page; ticks can unlock cheats (see cheats[].unlock).",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "items"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/$defs/id" },
+          "name": { "type": "string", "minLength": 1 },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "name"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "$ref": "#/$defs/id" },
+                "name": { "type": "string", "minLength": 1 },
+                "description": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
     "cheats": {
       "type": "array",
       "items": {
@@ -113,10 +139,22 @@
           "effect": { "type": "string", "minLength": 1 },
           "details": { "type": "string" },
           "tag": { "enum": ["unofficial", "verified"], "description": "Optional trust label. unofficial: reported by others, not yet confirmed in game by us. verified: tested by us." },
+          "unlock": {
+            "description": "Optional. The cheat shows locked in the app until this is met. story: every story mission ticked. challenges: count challenges ticked in group (or across all groups when group is left out). task: the player ticks this requirement on the cheat itself.",
+            "type": "object",
+            "required": ["type"],
+            "additionalProperties": false,
+            "properties": {
+              "type": { "enum": ["story", "challenges", "task"] },
+              "group": { "$ref": "#/$defs/id" },
+              "count": { "type": "integer", "minimum": 1 },
+              "text": { "type": "string", "minLength": 1 }
+            }
+          },
           "codes": {
             "type": "object",
+            "description": "At least one code, unless the cheat has an unlock rule (then it may be empty until the code is known).",
             "additionalProperties": false,
-            "minProperties": 1,
             "properties": {
               "playstation": { "type": "string", "minLength": 1 },
               "xbox": { "type": "string", "minLength": 1 }

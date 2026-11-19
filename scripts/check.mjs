@@ -43,6 +43,26 @@ export function check(data, prev) {
     }
   }
 
+  // Challenges: groups of tickable in-game challenges (Combat, Criminal, ...). Optional.
+  const groupSize = new Map();
+  if (data.challenges !== undefined) {
+    if (!Array.isArray(data.challenges)) fail('"challenges" must be a list');
+    for (const [gi, g] of (Array.isArray(data.challenges) ? data.challenges : []).entries()) {
+      const where = `challenges[${gi}] (${g?.name ?? '?'})`;
+      checkId(g?.id, where);
+      text(g?.name, where, 'name');
+      if (!Array.isArray(g?.items)) { fail(`${where}: "items" must be a list`); continue; }
+      groupSize.set(g.id, g.items.length);
+      for (const [ii, item] of g.items.entries()) {
+        const at = `${where} > items[${ii}] (${item?.name ?? '?'})`;
+        checkId(item?.id, at);
+        text(item?.name, at, 'name');
+        if (item?.description !== undefined && typeof item.description !== 'string') fail(`${at}: "description" must be text`);
+      }
+    }
+  }
+  const allChallenges = [...groupSize.values()].reduce((a, b) => a + b, 0);
+
   if (!Array.isArray(data.cheats)) fail('"cheats" must be a list (use [] for none)');
   for (const [i, c] of (data.cheats ?? []).entries()) {
     const at = `cheats[${i}] (${c?.name ?? '?'})`;
@@ -50,9 +70,21 @@ export function check(data, prev) {
     text(c?.name, at, 'name');
     text(c?.effect, at, 'effect');
     if (c?.tag !== undefined && !['unofficial', 'verified'].includes(c.tag)) fail(`${at}: "tag" must be unofficial or verified`);
+    const u = c?.unlock;
+    if (u !== undefined) {
+      if (!u || typeof u !== 'object') fail(`${at}: "unlock" must be an object`);
+      else if (u.type === 'story' || u.type === 'task') {
+        if (u.type === 'task') text(u.text, at, 'unlock.text');
+      } else if (u.type === 'challenges') {
+        const max = u.group === undefined ? allChallenges : groupSize.get(u.group);
+        if (u.group !== undefined && max === undefined) fail(`${at}: "unlock.group" "${u.group}" doesn't match any challenges[].id`);
+        else if (!(Number.isInteger(u.count) && u.count >= 1 && u.count <= max)) fail(`${at}: "unlock.count" must be a whole number from 1 to ${max}`);
+      } else fail(`${at}: "unlock.type" must be story, challenges or task`);
+    }
     const codes = c?.codes ?? {};
     const platforms = Object.keys(codes);
-    if (!platforms.length) fail(`${at}: "codes" needs at least one of playstation / xbox`);
+    // A locked cheat may be listed before its code is known; the app shows "Code not confirmed yet".
+    if (!platforms.length && u === undefined) fail(`${at}: "codes" needs at least one of playstation / xbox`);
     for (const p of platforms) {
       if (p !== 'playstation' && p !== 'xbox') fail(`${at}: unknown platform "${p}" (use playstation or xbox)`);
       else text(codes[p], at, `codes.${p}`);
@@ -60,7 +92,7 @@ export function check(data, prev) {
   }
 
   // Home screen cards. Card ids are their own namespace, so they may match category ids.
-  const CARD_TYPES = ['favorites', 'category', 'cheats'];
+  const CARD_TYPES = ['favorites', 'category', 'cheats', 'challenges'];
   const STATUSES = ['live', 'partial', 'coming_soon', 'hidden'];
   const BADGE_STYLES = ['new', 'hot', 'info'];
   const categoryIds = new Set((data.categories ?? []).map(c => c?.id));
@@ -104,7 +136,11 @@ export function check(data, prev) {
 
   if (prev) {
     if (data.version <= prev.version) fail(`"version" is ${data.version} but the live file is already ${prev.version}: bump it to ${nextVersion(prev.version)} or the app will ignore this update`);
-    const ids = p => [...p.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]), ...p.cheats.map(c => c.id)];
+    const ids = p => [
+      ...p.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]),
+      ...(Array.isArray(p.challenges) ? p.challenges : []).flatMap(g => [g.id, ...g.items.map(i => i.id)]),
+      ...p.cheats.map(c => c.id),
+    ];
     const now = new Set(ids(data));
     const gone = ids(prev).filter(id => !now.has(id));
     if (gone.length) fail(`these ids were removed or renamed, which wipes players' progress on them: ${gone.join(', ')}`);
