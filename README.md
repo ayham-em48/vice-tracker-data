@@ -153,7 +153,7 @@ Top-level sections, in file order:
 
 Cards are the stacked cards on the home screen. Without `cards`, the app shows Favorites, one card per category, then Cheats.
 
-- `type`: `favorites`, `cheats`, `challenges` (opens the Challenges page; hidden while there are no challenges), or `category` (which also needs a `categoryId` matching a `categories[].id`).
+- `type`: `favorites`, `cheats`, `challenges` / `milestones` (open that page; hidden while it has nothing), or `category` (which also needs a `categoryId` matching a `categories[].id`).
 - `order`: lower shows higher. Favorites is always first.
 - `status`:
   - `live` (default): normal.
@@ -171,9 +171,11 @@ A cheat with an `unlock` rule shows locked (code hidden) until the rule is met:
 
 - `{ "type": "story" }`: every story mission ticked.
 - `{ "type": "challenges", "group": "g6-ch-combat", "count": 5 }`: 5 challenges ticked in that group. Leave out `group` to count across all groups.
-- `{ "type": "task", "text": "Complete 100 workouts" }`: the player ticks it on the cheat itself.
+- `{ "type": "milestone", "id": "g6-ms-body-armor" }`: that milestone ticked on the Milestones page.
 
-A cheat with an `unlock` rule may have empty `codes` (`{}`) until the code is known; the app shows "Code not confirmed yet". App builds before 1.1 ignore `challenges` and `unlock`, and show every cheat unlocked, so cheats without codes show "Not on this console" there. Publish those only once the build with Challenges is live.
+`milestones` has the same shape as `challenges`: groups of goals that each unlock one cheat (Complete 100 workouts, Find 10 watches, ...). Cheats are never ticked on themselves.
+
+A cheat with an `unlock` rule may have empty `codes` (`{}`) until the code is known; the app shows "Code not confirmed yet". App builds before 1.1 ignore `challenges`, `milestones` and `unlock`, and show every cheat unlocked, so cheats without codes show "Not on this console" there. Publish those only once the build with Challenges is live.
 
 ### Ads
 

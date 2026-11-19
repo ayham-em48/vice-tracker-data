@@ -43,17 +43,20 @@ export function check(data, prev) {
     }
   }
 
-  // Challenges: groups of tickable in-game challenges (Combat, Criminal, ...). Optional.
+  // Challenges and milestones: groups of tickable in-game goals, same shape. Both optional.
   const groupSize = new Map();
-  if (data.challenges !== undefined) {
-    if (!Array.isArray(data.challenges)) fail('"challenges" must be a list');
-    for (const [gi, g] of (Array.isArray(data.challenges) ? data.challenges : []).entries()) {
-      const where = `challenges[${gi}] (${g?.name ?? '?'})`;
+  const milestoneIds = new Set();
+  for (const key of ['challenges', 'milestones']) {
+    if (data[key] === undefined) continue;
+    if (!Array.isArray(data[key])) { fail(`"${key}" must be a list`); continue; }
+    for (const [gi, g] of data[key].entries()) {
+      const where = `${key}[${gi}] (${g?.name ?? '?'})`;
       checkId(g?.id, where);
       text(g?.name, where, 'name');
       if (!Array.isArray(g?.items)) { fail(`${where}: "items" must be a list`); continue; }
-      groupSize.set(g.id, g.items.length);
+      if (key === 'challenges') groupSize.set(g.id, g.items.length);
       for (const [ii, item] of g.items.entries()) {
+        if (key === 'milestones') milestoneIds.add(item?.id);
         const at = `${where} > items[${ii}] (${item?.name ?? '?'})`;
         checkId(item?.id, at);
         text(item?.name, at, 'name');
@@ -73,13 +76,15 @@ export function check(data, prev) {
     const u = c?.unlock;
     if (u !== undefined) {
       if (!u || typeof u !== 'object') fail(`${at}: "unlock" must be an object`);
-      else if (u.type === 'story' || u.type === 'task') {
-        if (u.type === 'task') text(u.text, at, 'unlock.text');
+      else if (u.type === 'story') {
+        // nothing else to check
+      } else if (u.type === 'milestone') {
+        if (!milestoneIds.has(u.id)) fail(`${at}: "unlock.id" "${u.id}" doesn't match any milestone (milestones[].items[].id)`);
       } else if (u.type === 'challenges') {
         const max = u.group === undefined ? allChallenges : groupSize.get(u.group);
         if (u.group !== undefined && max === undefined) fail(`${at}: "unlock.group" "${u.group}" doesn't match any challenges[].id`);
         else if (!(Number.isInteger(u.count) && u.count >= 1 && u.count <= max)) fail(`${at}: "unlock.count" must be a whole number from 1 to ${max}`);
-      } else fail(`${at}: "unlock.type" must be story, challenges or task`);
+      } else fail(`${at}: "unlock.type" must be story, challenges or milestone`);
     }
     const codes = c?.codes ?? {};
     const platforms = Object.keys(codes);
@@ -92,7 +97,7 @@ export function check(data, prev) {
   }
 
   // Home screen cards. Card ids are their own namespace, so they may match category ids.
-  const CARD_TYPES = ['favorites', 'category', 'cheats', 'challenges'];
+  const CARD_TYPES = ['favorites', 'category', 'cheats', 'challenges', 'milestones'];
   const STATUSES = ['live', 'partial', 'coming_soon', 'hidden'];
   const BADGE_STYLES = ['new', 'hot', 'info'];
   const categoryIds = new Set((data.categories ?? []).map(c => c?.id));
@@ -138,7 +143,7 @@ export function check(data, prev) {
     if (data.version <= prev.version) fail(`"version" is ${data.version} but the live file is already ${prev.version}: bump it to ${nextVersion(prev.version)} or the app will ignore this update`);
     const ids = p => [
       ...p.categories.flatMap(c => [c.id, ...c.items.map(i => i.id)]),
-      ...(Array.isArray(p.challenges) ? p.challenges : []).flatMap(g => [g.id, ...g.items.map(i => i.id)]),
+      ...[...(Array.isArray(p.challenges) ? p.challenges : []), ...(Array.isArray(p.milestones) ? p.milestones : [])].flatMap(g => [g.id, ...g.items.map(i => i.id)]),
       ...p.cheats.map(c => c.id),
     ];
     const now = new Set(ids(data));

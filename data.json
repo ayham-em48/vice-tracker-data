@@ -29,9 +29,20 @@
       }
     },
     {
+      "id": "milestones",
+      "type": "milestones",
+      "order": 2,
+      "status": "live",
+      "badge": {
+        "label": "New",
+        "style": "new",
+        "expiresAt": "2026-11-30"
+      }
+    },
+    {
       "id": "cheats",
       "type": "cheats",
-      "order": 2,
+      "order": 3,
       "status": "live",
       "badge": {
         "label": "New",
@@ -43,7 +54,7 @@
       "id": "story",
       "type": "category",
       "categoryId": "story",
-      "order": 3,
+      "order": 4,
       "status": "partial",
       "notice": "Verifying missions daily 🚀"
     },
@@ -51,7 +62,7 @@
       "id": "side",
       "type": "category",
       "categoryId": "side",
-      "order": 4,
+      "order": 5,
       "status": "coming_soon",
       "comingSoonText": "Will be available after Launch day ❤️"
     },
@@ -59,7 +70,7 @@
       "id": "collectibles",
       "type": "category",
       "categoryId": "collectibles",
-      "order": 5,
+      "order": 6,
       "status": "hidden",
       "comingSoonText": "Will be available after Launch day ❤️"
     }
@@ -1766,6 +1777,238 @@
       ]
     }
   ],
+  "milestones": [
+    {
+      "id": "g6-ms-player",
+      "name": "Player",
+      "items": [
+        {
+          "id": "g6-ms-drunk",
+          "name": "Spend $2,500 on alcohol",
+          "description": "Unlocks Drunk"
+        },
+        {
+          "id": "g6-ms-raise-heat",
+          "name": "Lose a 3-star Wanted level 25 times",
+          "description": "Unlocks Raise Heat Level"
+        },
+        {
+          "id": "g6-ms-raise-wanted",
+          "name": "Lose a 3-star Wanted level 50 times",
+          "description": "Unlocks Raise Wanted Level"
+        },
+        {
+          "id": "g6-ms-no-fall-damage",
+          "name": "Survive 20 falls from 40 ft",
+          "description": "Unlocks No Fall Damage"
+        },
+        {
+          "id": "g6-ms-parachute",
+          "name": "Do 50 skydives or BASE jumps from 300 ft or higher",
+          "description": "Unlocks Parachute"
+        },
+        {
+          "id": "g6-ms-body-armor",
+          "name": "Complete 100 workouts",
+          "description": "Unlocks Body Armor"
+        },
+        {
+          "id": "g6-ms-repair-vehicle",
+          "name": "Win 10 races (1st place) at Gellhorn, Thrillbilly Mud Club or Boone Speedway",
+          "description": "Unlocks Repair Vehicle"
+        },
+        {
+          "id": "g6-ms-unlimited-nitrous",
+          "name": "Complete 50 stunt jumps",
+          "description": "Unlocks Unlimited Nitrous"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-combat",
+      "name": "Combat",
+      "items": [
+        {
+          "id": "g6-ms-max-ammo",
+          "name": "Win 25 bronze-or-better medals at shooting ranges",
+          "description": "Unlocks Max Ammo"
+        },
+        {
+          "id": "g6-ms-infinite-ammo",
+          "name": "Win 25 silver-or-better medals at shooting ranges",
+          "description": "Unlocks Infinite Ammo"
+        },
+        {
+          "id": "g6-ms-no-reload",
+          "name": "Win 25 gold medals at shooting ranges",
+          "description": "Unlocks No Reload"
+        },
+        {
+          "id": "g6-ms-all-explosive-weapons",
+          "name": "Throw 100 grenades",
+          "description": "Unlocks All Explosive Weapons"
+        },
+        {
+          "id": "g6-ms-incendiary-ammo",
+          "name": "Burn 100 enemies with fire damage",
+          "description": "Unlocks Incendiary Ammo"
+        },
+        {
+          "id": "g6-ms-exploding-bottles",
+          "name": "Throw 100 Molotovs",
+          "description": "Unlocks Exploding Bottles"
+        },
+        {
+          "id": "g6-ms-explosive-shotgun",
+          "name": "Hit 100 enemies with explosive damage",
+          "description": "Unlocks Explosive Shotgun"
+        },
+        {
+          "id": "g6-ms-hauners-h-at",
+          "name": "Destroy 100 vehicles",
+          "description": "Unlocks Hauners H-AT"
+        },
+        {
+          "id": "g6-ms-exploding-balls",
+          "name": "Hit 20 enemies with explosive damage",
+          "description": "Unlocks Exploding Balls"
+        },
+        {
+          "id": "g6-ms-vehicle-force",
+          "name": "Kill 25 enemies with a vehicle",
+          "description": "Unlocks Vehicle Force"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-vehicles",
+      "name": "Vehicles",
+      "items": [
+        {
+          "id": "g6-ms-spawn-ambulance",
+          "name": "Discover the Interstate Ambulance in the Progress menu",
+          "description": "Unlocks Interstate Ambulance"
+        },
+        {
+          "id": "g6-ms-spawn-flamingo",
+          "name": "Destroy 50 cocaine flamingos",
+          "description": "Unlocks Inflatable Flamingo"
+        },
+        {
+          "id": "g6-ms-spawn-pumper",
+          "name": "Discover the MTL Pumper in the Progress menu",
+          "description": "Unlocks MTL Pumper"
+        },
+        {
+          "id": "g6-ms-spawn-bulldozer",
+          "name": "Discover the HVY Bulldozer in the Progress menu",
+          "description": "Unlocks HVY Bulldozer"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-world",
+      "name": "Time of day",
+      "items": [
+        {
+          "id": "g6-ms-move-time-forward",
+          "name": "Find 10 collectible watches",
+          "description": "Unlocks Move Time Forward"
+        },
+        {
+          "id": "g6-ms-pause-time",
+          "name": "Find 20 collectible watches",
+          "description": "Unlocks Pause Time of Day"
+        }
+      ]
+    },
+    {
+      "id": "g6-ms-filters",
+      "name": "Screen filters",
+      "items": [
+        {
+          "id": "g6-ms-filter-golden-hour",
+          "name": "Spend 4 hours holding hands with your partner",
+          "description": "Unlocks Golden Hour Filter"
+        },
+        {
+          "id": "g6-ms-filter-powdered-sugar",
+          "name": "Scan all space debris with WAiNK",
+          "description": "Unlocks Powdered Sugar Filter"
+        },
+        {
+          "id": "g6-ms-filter-pinhole",
+          "name": "Clear 25 gang operations with your partner",
+          "description": "Unlocks Pinhole Filter"
+        },
+        {
+          "id": "g6-ms-filter-neon-jungle",
+          "name": "Discover all 16 Girlypop vehicles",
+          "description": "Unlocks Neon Jungle Filter"
+        },
+        {
+          "id": "g6-ms-filter-yesteryear",
+          "name": "Discover the Ridgway",
+          "description": "Unlocks Yesteryear Filter"
+        },
+        {
+          "id": "g6-ms-filter-cataclysm",
+          "name": "Discover Martha's Vamos in the Progress menu",
+          "description": "Unlocks Cataclysm Filter"
+        },
+        {
+          "id": "g6-ms-filter-videotape",
+          "name": "Complete 50 activities with your partner",
+          "description": "Unlocks Videotape Filter"
+        },
+        {
+          "id": "g6-ms-filter-dark-mirror",
+          "name": "Make $500,000 selling vehicles",
+          "description": "Unlocks Dark Mirror Filter"
+        },
+        {
+          "id": "g6-ms-filter-migraine",
+          "name": "Survive 6 minutes at a 6-star Wanted level",
+          "description": "Unlocks Migraine Filter"
+        },
+        {
+          "id": "g6-ms-filter-dollhouse",
+          "name": "Spend 8 hours with your partner",
+          "description": "Unlocks Dollhouse Filter"
+        },
+        {
+          "id": "g6-ms-filter-bubblegum",
+          "name": "Find all 24 Vice City Flamingos collectible cards",
+          "description": "Unlocks Bubblegum Filter"
+        },
+        {
+          "id": "g6-ms-filter-fast-forward",
+          "name": "Complete 50 meditations",
+          "description": "Unlocks Fast Forward Filter"
+        },
+        {
+          "id": "g6-ms-filter-fisheye",
+          "name": "Catch 100 fish",
+          "description": "Unlocks Fisheye Filter"
+        },
+        {
+          "id": "g6-ms-filter-faded-glory",
+          "name": "Rob 50 stores with your partner",
+          "description": "Unlocks Faded Glory Filter"
+        },
+        {
+          "id": "g6-ms-filter-pixel-art",
+          "name": "Make $250,000 selling collectibles",
+          "description": "Unlocks Pixel Art Filter"
+        },
+        {
+          "id": "g6-ms-filter-hellscape",
+          "name": "Steal 100 cop vehicles",
+          "description": "Unlocks Hellscape Filter"
+        }
+      ]
+    }
+  ],
   "cheats": [
     {
       "id": "g6-cheat-money-250k",
@@ -1820,8 +2063,8 @@
         "xbox": "Phone open, hold LB + RB: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right"
       },
       "unlock": {
-        "type": "task",
-        "text": "Spend $2,500 on alcohol"
+        "type": "milestone",
+        "id": "g6-ms-drunk"
       }
     },
     {
@@ -1835,8 +2078,8 @@
         "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Down, Up"
       },
       "unlock": {
-        "type": "task",
-        "text": "Lose a 3-star Wanted level 25 times"
+        "type": "milestone",
+        "id": "g6-ms-raise-heat"
       }
     },
     {
@@ -1850,8 +2093,8 @@
         "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Right, Up"
       },
       "unlock": {
-        "type": "task",
-        "text": "Lose a 3-star Wanted level 50 times"
+        "type": "milestone",
+        "id": "g6-ms-raise-wanted"
       }
     },
     {
@@ -1862,8 +2105,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Survive 20 falls from 40 ft"
+        "type": "milestone",
+        "id": "g6-ms-no-fall-damage"
       }
     },
     {
@@ -1874,8 +2117,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Do 50 skydives or BASE jumps from 300 ft or higher"
+        "type": "milestone",
+        "id": "g6-ms-parachute"
       }
     },
     {
@@ -1889,8 +2132,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down"
       },
       "unlock": {
-        "type": "task",
-        "text": "Complete 100 workouts"
+        "type": "milestone",
+        "id": "g6-ms-body-armor"
       }
     },
     {
@@ -1901,8 +2144,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Win 10 races (1st place) at Gellhorn, Thrillbilly Mud Club or Boone Speedway"
+        "type": "milestone",
+        "id": "g6-ms-repair-vehicle"
       }
     },
     {
@@ -1913,8 +2156,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Complete 50 stunt jumps"
+        "type": "milestone",
+        "id": "g6-ms-unlimited-nitrous"
       }
     },
     {
@@ -1928,8 +2171,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left"
       },
       "unlock": {
-        "type": "task",
-        "text": "Win 25 bronze-or-better medals at shooting ranges"
+        "type": "milestone",
+        "id": "g6-ms-max-ammo"
       }
     },
     {
@@ -1943,8 +2186,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down"
       },
       "unlock": {
-        "type": "task",
-        "text": "Win 25 silver-or-better medals at shooting ranges"
+        "type": "milestone",
+        "id": "g6-ms-infinite-ammo"
       }
     },
     {
@@ -1958,8 +2201,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up"
       },
       "unlock": {
-        "type": "task",
-        "text": "Win 25 gold medals at shooting ranges"
+        "type": "milestone",
+        "id": "g6-ms-no-reload"
       }
     },
     {
@@ -1970,8 +2213,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Throw 100 grenades"
+        "type": "milestone",
+        "id": "g6-ms-all-explosive-weapons"
       }
     },
     {
@@ -1982,8 +2225,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Burn 100 enemies with fire damage"
+        "type": "milestone",
+        "id": "g6-ms-incendiary-ammo"
       }
     },
     {
@@ -1994,8 +2237,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Throw 100 Molotovs"
+        "type": "milestone",
+        "id": "g6-ms-exploding-bottles"
       }
     },
     {
@@ -2006,8 +2249,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Hit 100 enemies with explosive damage"
+        "type": "milestone",
+        "id": "g6-ms-explosive-shotgun"
       }
     },
     {
@@ -2018,8 +2261,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Destroy 100 vehicles"
+        "type": "milestone",
+        "id": "g6-ms-hauners-h-at"
       }
     },
     {
@@ -2033,8 +2276,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Right"
       },
       "unlock": {
-        "type": "task",
-        "text": "Hit 20 enemies with explosive damage"
+        "type": "milestone",
+        "id": "g6-ms-exploding-balls"
       }
     },
     {
@@ -2048,8 +2291,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Left, Up, Down"
       },
       "unlock": {
-        "type": "task",
-        "text": "Kill 25 enemies with a vehicle"
+        "type": "milestone",
+        "id": "g6-ms-vehicle-force"
       }
     },
     {
@@ -2060,8 +2303,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Discover the Interstate Ambulance in the Progress menu"
+        "type": "milestone",
+        "id": "g6-ms-spawn-ambulance"
       }
     },
     {
@@ -2166,8 +2409,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Destroy 50 cocaine flamingos"
+        "type": "milestone",
+        "id": "g6-ms-spawn-flamingo"
       }
     },
     {
@@ -2181,8 +2424,8 @@
         "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Up"
       },
       "unlock": {
-        "type": "task",
-        "text": "Discover the MTL Pumper in the Progress menu"
+        "type": "milestone",
+        "id": "g6-ms-spawn-pumper"
       }
     },
     {
@@ -2221,8 +2464,8 @@
         "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Down"
       },
       "unlock": {
-        "type": "task",
-        "text": "Discover the HVY Bulldozer in the Progress menu"
+        "type": "milestone",
+        "id": "g6-ms-spawn-bulldozer"
       }
     },
     {
@@ -2337,8 +2580,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Find 10 collectible watches"
+        "type": "milestone",
+        "id": "g6-ms-move-time-forward"
       }
     },
     {
@@ -2349,8 +2592,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Find 20 collectible watches"
+        "type": "milestone",
+        "id": "g6-ms-pause-time"
       }
     },
     {
@@ -2375,8 +2618,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Spend 4 hours holding hands with your partner"
+        "type": "milestone",
+        "id": "g6-ms-filter-golden-hour"
       }
     },
     {
@@ -2387,8 +2630,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Scan all space debris with WAiNK"
+        "type": "milestone",
+        "id": "g6-ms-filter-powdered-sugar"
       }
     },
     {
@@ -2399,8 +2642,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Clear 25 gang operations with your partner"
+        "type": "milestone",
+        "id": "g6-ms-filter-pinhole"
       }
     },
     {
@@ -2411,8 +2654,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Discover all 16 Girlypop vehicles"
+        "type": "milestone",
+        "id": "g6-ms-filter-neon-jungle"
       }
     },
     {
@@ -2423,8 +2666,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Discover the Ridgway"
+        "type": "milestone",
+        "id": "g6-ms-filter-yesteryear"
       }
     },
     {
@@ -2438,8 +2681,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right"
       },
       "unlock": {
-        "type": "task",
-        "text": "Discover Martha's Vamos in the Progress menu"
+        "type": "milestone",
+        "id": "g6-ms-filter-cataclysm"
       }
     },
     {
@@ -2450,8 +2693,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Complete 50 activities with your partner"
+        "type": "milestone",
+        "id": "g6-ms-filter-videotape"
       }
     },
     {
@@ -2462,8 +2705,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Make $500,000 selling vehicles"
+        "type": "milestone",
+        "id": "g6-ms-filter-dark-mirror"
       }
     },
     {
@@ -2474,8 +2717,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Survive 6 minutes at a 6-star Wanted level"
+        "type": "milestone",
+        "id": "g6-ms-filter-migraine"
       }
     },
     {
@@ -2489,8 +2732,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right"
       },
       "unlock": {
-        "type": "task",
-        "text": "Spend 8 hours with your partner"
+        "type": "milestone",
+        "id": "g6-ms-filter-dollhouse"
       }
     },
     {
@@ -2501,8 +2744,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Find all 24 Vice City Flamingos collectible cards"
+        "type": "milestone",
+        "id": "g6-ms-filter-bubblegum"
       }
     },
     {
@@ -2513,8 +2756,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Complete 50 meditations"
+        "type": "milestone",
+        "id": "g6-ms-filter-fast-forward"
       }
     },
     {
@@ -2525,8 +2768,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Catch 100 fish"
+        "type": "milestone",
+        "id": "g6-ms-filter-fisheye"
       }
     },
     {
@@ -2540,8 +2783,8 @@
         "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right"
       },
       "unlock": {
-        "type": "task",
-        "text": "Rob 50 stores with your partner"
+        "type": "milestone",
+        "id": "g6-ms-filter-faded-glory"
       }
     },
     {
@@ -2552,8 +2795,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Make $250,000 selling collectibles"
+        "type": "milestone",
+        "id": "g6-ms-filter-pixel-art"
       }
     },
     {
@@ -2564,8 +2807,8 @@
       "tag": "unofficial",
       "codes": {},
       "unlock": {
-        "type": "task",
-        "text": "Steal 100 cop vehicles"
+        "type": "milestone",
+        "id": "g6-ms-filter-hellscape"
       }
     }
   ]
