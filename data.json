@@ -1,6 +1,6 @@
 {
   "$schema": "./data.schema.json",
-  "version": 3.2,
+  "version": 3.4,
   "updatedAt": "2026-11-19",
   "update": {
     "latestVersion": "1.0.0",
@@ -63,16 +63,26 @@
       "type": "category",
       "categoryId": "side",
       "order": 5,
-      "status": "coming_soon",
-      "comingSoonText": "Will be available after Launch day ❤️"
+      "status": "partial",
+      "notice": "Unofficial, from launch-week guides. Verifying daily 🚀",
+      "badge": {
+        "label": "New",
+        "style": "new",
+        "expiresAt": "2026-11-30"
+      }
     },
     {
       "id": "collectibles",
       "type": "category",
       "categoryId": "collectibles",
       "order": 6,
-      "status": "hidden",
-      "comingSoonText": "Will be available after Launch day ❤️"
+      "status": "partial",
+      "notice": "Unofficial. 100% needs 15 of the 18 card sets. Verifying daily 🚀",
+      "badge": {
+        "label": "New",
+        "style": "new",
+        "expiresAt": "2026-11-30"
+      }
     }
   ],
   "ads": {
@@ -752,501 +762,277 @@
       "name": "Side quests",
       "items": [
         {
-          "id": "side-001",
-          "name": "Pulling Favors",
-          "description": "Tow an abandoned car to the LSPD impound for Tonya.",
-          "character": "Franklin",
-          "giver": "Tonya"
+          "id": "g6-side-001",
+          "name": "Get Shirley's Rum",
+          "description": "Shirley · Chapter 1. Missable: Chapter 1 only. Not needed for 100%.",
+          "character": "Jason or Lucia",
+          "giver": "Shirley"
         },
         {
-          "id": "side-002",
-          "name": "Pulling Another Favor",
-          "description": "A second impound tow for Tonya.",
-          "character": "Franklin",
-          "giver": "Tonya"
+          "id": "g6-side-002",
+          "name": "Steal the Scooter",
+          "description": "Shirley · Chapter 1. Missable: Chapter 1 only. Not needed for 100%.",
+          "character": "Jason or Lucia",
+          "giver": "Shirley"
         },
         {
-          "id": "side-003",
-          "name": "Pulling Favors Again",
-          "description": "Tow a stalled car to a repair shop.",
-          "character": "Franklin",
-          "giver": "Tonya"
+          "id": "g6-side-003",
+          "name": "Search for the Skunk Ape",
+          "description": "Kirk · Chapter 1. Night only. Starts from a flyer in Key Lento. Counts for the trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Kirk"
         },
         {
-          "id": "side-004",
-          "name": "Still Pulling Favors",
-          "description": "Tow a broken-down car to its destination.",
-          "character": "Franklin",
-          "giver": "Tonya"
+          "id": "g6-side-004",
+          "name": "Search for Tree Effigies",
+          "description": "Kirk · Chapter 1. Counts for the trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Kirk"
         },
         {
-          "id": "side-005",
-          "name": "Pulling One Last Favor",
-          "description": "Tonya's final tow job.",
-          "character": "Franklin",
-          "giver": "Tonya"
+          "id": "g6-side-005",
+          "name": "Help Kirk Find Mr. Mangrove",
+          "description": "Kirk · Chapter 1 · Lucia only. Night only. Finishes in Chapter 2. Counts for the trophy.",
+          "character": "Lucia",
+          "giver": "Kirk"
         },
         {
-          "id": "side-006",
-          "name": "Shift Work",
-          "description": "Win an evening street race against Hao's crew.",
-          "character": "Franklin",
-          "giver": "Hao"
+          "id": "g6-side-006",
+          "name": "Check Out McKittrick Farm",
+          "description": "Kyle · Chapter 2. Starts from a pilot job flyer. Counts for the trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Kyle"
         },
         {
-          "id": "side-007",
-          "name": "Paparazzo",
-          "description": "Chase a celebrity so Beverly can get his photos.",
-          "character": "Franklin",
-          "giver": "Beverly"
+          "id": "g6-side-007",
+          "name": "Collect Chemicals for Kyle",
+          "description": "Kyle · Chapter 2. Counts for the trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Kyle"
         },
         {
-          "id": "side-008",
-          "name": "Paparazzo - The Sex Tape",
-          "description": "Film a celebrity in secret and escape security.",
-          "character": "Franklin",
-          "giver": "Beverly"
+          "id": "g6-side-008",
+          "name": "Buddy?",
+          "description": "Kyle · Chapter 2. Can carry over to Chapter 3. Counts for the trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Kyle"
         },
         {
-          "id": "side-009",
-          "name": "Paparazzo - The Partnership",
-          "description": "Beverly proposes a partnership.",
-          "character": "Franklin",
-          "giver": "Beverly"
+          "id": "g6-side-009",
+          "name": "Steal Vehicles for Moses",
+          "description": "Moses · Chapter 2. Opens after the Moses story mission.",
+          "character": "Jason or Lucia",
+          "giver": "Moses"
         },
         {
-          "id": "side-010",
-          "name": "Paparazzo - The Meltdown",
-          "description": "Chase Poppy Mitchell so her arrest can be photographed.",
-          "character": "Franklin",
-          "giver": "Beverly"
+          "id": "g6-side-010",
+          "name": "Veteran Hunted",
+          "description": "Bret Vogel · Chapter 2 · Jason only. Bret texts after Coffee Break.",
+          "character": "Jason",
+          "giver": "Bret Vogel"
         },
         {
-          "id": "side-011",
-          "name": "Paparazzo - The Highness",
-          "description": "Photograph a princess at a drug deal without being seen.",
-          "character": "Franklin",
-          "giver": "Beverly"
+          "id": "g6-side-011",
+          "name": "Bret's Hunting Decks",
+          "description": "Bret Vogel · Chapter 2 · Jason only. Shoot all 15 target decks for the Fair Game trophy.",
+          "character": "Jason",
+          "giver": "Bret Vogel"
         },
         {
-          "id": "side-012",
-          "name": "Paparazzo - Reality Check",
-          "description": "Beverly's final job.",
-          "character": "Franklin",
-          "giver": "Beverly"
+          "id": "g6-side-012",
+          "name": "Thrillbillies",
+          "description": "Billy · Chapter 2. At the Thrillbilly Mud Club in Kelly County.",
+          "character": "Jason or Lucia",
+          "giver": "Billy"
         },
         {
-          "id": "side-013",
-          "name": "Grass Roots - Franklin",
-          "description": "Meet Barry, who is campaigning to legalize marijuana.",
-          "character": "Franklin",
-          "giver": "Barry"
+          "id": "g6-side-013",
+          "name": "Twist Wrist, Smash, Grab",
+          "description": "Billy · Chapter 2.",
+          "character": "Jason or Lucia",
+          "giver": "Billy"
         },
         {
-          "id": "side-014",
-          "name": "Grass Roots - The Pickup",
-          "description": "Deliver a truck to Barry without attracting the police.",
-          "character": "Franklin",
-          "giver": "Barry"
+          "id": "g6-side-014",
+          "name": "Mall Rats",
+          "description": "Billy · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Billy"
         },
         {
-          "id": "side-015",
-          "name": "Grass Roots - The Drag",
-          "description": "Tow a stash car to Barry's place.",
-          "character": "Franklin",
-          "giver": "Barry"
+          "id": "g6-side-015",
+          "name": "The Impaler",
+          "description": "Billy · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Billy"
         },
         {
-          "id": "side-016",
-          "name": "Grass Roots - The Smoke-In",
-          "description": "Make a delivery to Barry's smoke-in at City Hall.",
-          "character": "Franklin",
-          "giver": "Barry"
+          "id": "g6-side-016",
+          "name": "Hometown Heroes",
+          "description": "Billy · Chapter 3. Finishes the strand: The Lone Rider trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Billy"
         },
         {
-          "id": "side-017",
-          "name": "Exercising Demons - Franklin",
-          "description": "Beat Mary-Ann in a triathlon.",
-          "character": "Franklin",
-          "giver": "Mary-Ann"
+          "id": "g6-side-017",
+          "name": "Join a Street Race",
+          "description": "Yago · Chapter 3. Hit n Run VC racers in Salton. Counts for the trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Yago"
         },
         {
-          "id": "side-018",
-          "name": "A Starlet in Vinewood",
-          "description": "Confront Peter Dreyfuss. Unlocks after collecting all 50 Letter Scraps.",
-          "character": "Franklin",
-          "giver": "Peter Dreyfuss"
+          "id": "g6-side-018",
+          "name": "Bumper to Bumper",
+          "description": "Yago · Chapter 3 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Yago"
         },
         {
-          "id": "side-019",
-          "name": "Far Out",
-          "description": "Meet Omega, who sends you looking for spaceship parts.",
-          "character": "Franklin",
-          "giver": "Omega"
+          "id": "g6-side-019",
+          "name": "Race Against Yago",
+          "description": "Yago · Chapter 3 · Jason only. Time-sensitive and missable. Not needed for 100%.",
+          "character": "Jason",
+          "giver": "Yago"
         },
         {
-          "id": "side-020",
-          "name": "The Final Frontier",
-          "description": "Return to Omega after collecting all 50 Spaceship Parts.",
-          "character": "Franklin",
-          "giver": "Omega"
+          "id": "g6-side-020",
+          "name": "Brother to Brother",
+          "description": "Yago · Chapter 3 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Yago"
         },
         {
-          "id": "side-021",
-          "name": "Risk Assessment",
-          "description": "Skydive onto Mount Chiliad and race Dom down on bikes.",
-          "character": "Franklin",
-          "giver": "Dom"
+          "id": "g6-side-021",
+          "name": "Climbing the Cellerichain",
+          "description": "Andy · Chapter 3 · Lucia only. Andy texts Lucia an address in Belville.",
+          "character": "Lucia",
+          "giver": "Andy"
         },
         {
-          "id": "side-022",
-          "name": "Liquidity Risk",
-          "description": "Ride an ATV out of a cargo plane and skydive after Dom.",
-          "character": "Franklin",
-          "giver": "Dom"
+          "id": "g6-side-022",
+          "name": "Pay the Cellerica Fee",
+          "description": "Andy · Chapter 3 · Lucia only.",
+          "character": "Lucia",
+          "giver": "Andy"
         },
         {
-          "id": "side-023",
-          "name": "Targeted Risk",
-          "description": "Parachute onto a moving flatbed truck.",
-          "character": "Franklin",
-          "giver": "Dom"
+          "id": "g6-side-023",
+          "name": "Peach!",
+          "description": "Andy · Chapter 3 · Lucia only.",
+          "character": "Lucia",
+          "giver": "Andy"
         },
         {
-          "id": "side-024",
-          "name": "Uncalculated Risk",
-          "description": "Dom's final stunt. Unlocks after all 13 parachute jumps.",
-          "character": "Franklin",
-          "giver": "Dom"
+          "id": "g6-side-024",
+          "name": "Read the Label",
+          "description": "Andy · Chapter 3 · Lucia only.",
+          "character": "Lucia",
+          "giver": "Andy"
         },
         {
-          "id": "side-025",
-          "name": "The Last One",
-          "description": "Hunt for Bigfoot. Unlocks only at 100% completion.",
-          "character": "Franklin",
-          "giver": "Sasquatch hunter"
+          "id": "g6-side-025",
+          "name": "Puff Puff Pass",
+          "description": "Andy · Chapter 3 · Lucia only. Finishes the strand: Road to Rehabilitation trophy.",
+          "character": "Lucia",
+          "giver": "Andy"
         },
         {
-          "id": "side-026",
-          "name": "Grass Roots - Michael",
-          "description": "Michael tries Barry's product and fights off hallucinated aliens.",
-          "character": "Michael",
-          "giver": "Barry"
+          "id": "g6-side-026",
+          "name": "Yasmani's Jewelry Jobs",
+          "description": "Yasmani · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Yasmani"
         },
         {
-          "id": "side-027",
-          "name": "Exercising Demons - Michael",
-          "description": "Beat Mary-Ann in a foot race.",
-          "character": "Michael",
-          "giver": "Mary-Ann"
+          "id": "g6-side-027",
+          "name": "Yasmani's ATM Jobs",
+          "description": "Yasmani · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Yasmani"
         },
         {
-          "id": "side-028",
-          "name": "Seeking the Truth",
-          "description": "First Epsilon mission, after the Epsilon website evaluation.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-028",
+          "name": "Yasmani's Payday Loans Jobs",
+          "description": "Yasmani · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Yasmani"
         },
         {
-          "id": "side-029",
-          "name": "Accepting the Truth",
-          "description": "Visit an Epsilon room after a donation.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-029",
+          "name": "Tail the Security Van",
+          "description": "Yasmani · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Yasmani"
         },
         {
-          "id": "side-030",
-          "name": "Assuming the Truth",
-          "description": "Deliver five vehicles for the Epsilon Program.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-030",
+          "name": "Randy's Wish List",
+          "description": "Randy · Chapter 3. Steal 16 cars for the Supply & Demand trophy.",
+          "character": "Jason or Lucia",
+          "giver": "Randy"
         },
         {
-          "id": "side-031",
-          "name": "Chasing the Truth",
-          "description": "Search a field for Epsilon artifacts with a scanner.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-031",
+          "name": "Take Out Kitty Litter",
+          "description": "Tyrone · Chapter 3 · Jason only.",
+          "character": "Jason",
+          "giver": "Tyrone"
         },
         {
-          "id": "side-032",
-          "name": "Bearing the Truth",
-          "description": "Wear Epsilon robes for ten days.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-032",
+          "name": "Spin On This",
+          "description": "Tyrone · Chapter 3 · Jason only. Finishes the strand: Spin On This! trophy.",
+          "character": "Jason",
+          "giver": "Tyrone"
         },
         {
-          "id": "side-033",
-          "name": "Delivering the Truth",
-          "description": "Fly an Epsilon plane to Sandy Shores Airfield.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-033",
+          "name": "Dunk's Robbery Tips",
+          "description": "Dunk · Chapter 3.",
+          "character": "Jason or Lucia",
+          "giver": "Dunk"
         },
         {
-          "id": "side-034",
-          "name": "Exercising the Truth",
-          "description": "Complete a five-mile desert walk in robes.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-034",
+          "name": "Attend Eddie Acosta's Party",
+          "description": "Eddie Acosta · Chapter 4. Invite comes after Pool Day.",
+          "character": "Jason or Lucia",
+          "giver": "Eddie Acosta"
         },
         {
-          "id": "side-035",
-          "name": "Unknowing the Truth",
-          "description": "The Epsilon Program's final task.",
-          "character": "Michael",
-          "giver": "Epsilon Program"
+          "id": "g6-side-035",
+          "name": "The Last Mile: Passing the Torch",
+          "description": "Pilot Pete · Chapter 4 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Pilot Pete"
         },
         {
-          "id": "side-036",
-          "name": "Death at Sea",
-          "description": "Meet Abigail, who sends you after submarine pieces.",
-          "character": "Michael",
-          "giver": "Abigail"
+          "id": "g6-side-036",
+          "name": "The Last Mile: Backseat Pilot",
+          "description": "Pilot Pete · Chapter 4 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Pilot Pete"
         },
         {
-          "id": "side-037",
-          "name": "What Lies Beneath",
-          "description": "Return to Abigail after collecting all 30 Submarine Pieces.",
-          "character": "Michael",
-          "giver": "Abigail"
+          "id": "g6-side-037",
+          "name": "Pete's Deliveries: Southpoint Airfield",
+          "description": "Pilot Pete · Chapter 4 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Pilot Pete"
         },
         {
-          "id": "side-038",
-          "name": "Grass Roots - Trevor",
-          "description": "Trevor tries Barry's product and fights off hallucinated clowns.",
-          "character": "Trevor",
-          "giver": "Barry"
+          "id": "g6-side-038",
+          "name": "Pete's Deliveries: Avery Allen & Co.",
+          "description": "Pilot Pete · Chapter 4 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Pilot Pete"
         },
         {
-          "id": "side-039",
-          "name": "Exercising Demons - Trevor",
-          "description": "Beat Mary-Ann in a bike race.",
-          "character": "Trevor",
-          "giver": "Mary-Ann"
-        },
-        {
-          "id": "side-040",
-          "name": "Target Practice",
-          "description": "Prove your shooting skills to Cletus.",
-          "character": "Trevor",
-          "giver": "Cletus"
-        },
-        {
-          "id": "side-041",
-          "name": "Fair Game",
-          "description": "Go hunting with Cletus.",
-          "character": "Trevor",
-          "giver": "Cletus"
-        },
-        {
-          "id": "side-042",
-          "name": "The Civil Border Patrol",
-          "description": "Help two self-appointed border patrolmen.",
-          "character": "Trevor",
-          "giver": "Joe and Josef"
-        },
-        {
-          "id": "side-043",
-          "name": "An American Welcome",
-          "description": "Another job for the border patrolmen.",
-          "character": "Trevor",
-          "giver": "Joe and Josef"
-        },
-        {
-          "id": "side-044",
-          "name": "Minute Man Blues",
-          "description": "The final border patrol mission.",
-          "character": "Trevor",
-          "giver": "Joe and Josef"
-        },
-        {
-          "id": "side-045",
-          "name": "Special Bonds",
-          "description": "Meet Maude, who hands out bail bond jobs.",
-          "character": "Trevor",
-          "giver": "Maude"
-        },
-        {
-          "id": "side-046",
-          "name": "Mrs. Philips",
-          "description": "Trevor's mother pays a visit.",
-          "character": "Trevor",
-          "giver": "Mrs. Philips"
-        },
-        {
-          "id": "side-047",
-          "name": "Damaged Goods",
-          "description": "Follow-up to Mrs. Philips.",
-          "character": "Trevor",
-          "giver": "Mrs. Philips"
-        },
-        {
-          "id": "side-048",
-          "name": "Nigel and Mrs. Thornhill",
-          "description": "Meet two celebrity-obsessed British tourists.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-049",
-          "name": "Vinewood Souvenirs - Willy",
-          "description": "Get a souvenir from Willy for Nigel.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-050",
-          "name": "Vinewood Souvenirs - Tyler",
-          "description": "Steal Tyler Dixon's clothes without being seen.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-051",
-          "name": "Vinewood Souvenirs - Kerry",
-          "description": "Chase Kerry McIntosh's dog and take its collar.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-052",
-          "name": "Vinewood Souvenirs - Mark",
-          "description": "Get Mark Fostenburg's golf club.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-053",
-          "name": "Vinewood Souvenirs - Al Di Napoli",
-          "description": "Kidnap actor Al Di Napoli for Nigel.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-054",
-          "name": "Vinewood Souvenirs - The Last Act",
-          "description": "The final Vinewood Souvenirs job.",
-          "character": "Trevor",
-          "giver": "Nigel"
-        },
-        {
-          "id": "side-055",
-          "name": "Extra Commission",
-          "description": "Destroy 15 of a rival realtor's For Sale signs.",
-          "character": "Trevor",
-          "giver": "Josh"
-        },
-        {
-          "id": "side-056",
-          "name": "Closing the Deal",
-          "description": "Chase down and beat up the rival realtor.",
-          "character": "Trevor",
-          "giver": "Josh"
-        },
-        {
-          "id": "side-057",
-          "name": "Surreal Estate",
-          "description": "Burn down Josh's house for the insurance money.",
-          "character": "Trevor",
-          "giver": "Josh"
-        },
-        {
-          "id": "side-058",
-          "name": "Breach of Contract",
-          "description": "Josh betrays Trevor to the police.",
-          "character": "Trevor",
-          "giver": "Josh"
-        },
-        {
-          "id": "side-059",
-          "name": "Rampage 1: Rednecks",
-          "description": "Kill 25 rednecks within 2 minutes.",
-          "character": "Trevor",
-          "giver": "Rampage"
-        },
-        {
-          "id": "side-060",
-          "name": "Rampage 2: Vagos",
-          "description": "Kill 30 Vagos within 2 minutes.",
-          "character": "Trevor",
-          "giver": "Rampage"
-        },
-        {
-          "id": "side-061",
-          "name": "Rampage 3: Ballas",
-          "description": "Kill 30 Ballas within 2 minutes.",
-          "character": "Trevor",
-          "giver": "Rampage"
-        },
-        {
-          "id": "side-062",
-          "name": "Rampage 4: Military",
-          "description": "Kill 35 soldiers and destroy tanks within 3 minutes, using a grenade launcher.",
-          "character": "Trevor",
-          "giver": "Rampage"
-        },
-        {
-          "id": "side-063",
-          "name": "Rampage 5: Hipsters",
-          "description": "Kill 20 hipsters within 2 minutes.",
-          "character": "Trevor",
-          "giver": "Rampage"
-        },
-        {
-          "id": "side-064",
-          "name": "Bail Bond: Ralph Ostrowski",
-          "description": "Bring in a fugitive hiding at the Davis Quartz quarry. Alive pays more.",
-          "character": "Trevor",
-          "giver": "Maude"
-        },
-        {
-          "id": "side-065",
-          "name": "Bail Bond: Larry Tupper",
-          "description": "Bring in a fugitive at a barn near Harmony. Alive pays more.",
-          "character": "Trevor",
-          "giver": "Maude"
-        },
-        {
-          "id": "side-066",
-          "name": "Bail Bond: Glenn Scoville",
-          "description": "Bring in a fugitive on Mount Chiliad. Alive pays more.",
-          "character": "Trevor",
-          "giver": "Maude"
-        },
-        {
-          "id": "side-067",
-          "name": "Bail Bond: Curtis Weaver",
-          "description": "Bring in a fugitive at a commune east of Paleto Bay. Alive pays more.",
-          "character": "Trevor",
-          "giver": "Maude"
-        },
-        {
-          "id": "side-068",
-          "name": "The Multi Target Assassination",
-          "description": "Optional Lester contract with a stock-market tie-in.",
-          "character": "Franklin",
-          "giver": "Lester"
-        },
-        {
-          "id": "side-069",
-          "name": "The Vice Assassination",
-          "description": "Optional Lester contract with a stock-market tie-in.",
-          "character": "Franklin",
-          "giver": "Lester"
-        },
-        {
-          "id": "side-070",
-          "name": "The Bus Assassination",
-          "description": "Optional Lester contract with a stock-market tie-in.",
-          "character": "Franklin",
-          "giver": "Lester"
-        },
-        {
-          "id": "side-071",
-          "name": "The Construction Assassination",
-          "description": "Optional Lester contract with a stock-market tie-in.",
-          "character": "Franklin",
-          "giver": "Lester"
+          "id": "g6-side-039",
+          "name": "Deliver Packages",
+          "description": "Pilot Pete · Chapter 4 · Jason only. Counts for the trophy.",
+          "character": "Jason",
+          "giver": "Pilot Pete"
         }
       ]
     },
@@ -1255,74 +1041,179 @@
       "name": "Collectibles",
       "items": [
         {
-          "id": "col-001",
-          "name": "Letter Scraps (50)",
-          "description": "Collect all 50 to piece together a confession, unlock A Starlet in Vinewood and the A Mystery, Solved achievement.",
+          "id": "g6-col-001",
+          "name": "Vice City Flamingos cards",
+          "description": "Card set · 24 cards. Full set unlocks the Bubblegum Filter cheat.",
           "character": "Any",
-          "count": 50
+          "count": 24
         },
         {
-          "id": "col-002",
-          "name": "Spaceship Parts (50)",
-          "description": "Available after Far Out. Collect all 50 for The Final Frontier, the Space Docker vehicle and the From Beyond the Stars achievement.",
-          "character": "Franklin",
-          "count": 50
+          "id": "g6-col-002",
+          "name": "Vice City Narcos cards",
+          "description": "Card set · 24 cards.",
+          "character": "Any",
+          "count": 24
         },
         {
-          "id": "col-003",
-          "name": "Submarine Pieces (30)",
-          "description": "Available after Death at Sea. Collect all 30 for What Lies Beneath.",
-          "character": "Michael",
+          "id": "g6-col-003",
+          "name": "Vice City Manatees cards",
+          "description": "Card set · 24 cards.",
+          "character": "Any",
+          "count": 24
+        },
+        {
+          "id": "g6-col-004",
+          "name": "Vice City Club De Fútbol cards",
+          "description": "Card set · 30 cards.",
+          "character": "Any",
           "count": 30
         },
         {
-          "id": "col-004",
-          "name": "Nuclear Waste (30)",
-          "description": "Underwater barrels collected with a submersible after buying the Sonar Collections Dock. Pays per barrel and unlocks Waste Management.",
-          "character": "Michael, Trevor",
-          "count": 30
-        },
-        {
-          "id": "col-005",
-          "name": "Epsilon Tracts (10)",
-          "description": "Part of the Epsilon Program missions.",
-          "character": "Michael",
-          "count": 10
-        },
-        {
-          "id": "col-006",
-          "name": "Stunt Jumps (50)",
-          "description": "Land a clean jump on each ramp. 25 count toward 100%; all 50 unlock Show Off.",
+          "id": "g6-col-005",
+          "name": "Liberty City Swingers cards",
+          "description": "Card set · 24 cards.",
           "character": "Any",
-          "count": 50
+          "count": 24
         },
         {
-          "id": "col-007",
-          "name": "Under the Bridge (50)",
-          "description": "Fly a plane under each bridge. 25 count toward 100%; all 50 plus all Knife Flights unlock Close Shave.",
+          "id": "g6-col-006",
+          "name": "Liberty City Penetrators cards",
+          "description": "Card set · 24 cards.",
           "character": "Any",
-          "count": 50
+          "count": 24
         },
         {
-          "id": "col-008",
-          "name": "Knife Flights (15)",
-          "description": "Fly a plane sideways through each narrow gap. 8 count toward 100%.",
+          "id": "g6-col-007",
+          "name": "Liberty City Wrath cards",
+          "description": "Card set · 24 cards.",
+          "character": "Any",
+          "count": 24
+        },
+        {
+          "id": "g6-col-008",
+          "name": "Los Santos Corkers cards",
+          "description": "Card set · 24 cards. One card at the Starlet Motel may be missable after Chapter 2.",
+          "character": "Any",
+          "count": 24
+        },
+        {
+          "id": "g6-col-009",
+          "name": "Los Santos Panic cards",
+          "description": "Card set · 24 cards.",
+          "character": "Any",
+          "count": 24
+        },
+        {
+          "id": "g6-col-010",
+          "name": "Los Santos Pounders cards",
+          "description": "Card set · 24 cards.",
+          "character": "Any",
+          "count": 24
+        },
+        {
+          "id": "g6-col-011",
+          "name": "Backyard Wrestling cards",
+          "description": "Card set · 12 cards.",
+          "character": "Any",
+          "count": 12
+        },
+        {
+          "id": "g6-col-012",
+          "name": "America's Next Top Hooker cards",
+          "description": "Card set · 24 cards.",
+          "character": "Any",
+          "count": 24
+        },
+        {
+          "id": "g6-col-013",
+          "name": "Delights Dancers cards",
+          "description": "Card set · 18 cards. One card at the Starlet Motel may be missable after Chapter 2.",
+          "character": "Any",
+          "count": 18
+        },
+        {
+          "id": "g6-col-014",
+          "name": "Jack of Hearts Dancers cards",
+          "description": "Card set · 36 cards.",
+          "character": "Any",
+          "count": 36
+        },
+        {
+          "id": "g6-col-015",
+          "name": "Nine1Nine Dancers cards",
+          "description": "Card set · 36 cards.",
+          "character": "Any",
+          "count": 36
+        },
+        {
+          "id": "g6-col-016",
+          "name": "The Legends of Ratface cards",
+          "description": "Card set · 36 cards.",
+          "character": "Any",
+          "count": 36
+        },
+        {
+          "id": "g6-col-017",
+          "name": "Right Wing: America's Hero cards",
+          "description": "Card set · 36 cards.",
+          "character": "Any",
+          "count": 36
+        },
+        {
+          "id": "g6-col-018",
+          "name": "Ed Comics Universe cards",
+          "description": "Card set · 36 cards.",
+          "character": "Any",
+          "count": 36
+        },
+        {
+          "id": "g6-col-019",
+          "name": "Cocaine Flamingos: destroy 100",
+          "description": "100 of 125 count for 100%. 50 unlock the Inflatable Flamingo cheat.",
+          "character": "Any",
+          "count": 100
+        },
+        {
+          "id": "g6-col-020",
+          "name": "WAiNK scans: 100",
+          "description": "Landmarks, curiosities and sculptures. 100 count for 100% and a trophy.",
+          "character": "Any",
+          "count": 100
+        },
+        {
+          "id": "g6-col-021",
+          "name": "Underwater Discoveries: all 33",
+          "description": "All 33 count for 100%.",
+          "character": "Any",
+          "count": 33
+        },
+        {
+          "id": "g6-col-022",
+          "name": "Meditation spots: 15",
+          "description": "15 of 18 count for 100%. All 18 give a trophy.",
           "character": "Any",
           "count": 15
         },
         {
-          "id": "col-009",
-          "name": "Peyote Plants (27)",
-          "description": "Enhanced Edition. Eating one turns you into an animal for a short time.",
+          "id": "g6-col-023",
+          "name": "Magazines, books and comics: 30",
+          "description": "30 of 34 count for 100% (27 plus 7 book swaps).",
           "character": "Any",
-          "count": 27
+          "count": 30
         },
         {
-          "id": "col-010",
-          "name": "Monkey Mosaics (50)",
-          "description": "Enhanced Edition. Photograph all 50 wall mosaics.",
+          "id": "g6-col-024",
+          "name": "Kenton's treasure sets: 5",
+          "description": "5 of Kenton's 7 dive sets count for 100%. Each pays cash.",
           "character": "Any",
-          "count": 50
+          "count": 5
+        },
+        {
+          "id": "g6-col-025",
+          "name": "Watches: 20",
+          "description": "Not in 100%. 10 and 20 unlock two time cheats.",
+          "character": "Any",
+          "count": 20
         }
       ]
     }

@@ -39,7 +39,7 @@ Ids of published items are locked in the editor. The page is public but does not
 
 - **Never change or reuse an `id`.** Players' progress is stored against it. Renaming `story-001` to `story-1` silently un-ticks it for everyone. Change `name` freely instead.
 - **Always bump `version`.** Without it, the app ignores the update.
-- **Don't delete items players may have ticked.** It loses their progress on those items. The check fails if an `id` disappears and lists which ones; if you really mean it, use **Submit anyway** in the editor (or put `[submit anyway]` in the commit message when editing by hand). Removing a category in the editor also removes its home card.
+- **Don't delete items players may have ticked.** It loses their progress on those items. The check fails if an `id` disappears and lists which ones; if you really mean it, use **Submit anyway** in the editor (or put `[submit anyway]` in the commit message when editing by hand). Removing a category in the editor also removes its home card. When a pull request removes ids, merge it with **Squash and merge** and keep `[submit anyway]` in the commit title: a regular merge commit doesn't carry it, so the publish fails. To publish after that happens, merge any follow-up commit that doesn't touch `data.json`.
 - `id`s are lowercase letters, numbers and dashes, unique across categories, items and cheats. Card ids are separate, so a card can share its category's id (`"id": "story"`, `"categoryId": "story"`).
 
 ## Format
