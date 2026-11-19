@@ -1,7 +1,7 @@
 {
   "$schema": "./data.schema.json",
-  "version": 3.4,
-  "updatedAt": "2026-11-19",
+  "version": 3.5,
+  "updatedAt": "2026-11-20",
   "update": {
     "latestVersion": "1.0.0",
     "minVersion": "1.0.0",
@@ -87,7 +87,7 @@
   ],
   "ads": {
     "enabled": true,
-    "nativeEvery": 12,
+    "nativeEvery": 15,
     "listBanner": true,
     "detailBanner": true
   },
@@ -1907,12 +1907,12 @@
       "effect": "Gives $250,000 cash.",
       "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
+      "unlock": {
+        "type": "story"
+      },
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Up, Right, Down, Left, Up, Left, Down, Right",
         "xbox": "Phone open, hold LB + RB: Up, Right, Down, Left, Up, Left, Down, Right"
-      },
-      "unlock": {
-        "type": "story"
       }
     },
     {
@@ -1921,12 +1921,12 @@
       "effect": "Unlimited Focus meter.",
       "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
+      "unlock": {
+        "type": "story"
+      },
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Down, Up, Up, Down, Up, Down, Up, Down, Up, Right",
         "xbox": "Phone open, hold LB + RB: Down, Up, Up, Down, Up, Down, Up, Down, Up, Right"
-      },
-      "unlock": {
-        "type": "story"
       }
     },
     {
@@ -1935,12 +1935,12 @@
       "effect": "Combat cheat; exact effect not yet described by sources.",
       "details": "Unofficial: reported by PC Gamer and Press Start from review copies, not yet confirmed by Vice Tracker. Unlocks after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
+      "unlock": {
+        "type": "story"
+      },
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Down",
         "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Down"
-      },
-      "unlock": {
-        "type": "story"
       }
     },
     {
@@ -1949,13 +1949,13 @@
       "effect": "Makes your character drunk.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, spend $2,500 on alcohol. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right",
-        "xbox": "Phone open, hold LB + RB: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-drunk"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right",
+        "xbox": "Phone open, hold LB + RB: Up, Left, Right, Up, Up, Left, Right, Up, Left, Right"
       }
     },
     {
@@ -1964,13 +1964,13 @@
       "effect": "Raises your heat level.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, lose a 3-star Wanted level 25 times. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Left, Down, Right, Down, Up, Down, Up",
-        "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Down, Up"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-raise-heat"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Down, Right, Down, Up, Down, Up",
+        "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Down, Up"
       }
     },
     {
@@ -1979,13 +1979,13 @@
       "effect": "Raises your Wanted level.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, lose a 3-star Wanted level 50 times. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Left, Down, Right, Down, Up, Right, Up",
-        "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Right, Up"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-raise-wanted"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Down, Right, Down, Up, Right, Up",
+        "xbox": "Phone open, hold LB + RB: Left, Down, Right, Down, Up, Right, Up"
       }
     },
     {
@@ -1994,13 +1994,13 @@
       "effect": "You take no damage from falls.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, survive 20 falls from 40 ft. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-no-fall-damage"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2009,13 +2009,13 @@
       "effect": "Gives you a parachute.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, do 50 skydives or BASE jumps from 300 ft or higher. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-parachute"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2024,13 +2024,13 @@
       "effect": "Gives you full body armor.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, complete 100 workouts. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down",
-        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-body-armor"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Up, Up, Up, Up, Up, Down, Down"
       }
     },
     {
@@ -2039,13 +2039,13 @@
       "effect": "Repairs the vehicle you are in.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, win 10 races (1st place) at Gellhorn, Thrillbilly Mud Club or Boone Speedway. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-repair-vehicle"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2054,13 +2054,13 @@
       "effect": "Unlimited nitrous boost.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 50 stunt jumps. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-unlimited-nitrous"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2069,13 +2069,13 @@
       "effect": "Fills the ammo of every weapon you carry.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, win 25 bronze-or-better medals at shooting ranges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left",
-        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-max-ammo"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Up, Down, Left"
       }
     },
     {
@@ -2084,13 +2084,13 @@
       "effect": "Ammo never runs out.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, win 25 silver-or-better medals at shooting ranges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down",
-        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-infinite-ammo"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Down"
       }
     },
     {
@@ -2099,13 +2099,13 @@
       "effect": "Fire without reloading.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, win 25 gold medals at shooting ranges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up",
-        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-no-reload"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Right, Down, Left, Left, Up, Down, Down, Up"
       }
     },
     {
@@ -2114,13 +2114,13 @@
       "effect": "Gives you every explosive weapon.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, throw 100 grenades. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-all-explosive-weapons"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2129,13 +2129,13 @@
       "effect": "Your bullets set targets on fire.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, burn 100 enemies with fire damage. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-incendiary-ammo"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2144,13 +2144,13 @@
       "effect": "Thrown bottles explode.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, throw 100 Molotovs. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-exploding-bottles"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2159,13 +2159,13 @@
       "effect": "Shotgun rounds explode.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, hit 100 enemies with explosive damage. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-explosive-shotgun"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2174,13 +2174,13 @@
       "effect": "Gives you the Hauners H-AT launcher.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, destroy 100 vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-hauners-h-at"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2189,13 +2189,13 @@
       "effect": "Thrown balls explode.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, hit 20 enemies with explosive damage. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Right",
-        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Right"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-exploding-balls"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Down, Up, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Down, Up, Right"
       }
     },
     {
@@ -2204,13 +2204,13 @@
       "effect": "Vehicle combat cheat (exact effect to confirm in game).",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, kill 25 enemies with a vehicle. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Left, Up, Down",
-        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Left, Up, Down"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-vehicle-force"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Up, Left, Left, Right, Down, Left, Up, Down",
+        "xbox": "Phone open, hold LB + RB: Down, Up, Left, Left, Right, Down, Left, Up, Down"
       }
     },
     {
@@ -2219,13 +2219,13 @@
       "effect": "Spawns an Interstate Ambulance.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, discover the Interstate Ambulance in the Progress menu. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-spawn-ambulance"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2234,14 +2234,14 @@
       "effect": "Spawns an Airboat.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Survival challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-survival",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2250,14 +2250,14 @@
       "effect": "Spawns a Bravado Banshee.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Combat challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-combat",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2266,14 +2266,14 @@
       "effect": "Spawns a Tuff BMX.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Fitness challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-fitness",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2282,14 +2282,14 @@
       "effect": "Spawns a Maibatsu Boomazoom.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, complete 5 Shopping challenges. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Left, Up, Left",
-        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Left, Up, Left"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-shopping",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Left, Up, Left",
+        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Left, Up, Left"
       }
     },
     {
@@ -2298,14 +2298,14 @@
       "effect": "Spawns a Nagasaki Carbon RS.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Exploration challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-exploration",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2314,14 +2314,14 @@
       "effect": "Spawns a '65 Vapid Dominator.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Fitness challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-fitness",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2330,14 +2330,14 @@
       "effect": "Spawns a Progen Emerus.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Vehicle challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-vehicle",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2346,13 +2346,13 @@
       "effect": "Spawns an Inflatable Flamingo.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, destroy 50 cocaine flamingos. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-spawn-flamingo"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2361,13 +2361,13 @@
       "effect": "Spawns an MTL Pumper fire truck.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, discover the MTL Pumper in the Progress menu. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Right, Right, Up",
-        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Up"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-spawn-pumper"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Right, Right, Up",
+        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Up"
       }
     },
     {
@@ -2376,14 +2376,14 @@
       "effect": "Spawns a Vapid Stanier G2 Taxi.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Sports challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-sports",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2392,13 +2392,13 @@
       "effect": "Spawns a Hauners P-996 Lazer jet.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 80 challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "count": 80
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2407,13 +2407,13 @@
       "effect": "Spawns an HVY Bulldozer.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, discover the HVY Bulldozer in the Progress menu. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Right, Right, Down",
-        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Down"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-spawn-bulldozer"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Left, Up, Right, Down, Left, Right, Right, Down",
+        "xbox": "Phone open, hold LB + RB: Left, Up, Right, Down, Left, Right, Right, Down"
       }
     },
     {
@@ -2422,14 +2422,14 @@
       "effect": "Spawns a Lapwing Mallard.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Vehicle challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-vehicle",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2438,14 +2438,14 @@
       "effect": "Spawns a Brimstone Golfer.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Sports challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-sports",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2454,14 +2454,14 @@
       "effect": "Spawns a Hauners Rhino Tank.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Survival challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-survival",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2470,14 +2470,14 @@
       "effect": "Spawns a Maibatsu Sanchez.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Criminal challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-criminal",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2486,14 +2486,14 @@
       "effect": "Spawns a Nagasaki Sea Sparrow.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Exploration challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-exploration",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2502,14 +2502,14 @@
       "effect": "Spawns a Speeder 700 GT.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 5 Combat challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-combat",
         "count": 5
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2518,14 +2518,14 @@
       "effect": "Spawns a Truffade Thrax.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Shopping challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-shopping",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2534,14 +2534,14 @@
       "effect": "Spawns a Western Zombie Bobber.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete all 10 Criminal challenges. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "challenges",
         "group": "g6-ch-criminal",
         "count": 10
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2550,13 +2550,13 @@
       "effect": "Moves the time of day forward.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, find 10 collectible watches. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-move-time-forward"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2565,13 +2565,13 @@
       "effect": "Freezes the time of day.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, find 20 collectible watches. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-pause-time"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2580,12 +2580,12 @@
       "effect": "Cycles through weather types.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, finish the main story. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
+      "unlock": {
+        "type": "story"
+      },
       "codes": {
         "playstation": "Phone open, hold L1 + R1: Down, Right, Up, Down, Right, Up, Right",
         "xbox": "Phone open, hold LB + RB: Down, Right, Up, Down, Right, Up, Right"
-      },
-      "unlock": {
-        "type": "story"
       }
     },
     {
@@ -2594,13 +2594,13 @@
       "effect": "Applies the Golden Hour screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, spend 4 hours holding hands with your partner. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-golden-hour"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2609,13 +2609,13 @@
       "effect": "Applies the Powdered Sugar screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, scan all space debris with WAiNK. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-powdered-sugar"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2624,13 +2624,13 @@
       "effect": "Applies the Pinhole screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, clear 25 gang operations with your partner. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-pinhole"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2639,13 +2639,13 @@
       "effect": "Applies the Neon Jungle screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, discover all 16 Girlypop vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-neon-jungle"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2654,13 +2654,13 @@
       "effect": "Applies the Yesteryear screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, discover the Ridgway. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-yesteryear"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2669,13 +2669,13 @@
       "effect": "Applies the Cataclysm screen filter.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, discover Martha's Vamos in the Progress menu. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right",
-        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-cataclysm"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Right, Right"
       }
     },
     {
@@ -2684,13 +2684,13 @@
       "effect": "Applies the Videotape screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 50 activities with your partner. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-videotape"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2699,13 +2699,13 @@
       "effect": "Applies the Dark Mirror screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, make $500,000 selling vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-dark-mirror"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2714,13 +2714,13 @@
       "effect": "Applies the Migraine screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, survive 6 minutes at a 6-star Wanted level. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-migraine"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2729,13 +2729,13 @@
       "effect": "Applies the Dollhouse screen filter.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, spend 8 hours with your partner. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right",
-        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-dollhouse"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Down, Right"
       }
     },
     {
@@ -2744,13 +2744,13 @@
       "effect": "Applies the Bubblegum screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, find all 24 Vice City Flamingos collectible cards. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-bubblegum"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2759,13 +2759,13 @@
       "effect": "Applies the Fast Forward screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, complete 50 meditations. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-fast-forward"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2774,13 +2774,13 @@
       "effect": "Applies the Fisheye screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, catch 100 fish. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-fisheye"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2789,13 +2789,13 @@
       "effect": "Applies the Faded Glory screen filter.",
       "details": "Unofficial: reported by PC Gamer and Red Bull, not yet confirmed by Vice Tracker. To unlock it, rob 50 stores with your partner. Cheats only work after you finish the main story. Open the phone (D-pad Up), hold L1 + R1 (LB + RB on Xbox), then enter the D-pad sequence. Xbox buttons are the expected equivalent; no source has listed them yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right",
-        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-faded-glory"
+      },
+      "codes": {
+        "playstation": "Phone open, hold L1 + R1: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right",
+        "xbox": "Phone open, hold LB + RB: Down, Down, Up, Right, Right, Up, Left, Left, Left, Right"
       }
     },
     {
@@ -2804,13 +2804,13 @@
       "effect": "Applies the Pixel Art screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, make $250,000 selling collectibles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-pixel-art"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     },
     {
@@ -2819,13 +2819,13 @@
       "effect": "Applies the Hellscape screen filter.",
       "details": "Unofficial: reported by Red Bull and PC Gamer, not yet confirmed by Vice Tracker. To unlock it, steal 100 cop vehicles. Cheats only work after you finish the main story. The button code is coming soon: no source has reported it yet. Using a cheat turns off saving until you reload.",
       "tag": "unofficial",
-      "codes": {
-        "playstation": "Coming soon",
-        "xbox": "Coming soon"
-      },
       "unlock": {
         "type": "milestone",
         "id": "g6-ms-filter-hellscape"
+      },
+      "codes": {
+        "playstation": "Coming soon",
+        "xbox": "Coming soon"
       }
     }
   ]
