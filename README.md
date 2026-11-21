@@ -25,6 +25,8 @@ Edit anything, then click **Submit** (or Ctrl+S). The editor:
 - checks the file with the same rules as the Action (`scripts/check.mjs`) and, if anything's wrong, lists the problems before pushing. Choose **Go back and fix**, or **Submit anyway** to publish as is: that adds `[submit anyway]` to the commit message, and the Action then reports the problems as warnings instead of blocking the publish,
 - commits `data.json` to `main`, follows the **Validate and publish** run, and tells you whether it went live, failed validation, or failed to publish.
 
+The editor covers every section the app reads: story missions by chapter (the **Chapter** field writes the `Chapter N: ` prefix the app's Story page groups by, and the editor warns when a mission has none), side quests, collectibles with their `count`, challenge and milestone groups and their items (add, rename, reorder, remove), cheats with their tag, unlock rule and a **Code coming soon** switch, home cards, ads, the countdown and the update prompt. Milestones and challenge groups show which cheats they unlock.
+
 Ids of published items are locked in the editor. The page is public but does nothing without your token, which stays in your browser and is only sent to GitHub.
 
 ### By hand
