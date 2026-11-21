@@ -72,6 +72,13 @@
   .editor .btns { margin-top: 14px; }
   .empty { padding: 24px; text-align: center; color: var(--muted); }
   .search { max-width: 280px; }
+  select.filter { width: auto; max-width: 220px; }
+  .row .tag { white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+  .tag.lock { color: var(--accent); border-color: rgba(255,62,138,.45); }
+  .tag.soon { color: var(--warn); }
+  .warnbox { border-color: var(--warn); color: var(--warn); }
+  .warnbox ul { margin: 6px 0 0; padding-left: 20px; }
+  .links { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 
   .modal-bg { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,.65); padding: 16px; }
   .modal { width: min(580px, 100%); max-height: 86vh; overflow: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 22px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
@@ -288,6 +295,46 @@ function nextId(list, fallbackPrefix) {
 }
 const slug = s => s.toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
+// ---------- story chapters ----------
+// data.json has no chapter field: the app reads the chapter from a "Chapter 3: " prefix on the description
+// (src/lib/chapters.ts). It shows the chapter page only when every item in the category has one.
+const CHAPTER = /^\s*Chapter\s+(\d+)\s*:\s*/i;
+const chapterOf = item => { const m = typeof item.description === 'string' && item.description.match(CHAPTER); return m ? Number(m[1]) : null; };
+const withoutChapter = d => (d ?? '').replace(CHAPTER, '');
+// A category edited by chapter: the story, or any category whose items already carry a chapter.
+const usesChapters = cat => cat.id === 'story' || cat.items.some(i => chapterOf(i) !== null);
+const chapterNumbers = cat => [...new Set(cat.items.map(chapterOf).filter(n => n !== null))].sort((a, b) => a - b);
+
+// ---------- cheats ----------
+// A code the app treats as unknown: it shows "Code coming soon" (src/lib/cheats.ts).
+const PLACEHOLDER = /^\s*coming soon\s*$/i;
+const COMING_SOON = 'Coming soon';
+const codeIsSoon = codes => { const v = Object.values(codes || {}); return v.length > 0 && v.every(c => !c || PLACEHOLDER.test(c)); };
+const cheatLabel = c => (c.name || c.id).replace(/\s*\((unofficial|verified)\)\s*$/i, '');
+const groupName = (key, id) => (state.data[key] || []).find(g => g.id === id)?.name || id;
+function unlockLabel(u) {
+  if (!u?.type) return '';
+  if (u.type === 'story') return 'Story';
+  if (u.type === 'challenges') return `${u.count ?? '?'} ${u.group ? groupName('challenges', u.group) : 'challenges (any group)'}`;
+  if (u.type === 'milestone') {
+    const item = (state.data.milestones || []).flatMap(g => g.items).find(i => i.id === u.id);
+    return item ? `Milestone: ${item.name}` : `Milestone ${u.id || '?'} (missing)`;
+  }
+  return u.type;
+}
+// Cheats unlocked by a milestone item, or by a challenge group (with how many it takes).
+const cheatsForMilestone = id => state.data.cheats.filter(c => c.unlock?.type === 'milestone' && c.unlock.id === id);
+const cheatsForGroup = id => state.data.cheats.filter(c => c.unlock?.type === 'challenges' && c.unlock.group === id).sort((a, b) => (a.unlock.count ?? 0) - (b.unlock.count ?? 0));
+// Opens a cheat in the Cheats section.
+function goToCheat(cheat) {
+  const i = state.data.cheats.indexOf(cheat);
+  state.section = 'cheats'; state.filter.cheats = ''; state.filter['cheats:chip'] = '';
+  state.open.add(`cheats:${i}`);
+  render();
+  document.querySelectorAll('.row')[i]?.scrollIntoView({ block: 'center' });
+}
+const cheatLinks = list => list.map(c => h('a', { href: '#', class: 'tag', onclick: e => { e.preventDefault(); e.stopPropagation(); goToCheat(c); } }, cheatLabel(c)));
+
 // ---------- form fields (bound straight to the object they edit) ----------
 
 function wrap(label, input, o, ...extra) {
@@ -459,6 +506,8 @@ function summarize(next, prev) {
   diff('Categories', next.categories.map(({ items, ...c }) => c), prev.categories.map(({ items, ...c }) => c));
   for (const g of next.challenges || []) diff(`${g.name || g.id} challenges`, g.items, (prev.challenges || []).find(x => x.id === g.id)?.items);
   for (const g of next.milestones || []) diff(`${g.name || g.id} milestones`, g.items, (prev.milestones || []).find(x => x.id === g.id)?.items);
+  diff('Challenge groups', (next.challenges || []).map(({ items, ...g }) => g), (prev.challenges || []).map(({ items, ...g }) => g));
+  diff('Milestone groups', (next.milestones || []).map(({ items, ...g }) => g), (prev.milestones || []).map(({ items, ...g }) => g));
   diff('Cheats', next.cheats, prev.cheats);
   diff('Home cards', next.cards, prev.cards);
   for (const [k, label] of [['update', 'Update prompt'], ['ads', 'Ads'], ['countdown', 'Countdown']])
@@ -652,8 +701,12 @@ function sections() {
     ...d.categories.map((c, i) => ['cat:' + i, c.name || c.id || 'New category', c.items.length]),
     ['cheats', 'Cheats', d.cheats.length],
     ['categories', 'Manage categories', d.categories.length],
-    ...((d.challenges || []).length ? [['Challenges'], ...d.challenges.map((g, i) => ['chg:' + i, g.name || g.id, g.items.length])] : []),
-    ...((d.milestones || []).length ? [['Milestones'], ...d.milestones.map((g, i) => ['msg:' + i, g.name || g.id, g.items.length])] : []),
+    ['Challenges'],
+    ...(d.challenges || []).map((g, i) => ['chg:' + i, g.name || g.id || 'New group', g.items.length]),
+    ['chgroups', 'Manage challenge groups', (d.challenges || []).length],
+    ['Milestones'],
+    ...(d.milestones || []).map((g, i) => ['msg:' + i, g.name || g.id || 'New group', g.items.length]),
+    ['msgroups', 'Manage milestone groups', (d.milestones || []).length],
   ];
 }
 
@@ -724,6 +777,8 @@ function renderSection(main) {
   if (s === 'cards') return main.append(...cardsSection());
   if (s === 'cheats') return main.append(...cheatsSection());
   if (s === 'categories') return main.append(...categoriesSection());
+  if (s === 'chgroups') return main.append(...groupsSection('challenges'));
+  if (s === 'msgroups') return main.append(...groupsSection('milestones'));
   if (s.startsWith('chg:') || s.startsWith('msg:')) {
     const key = s.startsWith('chg:') ? 'challenges' : 'milestones';
     const g = (state.data[key] || [])[+s.slice(4)];
@@ -744,7 +799,11 @@ function overview() {
     head('Overview', 'Everything in data.json. Pick a section on the left to edit it, then Submit to publish.'),
     h('div', { class: 'stats' },
       [['Version', live.version, `next: ${state.nextVersion(live.version)}`], ['Updated', live.updatedAt, `next: ${today()}`],
-       ['Items', items, `${d.categories.length} categories`], ['Cheats', d.cheats.length, ''], ['Home cards', d.cards?.length ?? 0, '']]
+       ['Items', items, `${d.categories.length} categories`],
+       ['Challenges', (d.challenges || []).reduce((n, g) => n + g.items.length, 0), `${(d.challenges || []).length} groups`],
+       ['Milestones', (d.milestones || []).reduce((n, g) => n + g.items.length, 0), `${(d.milestones || []).length} groups`],
+       ['Cheats', d.cheats.length, `${d.cheats.filter(c => codeIsSoon(c.codes) || !Object.keys(c.codes || {}).length).length} code coming soon`],
+       ['Home cards', d.cards?.length ?? 0, '']]
         .map(([l, v, sub]) => h('div', { class: 'card' }, h('div', { class: 'muted' }, l), h('div', { class: 'stat' }, v), h('div', { class: 'hint' }, sub)))),
     h('div', { class: 'card' },
       h('h3', null, 'How publishing works'),
@@ -768,12 +827,20 @@ function optionalSection(key, title, sub, defaults, body) {
 }
 
 // Expandable list shared by items and cheats.
-function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, kind }) {
-  const filterInput = h('input', { class: 'search', type: 'search', placeholder: 'Search name or id…', value: state.filter[key] || '' });
+// chips: optional extra filter [[value, label, x => bool], ...]; above: optional element shown above the list;
+// delWarning: optional extra text for the remove confirmation.
+function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, kind, chips, above, delWarning }) {
+  const filterInput = h('input', { class: 'search', type: 'search', placeholder: 'Search name, id or text…', value: state.filter[key] || '' });
+  const chipKey = key + ':chip';
+  const chipSelect = chips && h('select', { class: 'filter' }, chips.map(([v, label]) => h('option', { value: v }, label)));
+  if (chipSelect) chipSelect.value = state.filter[chipKey] || '';
   const list = h('div', { class: 'list' });
   const draw = () => {
     const q = (state.filter[key] || '').toLowerCase();
-    const rows = arr.map((x, i) => [x, i]).filter(([x]) => !q || `${x.name} ${x.id}`.toLowerCase().includes(q));
+    const chip = chips?.find(c => c[0] === (state.filter[chipKey] || ''));
+    const rows = arr.map((x, i) => [x, i])
+      .filter(([x]) => !q || `${x.name} ${x.id} ${x.description ?? ''} ${x.effect ?? ''}`.toLowerCase().includes(q))
+      .filter(([x]) => !chip?.[2] || chip[2](x));
     list.replaceChildren(...(rows.length ? rows.flatMap(([x, i]) => {
       const openKey = `${key}:${i}`;
       const isOpen = state.open.has(openKey);
@@ -784,7 +851,8 @@ function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, 
       const move = d => { const j = i + d; if (j < 0 || j >= arr.length) return; [arr[i], arr[j]] = [arr[j], arr[i]]; state.open.delete(openKey); state.open.add(`${key}:${j}`); changed(); draw(); };
       const del = () => {
         const live = state.liveIds.has(x.id);
-        if (!confirm(live ? `"${x.name}" is published. Removing it wipes players' progress on it, so Submit will flag it and you'll need to choose "Submit anyway". Remove it?` : `Remove "${x.name || x.id}"?`)) return;
+        const extra = delWarning?.(x) || '';
+        if (!confirm((live ? `"${x.name}" is published. Removing it wipes players' progress on it, so Submit will flag it and you'll need to choose "Submit anyway".` : `Remove "${x.name || x.id}"?`) + (extra ? ' ' + extra : '') + (live ? ' Remove it?' : ''))) return;
         arr.splice(i, 1); state.open.clear(); changed(); refreshNav();
       };
       return [row, h('div', { class: 'editor' }, editor(x, v => nameEl.textContent = v || '(no name)'),
@@ -796,9 +864,11 @@ function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, 
     }) : [h('div', { class: 'empty' }, arr.length ? 'Nothing matches your search.' : 'Nothing here yet.')]));
   };
   filterInput.addEventListener('input', () => { state.filter[key] = filterInput.value; draw(); });
+  chipSelect?.addEventListener('change', () => { state.filter[chipKey] = chipSelect.value; draw(); });
   const add = () => {
     arr.push(makeNew());
     state.filter[key] = ''; filterInput.value = '';
+    if (chipSelect) { state.filter[chipKey] = ''; chipSelect.value = ''; }
     state.open.add(`${key}:${arr.length - 1}`);
     changed(); refreshNav();
     const editors = document.querySelectorAll('.editor');
@@ -807,44 +877,131 @@ function expandList({ key, arr, title, sub, addLabel, makeNew, rowBits, editor, 
     last?.querySelector('input:not([readonly])')?.focus();
   };
   draw();
-  return [head(title, sub, filterInput, h('button', { class: 'btn primary', onclick: add }, addLabel)), list];
+  return [head(title, sub, chipSelect, filterInput, h('button', { class: 'btn primary', onclick: add }, addLabel)), above, list].filter(Boolean);
 }
 
 function itemsSection(cat) {
   const i = state.data.categories.indexOf(cat);
+  const chaptered = usesChapters(cat);
+  const chapters = chaptered ? chapterNumbers(cat) : [];
+  const missing = chaptered ? cat.items.filter(x => chapterOf(x) === null) : [];
+  const sizes = chapters.map(n => `Ch ${n}: ${cat.items.filter(x => chapterOf(x) === n).length}`).join(' · ');
   return expandList({
     key: 'cat' + i + ':' + cat.id, arr: cat.items, kind: 'item',
-    title: cat.name || 'New category', sub: `${cat.items.length} items · category id ${cat.id || '(none)'}`,
+    title: cat.name || 'New category',
+    sub: `${cat.items.length} items · category id ${cat.id || '(none)'}` + (chaptered ? ` · ${chapters.length} chapters (${sizes})` : ''),
     addLabel: '+ Add item',
-    makeNew: () => ({ id: nextId(cat.items, cat.id || 'item'), name: '' }),
-    rowBits: x => [x.character && h('span', { class: 'tag' }, x.character), x.spoiler && h('span', { class: 'tag' }, 'spoiler'), x.count && h('span', { class: 'tag' }, '×' + x.count)],
+    chips: chaptered ? [['', 'All chapters'], ...chapters.map(n => [String(n), `Chapter ${n}`, x => chapterOf(x) === n]), ['none', 'No chapter', x => chapterOf(x) === null]] : undefined,
+    above: missing.length ? h('div', { class: 'card warnbox' },
+      h('b', null, `${missing.length} item${missing.length > 1 ? 's have' : ' has'} no chapter. `),
+      'The app shows the story by chapter only when every item has one; until then it shows a plain list.',
+      h('ul', null, missing.slice(0, 8).map(x => h('li', null, x.name || x.id))), missing.length > 8 && h('div', null, `…and ${missing.length - 8} more`)) : null,
+    makeNew: () => {
+      const item = { id: nextId(cat.items, cat.id || 'item'), name: '' };
+      // New story missions start in the chapter of the last one (or the chapter being filtered).
+      const ch = Number(state.filter['cat' + i + ':' + cat.id + ':chip']) || (chaptered ? chapterOf(cat.items[cat.items.length - 1] ?? {}) : null);
+      if (ch) item.description = `Chapter ${ch}: `;
+      if (cat.id === 'story') item.spoiler = true;
+      return item;
+    },
+    rowBits: x => [chaptered && chapterOf(x) !== null && h('span', { class: 'tag' }, 'Ch ' + chapterOf(x)), x.character && h('span', { class: 'tag' }, x.character),
+      x.giver && h('span', { class: 'tag' }, x.giver), x.spoiler && h('span', { class: 'tag' }, 'spoiler'), x.count && h('span', { class: 'tag' }, '×' + x.count)],
     editor: (x, onName) => h('div', { class: 'grid' },
       idField(x, 'Id', state.liveIds.has(x.id)),
       text(x, 'name', 'Name', { required: true, onInput: onName }),
-      text(x, 'description', 'Description', { wide: true, multiline: true, hint: 'One line shown in the list. Optional.' }),
-      text(x, 'character', 'Character(s)', { placeholder: 'Michael, Franklin' }),
-      text(x, 'giver', 'Quest giver', { placeholder: 'Optional' }),
-      num(x, 'count', 'Count', { min: 1, placeholder: 'Optional', hint: 'How many to find (collectibles).' }),
+      ...(chaptered ? chapterFields(x) : [text(x, 'description', 'Description', { wide: true, multiline: true, hint: 'One line shown in the list. Optional.' })]),
+      text(x, 'character', 'Character(s)', { placeholder: 'Jason, Lucia' }),
+      text(x, 'giver', 'Quest giver', { placeholder: 'Optional (side quests)' }),
+      num(x, 'count', 'Count', { min: 1, placeholder: 'Optional', hint: 'Collectibles: how many to find. The app counts up to it and ticks the item at this number.' }),
       bool(x, 'spoiler', 'Spoiler (hide name until completed)', { omitFalse: true }),
     ),
   });
 }
 
+// Chapter number + description, saved together as "Chapter 3: description".
+function chapterFields(x) {
+  const parts = { chapter: chapterOf(x) ?? undefined, text: withoutChapter(x.description) };
+  const save = () => {
+    const d = (parts.chapter ? `Chapter ${parts.chapter}: ` : '') + (parts.text ?? '');
+    if (d) x.description = d; else delete x.description;
+  };
+  return [
+    num(parts, 'chapter', 'Chapter', { min: 1, placeholder: 'e.g. 3', onInput: save, hint: 'Groups the mission on the Story page.' }),
+    text(parts, 'text', 'Description', { wide: true, multiline: true, onInput: save, hint: 'One line, without "Chapter N:" (added from the Chapter field). Hidden in the app until the mission is reached.' }),
+  ];
+}
+
 function challengesSection(g, key = 'challenges') {
   const i = state.data[key].indexOf(g);
   const unit = key === 'challenges' ? 'challenge' : 'milestone';
+  const groupCheats = key === 'challenges' ? cheatsForGroup(g.id) : [];
   return expandList({
     key: key.slice(0, 3) + i + ':' + g.id, arr: g.items, kind: 'item',
     title: `${g.name} ${unit}s`, sub: `${g.items.length} ${unit}s · group id ${g.id}. Which cheat each one unlocks is set on the cheat (Unlock).`,
     addLabel: `+ Add ${unit}`,
+    above: groupCheats.length ? h('div', { class: 'card links' }, h('span', { class: 'muted' }, 'Unlocks:'),
+      groupCheats.map(c => [h('span', { class: 'muted' }, `${c.unlock.count} done →`), cheatLinks([c])])) : null,
     makeNew: () => ({ id: nextId(g.items, g.id), name: '' }),
-    rowBits: () => [],
+    rowBits: x => key === 'milestones' ? cheatsForMilestone(x.id).map(c => h('span', { class: 'tag lock' }, '→ ' + cheatLabel(c))) : [],
+    delWarning: x => {
+      const c = key === 'milestones' ? cheatsForMilestone(x.id) : [];
+      return c.length ? `${c.map(cheatLabel).join(', ')} unlock${c.length === 1 ? 's' : ''} with it: change ${c.length === 1 ? 'that cheat\'s' : 'their'} unlock rule too.` : '';
+    },
     editor: (x, onName) => h('div', { class: 'grid' },
       idField(x, 'Id', state.liveIds.has(x.id)),
       text(x, 'name', 'Name', { required: true, onInput: onName }),
-      text(x, 'description', 'Description', { wide: true, multiline: true, hint: 'What to do in game.' }),
+      text(x, 'description', 'Description', { wide: true, multiline: true, hint: key === 'milestones' ? 'Shown under the name, e.g. "Unlocks Drunk".' : 'What to do in game.' }),
+      key === 'milestones' && h('div', { class: 'f wide' }, h('span', { class: 'hint' }, 'Unlocks (set on the cheat)'),
+        h('div', { class: 'links', style: 'padding-top: 4px' }, cheatsForMilestone(x.id).length ? cheatLinks(cheatsForMilestone(x.id)) : h('span', { class: 'muted' }, 'No cheat yet. Pick this milestone in a cheat\'s Unlock.'))),
     ),
   });
+}
+
+// Add, rename, reorder or remove challenge or milestone groups.
+function groupsSection(key) {
+  const d = state.data;
+  const groups = d[key] || [];
+  const unit = key === 'challenges' ? 'challenge' : 'milestone';
+  // New group ids follow the existing ones, e.g. g6-ch-combat -> g6-ch-<name>.
+  const prefix = (groups[0]?.id.match(/^(.*-)[^-]+$/) || [])[1] || (key === 'challenges' ? 'ch-' : 'ms-');
+  const all = key === 'challenges' ? d.cheats.filter(c => c.unlock?.type === 'challenges' && c.unlock.group === undefined) : [];
+  const nav = key === 'challenges' ? 'chg:' : 'msg:';
+  return [
+    head(`Manage ${unit} groups`, `Groups are the stacks on the ${key === 'challenges' ? 'Challenges' : 'Milestones'} page. Edit their ${unit}s from the left menu.`,
+      h('button', { class: 'btn primary', onclick: () => { (d[key] ??= []).push({ id: '', name: '', items: [] }); changed(); refreshNav(); } }, '+ Add group')),
+    all.length ? h('div', { class: 'card links' }, h('span', { class: 'muted' }, 'Across all groups:'),
+      all.map(c => [h('span', { class: 'muted' }, `${c.unlock.count} done →`), cheatLinks([c])])) : null,
+    ...groups.map((g, i) => {
+      const locked = state.liveIds.has(g.id);
+      const idWrap = idField(g, 'Id', locked);
+      let lastName = g.name || '';
+      const move = dir => { const j = i + dir; [groups[i], groups[j]] = [groups[j], groups[i]]; changed(); refreshNav(); };
+      const linked = key === 'challenges' ? cheatsForGroup(g.id) : g.items.flatMap(it => cheatsForMilestone(it.id));
+      return h('div', { class: 'card' },
+        h('div', { class: 'grid' },
+          text(g, 'name', 'Name', { required: true, onInput: v => {
+            if (!locked && (!g.id || g.id === prefix + slug(lastName))) { g.id = prefix + slug(v); idWrap.querySelector('input').value = g.id; }
+            lastName = v;
+          } }),
+          idWrap,
+          h('div', { class: 'f' }, h('span', { class: 'hint' }, unit[0].toUpperCase() + unit.slice(1) + 's'), h('div', { style: 'padding-top: 6px' }, g.items.length,
+            ' · ', h('a', { href: '#', onclick: e => { e.preventDefault(); state.section = nav + i; render(); } }, `edit ${unit}s`))),
+          linked.length ? h('div', { class: 'f wide' }, h('span', { class: 'hint' }, 'Unlocks'), h('div', { class: 'links', style: 'padding-top: 4px' },
+            linked.map(c => [key === 'challenges' && h('span', { class: 'muted' }, `${c.unlock.count} done →`), cheatLinks([c])]))) : null,
+        ),
+        h('div', { class: 'btns', style: 'margin-top: 12px' },
+          h('button', { class: 'btn small', disabled: i === 0, onclick: () => move(-1) }, '↑ Move up'),
+          h('button', { class: 'btn small', disabled: i === groups.length - 1, onclick: () => move(1) }, '↓ Move down'),
+          h('span', { style: 'flex:1' }),
+          h('button', { class: 'btn small danger', onclick: () => {
+            const note = linked.length ? ` ${linked.length} cheat${linked.length > 1 ? 's unlock' : ' unlocks'} with it (${linked.map(cheatLabel).join(', ')}): change ${linked.length > 1 ? 'their' : 'its'} unlock rule too, or Submit will flag it.` : '';
+            if (!confirm((locked ? `"${g.name}" is published with ${g.items.length} ${unit}s. Removing it wipes players' progress, so Submit will flag it and you'll need to choose "Submit anyway".` : `Remove "${g.name || 'this group'}"?`) + note)) return;
+            groups.splice(i, 1); state.open.clear(); changed(); refreshNav();
+          } }, 'Remove')),
+      );
+    }),
+    !groups.length ? h('div', { class: 'card empty' }, `No ${unit} groups yet.`) : null,
+  ].filter(Boolean);
 }
 
 // Unlock rule fields; switching type drops the fields the new type doesn't use.
@@ -861,30 +1018,53 @@ function unlockFields(x, re) {
     changed(); re();
   } })];
   if (x.unlock?.type === 'challenges') fields.push(
-    select(x.unlock, 'group', 'Challenge group', groups, { optional: true, optionalLabel: 'All groups' }),
+    select(x.unlock, 'group', 'Challenge group', groups, { optional: true, optionalLabel: 'All groups', onChange: re }),
     num(x.unlock, 'count', 'Challenges needed', { min: 1 }));
-  if (x.unlock?.type === 'milestone') fields.push(select(x.unlock, 'id', 'Milestone', milestones, { wide: true }));
+  if (x.unlock?.type === 'milestone') fields.push(select(x.unlock, 'id', 'Milestone', milestones, { wide: true, onChange: re }));
+  if (x.unlock?.type === 'challenges') {
+    const g = (state.data.challenges || []).find(g => g.id === x.unlock.group);
+    const max = g ? g.items.length : (state.data.challenges || []).reduce((n, g) => n + g.items.length, 0);
+    fields[fields.length - 1].append(h('small', { class: 'hint' }, `1 to ${max}.`));
+  }
   return fields;
 }
 
 function cheatsSection() {
+  const has = (x, p) => !!x.codes?.[p] && !PLACEHOLDER.test(x.codes[p]);
   return expandList({
     key: 'cheats', arr: state.data.cheats, kind: 'cheat',
-    title: 'Cheats', sub: `${state.data.cheats.length} cheat codes`,
+    title: 'Cheats', sub: `${state.data.cheats.length} cheats · ${state.data.cheats.filter(c => codeIsSoon(c.codes) || !Object.keys(c.codes || {}).length).length} with the code still coming`,
     addLabel: '+ Add cheat',
-    makeNew: () => ({ id: nextId(state.data.cheats, 'cheat'), name: '', effect: '', codes: {} }),
-    rowBits: x => [x.tag && h('span', { class: 'tag' }, x.tag === 'unofficial' ? 'Unofficial' : 'Verified'), x.codes?.playstation && h('span', { class: 'tag' }, 'PS'), x.codes?.xbox && h('span', { class: 'tag' }, 'Xbox')],
+    chips: [['', 'All cheats'], ['code', 'With a code', x => !codeIsSoon(x.codes) && Object.keys(x.codes || {}).length > 0],
+      ['soon', 'Code coming soon', x => codeIsSoon(x.codes) || !Object.keys(x.codes || {}).length],
+      ['story', 'Unlock: story', x => x.unlock?.type === 'story'], ['challenges', 'Unlock: challenges', x => x.unlock?.type === 'challenges'],
+      ['milestone', 'Unlock: milestone', x => x.unlock?.type === 'milestone'], ['free', 'Always unlocked', x => !x.unlock],
+      ['unofficial', 'Tag: Unofficial', x => x.tag === 'unofficial'], ['verified', 'Tag: Verified', x => x.tag === 'verified']],
+    makeNew: () => ({ id: nextId(state.data.cheats, 'cheat'), name: '', effect: '', tag: 'unofficial', unlock: { type: 'story' }, codes: { playstation: COMING_SOON, xbox: COMING_SOON } }),
+    rowBits: x => [x.tag && h('span', { class: 'tag' }, x.tag === 'unofficial' ? 'Unofficial' : 'Verified'),
+      x.unlock?.type && h('span', { class: 'tag lock', title: unlockLabel(x.unlock) }, '🔒 ' + unlockLabel(x.unlock)),
+      codeIsSoon(x.codes) || !Object.keys(x.codes || {}).length ? h('span', { class: 'tag soon' }, 'Coming soon')
+        : [has(x, 'playstation') && h('span', { class: 'tag' }, 'PS'), has(x, 'xbox') && h('span', { class: 'tag' }, 'Xbox')]],
     editor: (x, onName) => {
       x.codes ??= {};
+      const re = () => refreshNav();
+      const soon = codeIsSoon(x.codes);
+      const soonBox = h('input', { type: 'checkbox', checked: soon });
+      soonBox.addEventListener('change', () => {
+        // Older app builds show the code text as is, so an unknown code is written as "Coming soon", not left out.
+        x.codes = soonBox.checked ? { playstation: COMING_SOON, xbox: COMING_SOON } : {};
+        changed(); re();
+      });
       return h('div', { class: 'grid' },
         idField(x, 'Id', state.liveIds.has(x.id)),
-        text(x, 'name', 'Name', { required: true, onInput: onName }),
+        text(x, 'name', 'Name', { required: true, onInput: onName, hint: x.tag ? `Keep "(${x.tag === 'unofficial' ? 'Unofficial' : 'Verified'})" at the end: older app builds show the name as is, newer ones show the tag instead.` : '' }),
         text(x, 'effect', 'Effect', { required: true, wide: true, hint: 'One line on what it does.' }),
-        text(x, 'details', 'Details', { wide: true, multiline: true, rows: 3, hint: 'Optional longer notes.' }),
-        select(x, 'tag', 'Tag', [['unofficial', 'Unofficial'], ['verified', 'Verified']], { optional: true, optionalLabel: 'None' }),
-        ...unlockFields(x, () => refreshNav()),
-        text(x.codes, 'playstation', 'PlayStation code', { wide: true, placeholder: 'Right, X, Right, …' }),
-        text(x.codes, 'xbox', 'Xbox code', { wide: true, placeholder: 'Right, A, Right, …', hint: 'At least one of the two codes, unless the cheat has an unlock rule.' }),
+        text(x, 'details', 'Details', { wide: true, multiline: true, rows: 3, hint: 'Optional longer notes: source, how to enter it.' }),
+        select(x, 'tag', 'Tag', [['unofficial', 'Unofficial'], ['verified', 'Verified']], { optional: true, optionalLabel: 'None', onChange: re }),
+        ...unlockFields(x, re),
+        h('label', { class: 'check wide' }, soonBox, 'Code coming soon (not known yet: the app shows "Code coming soon")'),
+        !soon && text(x.codes, 'playstation', 'PlayStation code', { wide: true, placeholder: 'Phone open, hold L1 + R1: Up, Right, …' }),
+        !soon && text(x.codes, 'xbox', 'Xbox code', { wide: true, placeholder: 'Phone open, hold LB + RB: Up, Right, …', hint: 'Leave one empty if the cheat isn\'t on that console. Needs at least one code, unless the cheat has an unlock rule.' }),
       );
     },
   });
