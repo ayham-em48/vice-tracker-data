@@ -1,7 +1,7 @@
 {
   "$schema": "./data.schema.json",
-  "version": 3.5,
-  "updatedAt": "2026-11-20",
+  "version": 3.6,
+  "updatedAt": "2026-11-21",
   "update": {
     "latestVersion": "1.0.0",
     "minVersion": "1.0.0",
@@ -20,7 +20,7 @@
     {
       "id": "challenges",
       "type": "challenges",
-      "order": 1,
+      "order": 3,
       "status": "live",
       "badge": {
         "label": "New",
@@ -31,7 +31,7 @@
     {
       "id": "milestones",
       "type": "milestones",
-      "order": 2,
+      "order": 4,
       "status": "live",
       "badge": {
         "label": "New",
@@ -42,7 +42,7 @@
     {
       "id": "cheats",
       "type": "cheats",
-      "order": 3,
+      "order": 2,
       "status": "live",
       "badge": {
         "label": "New",
@@ -54,7 +54,7 @@
       "id": "story",
       "type": "category",
       "categoryId": "story",
-      "order": 4,
+      "order": 1,
       "status": "partial",
       "notice": "Verifying missions daily 🚀"
     },
