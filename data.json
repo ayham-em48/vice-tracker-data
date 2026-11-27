@@ -102,6 +102,7 @@
     {
       "id": "story",
       "name": "Story missions",
+      "map": "https://mapgenie.io/grand-theft-auto-6/maps/leonida",
       "items": [
         {
           "id": "g6-story-001",
