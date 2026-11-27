@@ -197,8 +197,8 @@ const ORDER = {
   badge: ['label', 'style', 'expiresAt'],
   ads: ['enabled', 'nativeEvery', 'listBanner', 'detailBanner'],
   countdown: ['enabled', 'launchDate', 'game', 'outNowLabel', 'outNowDays'],
-  category: ['id', 'name', 'items'],
-  item: ['id', 'name', 'description', 'character', 'giver', 'count', 'spoiler'],
+  category: ['id', 'name', 'map', 'items'],
+  item: ['id', 'name', 'description', 'character', 'giver', 'count', 'map', 'spoiler'],
   cheat: ['id', 'name', 'effect', 'details', 'tag', 'unlock', 'codes'],
   unlock: ['type', 'group', 'count', 'id'],
   codes: ['playstation', 'xbox'],
@@ -905,7 +905,7 @@ function itemsSection(cat) {
       return item;
     },
     rowBits: x => [chaptered && chapterOf(x) !== null && h('span', { class: 'tag' }, 'Ch ' + chapterOf(x)), x.character && h('span', { class: 'tag' }, x.character),
-      x.giver && h('span', { class: 'tag' }, x.giver), x.spoiler && h('span', { class: 'tag' }, 'spoiler'), x.count && h('span', { class: 'tag' }, '×' + x.count)],
+      x.giver && h('span', { class: 'tag' }, x.giver), x.spoiler && h('span', { class: 'tag' }, 'spoiler'), x.count && h('span', { class: 'tag' }, '×' + x.count), x.map && h('span', { class: 'tag' }, 'map')],
     editor: (x, onName) => h('div', { class: 'grid' },
       idField(x, 'Id', state.liveIds.has(x.id)),
       text(x, 'name', 'Name', { required: true, onInput: onName }),
@@ -913,6 +913,7 @@ function itemsSection(cat) {
       text(x, 'character', 'Character(s)', { placeholder: 'Jason, Lucia' }),
       text(x, 'giver', 'Quest giver', { placeholder: 'Optional (side quests)' }),
       num(x, 'count', 'Count', { min: 1, placeholder: 'Optional', hint: 'Collectibles: how many to find. The app counts up to it and ticks the item at this number.' }),
+      text(x, 'map', 'Map link', { wide: true, type: 'url', placeholder: cat.map || 'https://mapgenie.io/…', hint: 'Optional. "Show on map" opens this page in the app. Paste the share link for this item\'s marker. Empty uses the section\'s link.' }),
       bool(x, 'spoiler', 'Spoiler (hide name until completed)', { omitFalse: true }),
     ),
   });

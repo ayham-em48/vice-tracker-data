@@ -81,6 +81,7 @@
         "properties": {
           "id": { "$ref": "#/$defs/id" },
           "name": { "type": "string", "minLength": 1 },
+          "map": { "type": "string", "pattern": "^https://", "description": "Default \"Show on map\" link for this category's items. Opens in the app's map sheet." },
           "items": {
             "type": "array",
             "items": {
@@ -94,7 +95,8 @@
                 "spoiler": { "type": "boolean", "description": "true hides the name until completed, when the player has spoilers hidden." },
                 "character": { "type": "string", "minLength": 1, "description": "Playable character(s) for this item, e.g. \"Michael, Franklin\"." },
                 "giver": { "type": "string", "minLength": 1, "description": "Who gives this side quest." },
-                "count": { "type": "integer", "minimum": 1, "description": "How many of this collectible there are to find." }
+                "count": { "type": "integer", "minimum": 1, "description": "How many of this collectible there are to find." },
+                "map": { "type": "string", "pattern": "^https://", "description": "\"Show on map\" link for this item. Overrides the category's map link." }
               }
             }
           }
@@ -111,6 +113,7 @@
         "properties": {
           "id": { "$ref": "#/$defs/id" },
           "name": { "type": "string", "minLength": 1 },
+          "map": { "type": "string", "pattern": "^https://", "description": "Default \"Show on map\" link for this category's items. Opens in the app's map sheet." },
           "items": {
             "type": "array",
             "items": {
